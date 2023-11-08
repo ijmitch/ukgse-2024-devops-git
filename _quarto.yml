@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: p1.qmd
+        text: Pres
       - about.qmd
 
 format:
