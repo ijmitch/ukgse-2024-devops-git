@@ -1,7 +1,9 @@
 ---
 title: "Habits"
 author: "John Doe"
-format: revealjs
+format:
+  revealjs: 
+    theme: [dark, custom.scss]
 ---
 
 ## Getting up
