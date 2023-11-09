@@ -16,14 +16,14 @@
   {
     "objectID": "p1.html#getting-up",
     "href": "p1.html#getting-up",
-    "title": "Habits",
+    "title": "The workflow for  git-based z/OS DevOps",
     "section": "Getting up",
     "text": "Getting up\n\nTurn off alarm\nGet out of bed"
   },
   {
     "objectID": "p1.html#going-to-sleep",
     "href": "p1.html#going-to-sleep",
-    "title": "Habits",
+    "title": "The workflow for  git-based z/OS DevOps",
     "section": "Going to sleep",
     "text": "Going to sleep\n\nGet in bed\nCount sheep"
   },
@@ -47,5 +47,124 @@
     "title": "Quartotest",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "p1.html#diagram",
+    "href": "p1.html#diagram",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Diagram",
+    "text": "Diagram\n\n\n\n\nflowchart LR\n  A[Hard edge] --&gt; B(Round edge)\n  B --&gt; C{Decision}\n  C --&gt; D[Result one]\n  C --&gt; E[Result two]\n\n\n\n\n\n\n\nCopyright © 2023 IBM Corporation"
+  },
+  {
+    "objectID": "p1.html#overview",
+    "href": "p1.html#overview",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Overview",
+    "text": "Overview\n\n\nEvery change starts in a branch\nThese branches merge to main\n\n\n\n\n\n\n\nCopyright © 2023 IBM Corporation"
+  },
+  {
+    "objectID": "p1.html#everything-starts-with-a-branch",
+    "href": "p1.html#everything-starts-with-a-branch",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Everything starts with a branch:",
+    "text": "Everything starts with a branch:\n\n\n\n\n  gitGraph\n      commit\n      commit\n      branch feature-001 order: 5\n      commit"
+  },
+  {
+    "objectID": "p1.html#when-on-a-branch-developers-commit-changes-in-isolation",
+    "href": "p1.html#when-on-a-branch-developers-commit-changes-in-isolation",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "When on a branch, developers commit changes in isolation:",
+    "text": "When on a branch, developers commit changes in isolation:\n\n\n\n\n%%{init: { 'fontFamily': 'IBM Plex Sans', 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 4}} }%%\n      gitGraph\n      commit\n      commit\n      branch feature-001 order: 5\n      commit\n      commit\n\n\n\n\n\n\nEvery branch can be built and tested. ## When ready, the feature branch can be reviewed and approved to merge into main:\n\n%%{init: { 'fontFamily': 'IBM Plex Sans',\n           'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 4}} }%%\n      gitGraph\n      commit\n      commit\n      branch feature-001 order: 5\n      commit\n      commit\n      checkout main\n      merge feature-001"
+  },
+  {
+    "objectID": "p1.html#multiple-features-can-be-developed-concurrently",
+    "href": "p1.html#multiple-features-can-be-developed-concurrently",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Multiple features can be developed concurrently:",
+    "text": "Multiple features can be developed concurrently:\n%%{init: { 'fontFamily': 'IBM Plex Sans',\n           'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 4}} }%%\n      gitGraph\n      commit\n      commit\n      branch feature-001 order: 5\n      commit\n      commit\n      checkout main\n      branch feature-002 order: 6\n      commit\n      checkout main\n      merge feature-001\n      checkout feature-002\n      commit\n      checkout main\n      merge feature-002"
+  },
+  {
+    "objectID": "p1.html#or-serially",
+    "href": "p1.html#or-serially",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "or serially:",
+    "text": "or serially:\n%%{init: { 'fontFamily': 'IBM Plex Sans',\n           'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 4}} }%%\n      gitGraph\n      commit\n      commit\n      branch feature-001 order: 5\n      commit\n      commit\n      checkout main\n      branch feature-002 order: 6\n      commit\n      checkout main\n      merge feature-001\n      branch feature-003 order: 6\n      commit\n      commit\n      checkout main\n      merge feature-003\n      checkout feature-002\n      commit\n      checkout main\n      merge feature-002"
+  },
+  {
+    "objectID": "p1.html#and-then-a-release-candidate-can-be-created",
+    "href": "p1.html#and-then-a-release-candidate-can-be-created",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "And then a release candidate can be created:",
+    "text": "And then a release candidate can be created:\n%%{init: { 'fontFamily': 'IBM Plex Sans',\n           'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 4}} }%%\n      gitGraph\n      commit\n      commit\n      commit\n      branch release-2.1.0 order: 2\n      commit id:\"rel-2.1.0\"\n      checkout main\n      commit\n(note: commits to main here are, of course, merges of approved branches)"
+  },
+  {
+    "objectID": "p1.html#fixes-are-handled-as-branches-from-main-which-are-tested-approved-merged-to-main-and-cherry-picked-to-add-to-the-release-branch",
+    "href": "p1.html#fixes-are-handled-as-branches-from-main-which-are-tested-approved-merged-to-main-and-cherry-picked-to-add-to-the-release-branch",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Fixes are handled as branches from main, which are tested, approved, merged to main and cherry-picked to add to the release branch:",
+    "text": "Fixes are handled as branches from main, which are tested, approved, merged to main and cherry-picked to add to the release branch:\n%%{init: { 'fontFamily': 'IBM Plex Sans',\n           'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 4}} }%%\n      gitGraph\n      commit\n      commit\n      commit\n      branch release-2.1.0 order: 2\n      commit id:\"rel-2.1.0\"\n      checkout main\n      branch hot-fix-2.1.0.1 order: 5\n      commit id:\"hf-2.1.0.1\"\n      checkout main\n      merge hot-fix-2.1.0.1\n      checkout release-2.1.0\n      cherry-pick id:\"hf-2.1.0.1\"\n      checkout main\n      commit"
+  },
+  {
+    "objectID": "p1.html#features-can-run-over-release-boundaries",
+    "href": "p1.html#features-can-run-over-release-boundaries",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Features can run over release boundaries:",
+    "text": "Features can run over release boundaries:\n%%{init: { 'fontFamily': 'IBM Plex Sans',\n           'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchOrder': 4}} }%%\n      gitGraph\n      commit\n      commit\n      branch feature-001 order: 5\n      commit\n      commit\n      checkout main\n      branch feature-002 order: 6\n      commit\n      commit\n      checkout main\n      merge feature-001\n      branch release-2.1.0 order: 2\n      commit id:\"rel-2.1.0\"\n      checkout feature-002\n      commit\n      commit\n      checkout main\n      merge feature-002\n\n\nCopyright © 2023 IBM Corporation"
+  },
+  {
+    "objectID": "p1.html#agenda",
+    "href": "p1.html#agenda",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Agenda",
+    "text": "Agenda\n\nAims and Assumptions\nChoosing a branching model and worflow\nStarting simple\nScaling up\nIntegration branches\nDelivering changes via a release\nHot-fix for production\nUsing an Epic branch"
+  },
+  {
+    "objectID": "p1.html#aims-and-assumptions",
+    "href": "p1.html#aims-and-assumptions",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Aims and Assumptions",
+    "text": "Aims and Assumptions\nSome aims and assumptions that guide our recommendations include:\n\nThe workflow and branching scheme should both scale up and scale down.\n\n\nSmall teams with simple and infrequent changes will be able to easily understand, adopt, and have a good experience.\nLarge, busy teams with many concurrent activities will be able to plan, track, and execute with maximum agility using the same fundamental principles."
+  },
+  {
+    "objectID": "p1.html#aims-and-assumptions---planning",
+    "href": "p1.html#aims-and-assumptions---planning",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Aims and Assumptions - planning",
+    "text": "Aims and Assumptions - planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices typically encourage that, where possible, development teams should strive to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration. This reduces the number of “in-flight” changes, and allows the team to deliver value (end-to-end functionality) more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
+  },
+  {
+    "objectID": "p1.html#aims-and-assumptions---scaling",
+    "href": "p1.html#aims-and-assumptions---scaling",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Aims and Assumptions - scaling",
+    "text": "Aims and Assumptions - scaling\nSome aims and assumptions that guide our recommendations include:\n\nThe workflow and branching scheme should both scale up and scale down.\n\nSmall teams with simple and infrequent changes will be able to easily understand, adopt, and have a good experience.\nLarge, busy teams with many concurrent activities will be able to plan, track, and execute with maximum agility using the same fundamental principles."
+  },
+  {
+    "objectID": "p1.html#scaling",
+    "href": "p1.html#scaling",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Scaling",
+    "text": "Scaling\n\nThe workflow and branching scheme should both scale up and scale down.\n\nSmall teams with simple and infrequent changes will be able to easily understand, adopt, and have a good experience.\nLarge, busy teams with many concurrent activities will be able to plan, track, and execute with maximum agility using the same fundamental principles."
+  },
+  {
+    "objectID": "p1.html#planning",
+    "href": "p1.html#planning",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Planning",
+    "text": "Planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices typically encourage that, where possible, development teams should strive to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration. This reduces the number of “in-flight” changes, and allows the team to deliver value (end-to-end functionality) more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
+  },
+  {
+    "objectID": "p1.html#starting-simple",
+    "href": "p1.html#starting-simple",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Starting Simple",
+    "text": "Starting Simple\n\n\nEvery change starts in a branch"
+  },
+  {
+    "objectID": "p1.html#starting-simple-1",
+    "href": "p1.html#starting-simple-1",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Starting Simple",
+    "text": "Starting Simple\n\n\nEvery change starts in a branch\nThese branches merge to main\n\n\n\n\n\n\n\nCopyright © 2023 IBM Corporation"
   }
 ]

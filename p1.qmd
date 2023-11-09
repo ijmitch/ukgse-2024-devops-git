@@ -1,17 +1,75 @@
 ---
-title: "Habits"
-author: "John Doe"
+title: "The workflow for </br> git-based z/OS DevOps"
+subtitle: "Recommended by the DAT Team"
+author: ["Ian J Mitchell", "Dennis Behm", "Mathieu Dalbin"]
 format:
   revealjs: 
-    theme: [dark, custom.scss]
+    theme: [default, custom.scss]
+    embed-resources: true
+    incremental: true   
+    transition: fade
+    footer: "Copyright &copy; 2023 IBM Corporation"
 ---
 
-## Getting up
+## Agenda
 
-- Turn off alarm
-- Get out of bed
+- Aims and Assumptions
+- Choosing a branching model and worflow
+- Starting simple
+- Scaling up
+- Integration branches
+- Delivering changes via a release
+- Hot-fix for production
+- Using an Epic branch
 
-## Going to sleep
+# Aims and Assumptions
 
-- Get in bed
-- Count sheep
+Some aims and assumptions that guide our recommendations...
+
+## Scaling {.smaller}
+
+- The workflow and branching scheme should both scale up and scale down.
+  - Small teams with simple and infrequent changes will be able to easily understand, adopt, and have a good experience.
+  - Large, busy teams with many concurrent activities will be able to plan, track, and execute with maximum agility using the same fundamental principles.
+
+## Planning {.smaller}
+
+- Planning and design activities as well as code development aim to align to a regular release cadence.
+
+- There is no magic answer to managing large numbers of "in-flight" changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.
+
+  - DevOps/Agile practices typically encourage that, where possible, development teams should strive to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration. This reduces the number of "in-flight" changes, and allows the team to deliver value (end-to-end functionality) more quickly while still building towards a larger development goal.
+
+- We know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow.
+
+# The Branching Strategy
+
+## Starting Simple
+:::: {.columns}
+
+::: {.column width="40%"}
+Every change starts in a branch
+:::
+
+::: {.column width="60%"}
+![](images/image5.png)
+:::
+
+::::
+
+## Starting Simple
+:::: {.columns}
+
+::: {.column width="40%"}
+Every change starts in a branch
+
+These branches merge to `main`
+:::
+
+::: {.column width="60%"}
+![](images/image5.png)
+
+![](images/image6.png)
+:::
+
+::::
