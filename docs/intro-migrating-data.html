@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quartotest</title>
+<title>Quartotest - Introduction to migrating data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,11 +84,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./p1.html" rel="" target="">
+    <a class="nav-link active" href="./p1.html" rel="" target="" aria-current="page">
  <span class="menu-text">Pres</span></a>
   </li>  
   <li class="nav-item">
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Quartotest</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro-migrating-data.html">Introduction to migrating data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -187,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git-branching-model-for-mainframe-dev.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./git-branching-model-for-mainframe-dev.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git branching model for mainframe development</span></a>
   </div>
 </li>
@@ -223,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro-migrating-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./intro-migrating-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction to migrating data</span></a>
   </div>
 </li>
@@ -293,14 +293,24 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#migrating-data-from-zos-to-git" id="toc-migrating-data-from-zos-to-git" class="nav-link active" data-scroll-target="#migrating-data-from-zos-to-git">Migrating data from z/OS to Git</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-migrating-data" id="toc-introduction-to-migrating-data" class="nav-link" data-scroll-target="#introduction-to-migrating-data">Introduction to migrating data</a></li>
+  <li><a href="#steps-for-migrating-data-from-zos-to-git" id="toc-steps-for-migrating-data-from-zos-to-git" class="nav-link" data-scroll-target="#steps-for-migrating-data-from-zos-to-git">Steps for migrating data from z/OS to Git</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quartotest</h1>
+<h1 class="title">Introduction to migrating data</h1>
 </div>
 
 
@@ -315,10 +325,29 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="migrating-data-from-zos-to-git" class="level1">
+<h1>Migrating data from z/OS to Git</h1>
+<section id="introduction-to-migrating-data" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-migrating-data">Introduction to migrating data</h2>
+<p>Migrating your source code data from z/OS to Git is one of the first steps in implementing a modern CI/CD pipeline. Once you have planned your to-be Git repository layouts, you can use the steps in the following section to migrate your data from z/OS to Git. During the migration process, it is important to be aware of potential issues with migrating non-printable or non-roundtrippable characters, and to have a plan for how to handle them if you encounter them. You can read more about how to handle these characters in <a href="./managing-code-page-conversion.md">Managing code page conversion</a>.</p>
+</section>
+<section id="steps-for-migrating-data-from-zos-to-git" class="level2">
+<h2 class="anchored" data-anchor-id="steps-for-migrating-data-from-zos-to-git">Steps for migrating data from z/OS to Git</h2>
+<p>At a high level, the steps for migrating data from z/OS to Git are as follows:</p>
+<ol type="1">
+<li><p>Unload the source code from the legacy version control system to PDS libraries: Legacy version control systems often store data in a proprietary format, which IBM’s Dependency Based Build (DBB) cannot directly access. Therefore, the source code should first be unloaded to PDS libraries.</p></li>
+<li><p>Load files from PDS libraries to a Git repository on z/OS UNIX System Services (z/OS UNIX) using one of the following methods:</p>
+<ul>
+<li><a href="./dbb-migration-tool.md">DBB migration tool</a>: The DBB migration tool is provided with DBB, and is the most commonly-used method for migrating data from z/OS to Git.</li>
+<li><a href="./sclm-git-migration-tool.md">SCLM-to-Git migration tool</a>: You can use the SCLM-to-Git migration tool if you are moving away from SCLM as your current library manager.</li>
+<li><a href="./manual-migration.md">Manual migration</a>: Manual migration of source code from z/OS to Git is possible, but is generally not recommended since it tends to be slower, more tedious, and prone to human error.</li>
+</ul></li>
+<li><p>Once your code is in z/OS UNIX, you can use Git to push it up to your central Git provider.</p></li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

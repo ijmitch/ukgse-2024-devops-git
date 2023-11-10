@@ -11,12 +11,14 @@ website:
       - href: p1.qmd
         text: Pres
       - about.qmd
+  sidebar:
+    contents: auto
 
 format:
   html:
     theme:
-      - darkly
-      - custom.scss
+      light: [flatly, custom.scss]
+      dark:  [darkly, custom.scss]
     css: styles.css
     toc: true
 

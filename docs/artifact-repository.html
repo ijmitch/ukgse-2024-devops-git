@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quartotest</title>
+<title>Quartotest – artifact-repository</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,11 +84,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./p1.html" rel="" target="">
+    <a class="nav-link active" href="./p1.html" rel="" target="" aria-current="page">
  <span class="menu-text">Pres</span></a>
   </li>  
   <li class="nav-item">
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Quartotest</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./artifact-repository.html">Artifact repository</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -127,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./artifact-repository.html" class="sidebar-item-text sidebar-link">
+  <a href="./artifact-repository.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Artifact repository</span></a>
   </div>
 </li>
@@ -187,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git-branching-model-for-mainframe-dev.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./git-branching-model-for-mainframe-dev.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git branching model for mainframe development</span></a>
   </div>
 </li>
@@ -293,32 +293,45 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#artifact-repository" id="toc-artifact-repository" class="nav-link active" data-scroll-target="#artifact-repository">Artifact repository</a>
+  <ul class="collapse">
+  <li><a href="#common-artifact-repository-options" id="toc-common-artifact-repository-options" class="nav-link" data-scroll-target="#common-artifact-repository-options">Common artifact repository options</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Quartotest</h1>
-</div>
 
 
+<section id="artifact-repository" class="level1">
+<h1>Artifact repository</h1>
+<p>Once building occurs, the pipeline then publishes and stores the build outputs as a package in the artifact repository. This package contains any artifact that will need to be deployed, such as load modules, DBRMs, DDL, and the configuration files for the subsystems. Importantly, the package also contains the build artifacts’ metadata and other necessary pieces of information that enable any changes to be traced back to the version control system. Depending on the system, the package can be a WAR, EAR files, a Windows installer package, among others. The artifact repository can also be used as the publishing platform to store intermediate files needed in the build phase.</p>
+<p>The artifact repository contains a complete history of packages, and therefore also provides access to older versions. This feature is especially important in cases where a rollback or audit is required. The artifact repository is meant to be the single point of truth for binaries, much in the same way that a SCM is the single point of truth for source files.</p>
+<p>It is expected that a package will be deployed to several execution environments, each of them being used for different testing phases. Ultimately, some packages will be deployed to production. In this arrangement, the artifact repository acts like a proxy for the deployment manager, which is responsible for deploying the artifacts produced by the build system to one or more runtime environments.</p>
+<p>The key mission and benefit of an artifact repository is to decouple source code management (SCM) configurations from runtime environments. This supports the fundamental DevOps principle of “build once, deploy many”. Once you build and test a set of binaries to verify it, then that is the same set of binaries that you will want to deploy to the production environment. By ensuring you can use the same set of executables between your deployment environments, from testing to production, you not only reduce the risk of build time issues going undetected into your production environments, but it also becomes much easier to determine if a deployment problem is the result of a build time issue or a runtime environment issue.</p>
+<section id="common-artifact-repository-options" class="level2">
+<h2 class="anchored" data-anchor-id="common-artifact-repository-options">Common artifact repository options</h2>
+<ul>
+<li>JFrog Artifactory</li>
+<li>Sonatype Nexus</li>
+<li>UrbanCode Deploy (UCD) Codestation</li>
+<li>Azure Artifacts</li>
+</ul>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<p>This page contains reformatted excerpts from <a href="https://www.ibm.com/support/pages/packaging-and-deployment-strategies-open-and-modern-cicd-pipeline-focusing-mainframe-software-development">Packaging and Deployment Strategies in an Open and Modern CI/CD Pipeline focusing on Mainframe Software Development</a>.</p>
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quartotest – build</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Quartotest</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./p1.html" rel="" target="">
+ <span class="menu-text">Pres</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#build" id="toc-build" class="nav-link active" data-scroll-target="#build">Build</a>
+  <ul class="collapse">
+  <li><a href="#dbb-features" id="toc-dbb-features" class="nav-link" data-scroll-target="#dbb-features">DBB features</a></li>
+  <li><a href="#zappbuild-features" id="toc-zappbuild-features" class="nav-link" data-scroll-target="#zappbuild-features">zAppBuild features</a></li>
+  <li><a href="#zappbuild-introduction" id="toc-zappbuild-introduction" class="nav-link" data-scroll-target="#zappbuild-introduction">zAppBuild introduction</a>
+  <ul class="collapse">
+  <li><a href="#zappbuild-architecture" id="toc-zappbuild-architecture" class="nav-link" data-scroll-target="#zappbuild-architecture">zAppBuild architecture</a></li>
+  </ul></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="build" class="level1">
+<h1>Build</h1>
+<p>The Build component of a continuous integration/continuous delivery (CI/CD) pipeline converts the source code into executable binaries. It supports multiple platforms and languages. In mainframe environments, it includes understanding dependencies, compile, link-edit, and unit test. The build can include the inspection of code quality to perform automated validation against a set of coding rules. In some cases, code quality inspection could also be a component of its own in the pipeline.</p>
+<p>While many of the steps in the DevOps flow for mainframe applications can be performed using the same tooling used by distributed development teams, the build step in particular needs to remain on z/OS. Therefore, in the IBM Z DevOps solution, this step is primarily handled by IBM Dependency Based Build (DBB). DBB has intelligent build capabilities where it can not only compile and link z/OS programs to produce executable binaries, but it can also perform different types of builds to support the various steps in an application development workflow. This includes the ability to perform an “impact build”, where DBB will only build programs that have changed since the last successful build and the files impacted by those changes, saving time and resources during the development process.</p>
+<p>DBB is a set of APIs based on open-source Groovy and adapted to z/OS. This enables you to easily incorporate your z/OS application builds into the same automated CI/CD pipeline used by distributed teams. It is possible to use DBB as a basis to <a href="https://www.ibm.com/docs/en/dbb/2.0?topic=apis-tutorial-writing-your-first-build-script">write your own build scripts</a>, but we recommend starting with the <a href="https://github.com/IBM/dbb-zappbuild">zAppBuild framework</a> to provide a template for your build, and then customizing it as necessary for your enterprise and applications.</p>
+<p>The zAppBuild framework helps facilitate the adoption of DBB APIs for your enterprise and applications. Rather than writing your own Groovy scripts to interact with the DBB APIs, you can fill in properties to define your build options for zAppBuild, and then let zAppBuild invoke DBB to perform your builds.</p>
+<section id="dbb-features" class="level2">
+<h2 class="anchored" data-anchor-id="dbb-features">DBB features</h2>
+<ul>
+<li>Perform builds on z/OS and persist build results</li>
+<li>Persist metadata about the builds, which can then be used in subsequent automated CI/CD pipeline steps, as well as informing future DBB builds</li>
+<li>Can be run from the command line interface, making it easy to integrate into an automated CI/CD pipeline</li>
+</ul>
+</section>
+<section id="zappbuild-features" class="level2">
+<h2 class="anchored" data-anchor-id="zappbuild-features">zAppBuild features</h2>
+<ul>
+<li>Framework template facilitates leveraging DBB APIs to build z/OS applications, letting you focus on defining the build’s properties separately from the logic to perform the build</li>
+<li>High-level enterprise-wide settings that can be set for all z/OS application builds</li>
+<li>Application-level settings for any necessary overrides in individual application builds</li>
+<li>Includes out-of-the-box support for the following languages:
+<ul>
+<li>COBOL</li>
+<li>PL/I</li>
+<li>BMS and MFS</li>
+<li>Link Cards</li>
+<li>PSB, DBD</li>
+<li>See zAppBuild’s <a href="https://github.com/IBM/dbb-zappbuild/tree/main#build-scope">Supported Languages</a> for a full list of out-of-the-box supported languages.</li>
+</ul></li>
+<li>Supported build actions:
+<ul>
+<li>Single program (“User Build”): Build a single program in the application</li>
+<li>List of programs: Build a list of programs provided by a text file</li>
+<li>Full build: Build all programs (or buildable files) of an application</li>
+<li>Impact build: Build only the programs impacted by source files that have changed since the last successful build</li>
+<li>Scan only: Skip the actual building and only scan source files for dependency data</li>
+<li>Additional supported build actions are listed in zAppBuild’s <a href="https://github.com/IBM/dbb-zappbuild/tree/main#build-scope">Build Scope</a> documentation.</li>
+</ul></li>
+</ul>
+</section>
+<section id="zappbuild-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="zappbuild-introduction">zAppBuild introduction</h2>
+<p>zAppBuild is a free, generic mainframe application build framework that customers can extend to meet their DevOps needs. It is available under the Apache 2.0 license, and is a sample to get you started with building Git-based source code on z/OS UNIX System Services (z/OS UNIX). It is made up of property files to configure the build behavior, and Groovy scripts that invoke the DBB toolkit APIs.</p>
+<p>Build properties can span across all applications (enterprise-level), one application (application-level), or individual programs. Properties that cross all applications are managed by administrators and define enterprise-wide settings such as the PDS name of the compiler, data set allocation attributes, and more. Application- and program-level properties are typically managed within the application repository itself.</p>
+<p>The zAppBuild framework is invoked either by a developer using the “User Build” capability in their integrated development environment (IDE), or by an automated CI/CD pipeline. It supports different <a href="https://github.com/IBM/dbb-zappbuild#build-scope">build types</a>.</p>
+<p>The main script of zAppBuild, <code>build.groovy</code>, initializes the build environment, identifies what to build, and invokes language scripts. This triggers the utilities and DBB APIs to then produce runtime artifacts. The build process also creates logs and an artifact manifest (<code>BuildReport.json</code>) for deployment processes coordinated by the deployment manager.</p>
+<p>The following chart provides a high-level summary of the steps that zAppBuild performs during a build:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../static/img/zappbuild-workflow.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">zAppBuild workflow</figcaption>
+</figure>
+</div>
+<section id="zappbuild-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="zappbuild-architecture">zAppBuild architecture</h3>
+<p>The zAppBuild framework is split into two parts. The core build framework, called <code>dbb-zappbuild</code>, is a Git repository that contains the build scripts and stores enterprise-level settings. It resides in a permanent location on the z/OS UNIX file system (in addition to the central Git repository). It is typically owned and controlled by the central build team.</p>
+<p>The other part of zAppBuild is the <code>application-conf</code> folder that resides within each application repository to provide application-level settings to the central build framework. These settings are owned, maintained, and updated by the application team.</p>
+<section id="dbb-zappbuild-folder-structure-overview" class="level4">
+<h4 class="anchored" data-anchor-id="dbb-zappbuild-folder-structure-overview"><code>dbb-zappbuild</code> folder structure overview</h4>
+<ul>
+<li><code>build-conf</code> contains the following enterprise-level property files:
+<ul>
+<li><code>build.properties</code> defines DBB initilization properties, including location and of the DBB metadata store (for storing dependency information) and more.</li>
+<li><code>dataset.properties</code> describes system datasets such as the PDS name of the COBOL compiler or libraries used for the subsystem. You must update this properties file with your site’s data set names.</li>
+<li>Several language-specific property files that define the compiler or link-editor/binder program names, system libraries, and general system-level properties for COBOL, Assembler, and other languages.</li>
+</ul></li>
+<li><code>languages</code> contains Groovy scripts used to build programs. For example, <code>Cobol.groovy</code> is called by <code>build.groovy</code> to compile the COBOL source codes. The application source code is mapped by its file extension to the language script in <code>application-conf/file.properties</code>.</li>
+<li><code>samples</code> contains an <code>application-conf</code> template folder and a reference sample application, MortgageApplication.</li>
+<li><code>utilities</code> contains helper scripts used by <code>build.groovy</code> and other scripts to calculate the build list.</li>
+<li><code>build.groovy</code> is the main build script of zAppBuild. It takes several required command line parameters to customize the build process.</li>
+</ul>
+</section>
+<section id="application-conf-overview" class="level4">
+<h4 class="anchored" data-anchor-id="application-conf-overview"><code>application-conf</code> overview</h4>
+<p>This folder is located within the application’s repository, and defines application-level properties such as the following:</p>
+<ul>
+<li><code>application.properties</code> defines various directory rules, default Git branch, impact resolution rules such as the copybook lookup rules, and more.</li>
+<li><code>file.properties</code> maps files to the language scripts in <code>dbb-zappbuild/languages</code>, and provides file-level property overrides.</li>
+<li>Property files for further customization of the language script processing. For example, <code>Cobol.properties</code> is one of the language properties files to define compiler and link-edit options, among other properties.</li>
+</ul>
+<p>The following diagram illustrates how zAppBuild’s application- and enterprise-level configurations feed into its build scripts to generate build artifacts from an application repository: <img src="../static/img/zappbuild-architecture.png" class="img-fluid" alt="zAppBuild architecture"></p>
+</section>
+</section>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li><a href="https://www.ibm.com/docs/en/dbb/2.0">IBM documentation for DBB</a></li>
+<li><a href="https://ibm.github.io/mainframe-downloads/Training/dbb-self-paced-learning.html">IBM Dependency Based Build Fundamentals course</a></li>
+</ul>
+<p>This page contains reformatted excerpts from the following documents:</p>
+<ul>
+<li><a href="https://www.ibm.com/support/pages/node/6457275">DBB zAppBuild Introduction and Custom Version Maintenance Strategy</a></li>
+<li><a href="https://www.ibm.com/support/pages/packaging-and-deployment-strategies-open-and-modern-cicd-pipeline-focusing-mainframe-software-development">Packaging and Deployment Strategies in an Open and Modern CI/CD Pipeline focusing on Mainframe Software Development</a></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

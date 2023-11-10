@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quartotest</title>
+<title>Quartotest – journey-to-cicd</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,11 +84,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./p1.html" rel="" target="">
+    <a class="nav-link active" href="./p1.html" rel="" target="" aria-current="page">
  <span class="menu-text">Pres</span></a>
   </li>  
   <li class="nav-item">
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Quartotest</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./journey-to-cicd.html">Understanding the journey to a CI/CD pipeline</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -187,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./git-branching-model-for-mainframe-dev.pdf" class="sidebar-item-text sidebar-link">
+  <a href="./git-branching-model-for-mainframe-dev.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Git branching model for mainframe development</span></a>
   </div>
 </li>
@@ -229,7 +229,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./journey-to-cicd.html" class="sidebar-item-text sidebar-link">
+  <a href="./journey-to-cicd.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Understanding the journey to a CI/CD pipeline</span></a>
   </div>
 </li>
@@ -293,32 +293,363 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#understanding-the-journey-to-a-cicd-pipeline" id="toc-understanding-the-journey-to-a-cicd-pipeline" class="nav-link active" data-scroll-target="#understanding-the-journey-to-a-cicd-pipeline">Understanding the journey to a CI/CD pipeline</a>
+  <ul class="collapse">
+  <li><a href="#migration-approaches" id="toc-migration-approaches" class="nav-link" data-scroll-target="#migration-approaches">Migration approaches</a></li>
+  <li><a href="#roles" id="toc-roles" class="nav-link" data-scroll-target="#roles">Roles</a></li>
+  <li><a href="#migration-journey-milestones" id="toc-migration-journey-milestones" class="nav-link" data-scroll-target="#migration-journey-milestones">Migration journey milestones</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Quartotest</h1>
+
+
+<section id="understanding-the-journey-to-a-cicd-pipeline" class="level1">
+<h1>Understanding the journey to a CI/CD pipeline</h1>
+<p>What is involved in the migration effort from green screen to CI/CD?</p>
+<ul>
+<li>Have the right tools (CI/CD pipeline tools): The major components are summarized in the <a href="./intro-cicd-zos.md#components-of-a-ci-cd-pipeline-for-z-os-applications">CI/CD for z/OS applications page</a>.</li>
+<li>Have the right people (Roles): The DevOps transformation journey includes a range of roles to help accomplish the various milestones along the way. For example, the enterprise will need roles to architect the CI/CD pipeline and workflows, implement the infrastructure, understand how to use the CI/CD tools, and so on. You can read more about each role in the <a href="#roles">Roles</a> section.
+<ul>
+<li>IBM and business partners can also help support you at different milestones of your journey to the CI/CD pipeline. Available resources are described for each milestone in the <a href="#migration-journey-milestones">Migration journey milestones</a> section.</li>
+</ul></li>
+<li>Have the right mindset: Migrating from legacy tooling and development processes to DevOps and CI/CD often requires work to bring about cultural change in the organization. In fact, many successful DevOps migration efforts involve a change transformation specialist to help the teams impacted by this migration understand the concepts and workflows behind the DevOps change and the benefits they bring.</li>
+</ul>
+<section id="migration-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="migration-approaches">Migration approaches</h2>
+<p>The migration to a Git-based CI/CD pipeline can be approached in a couple different ways. A “big-bang” migration approach involves designing and implementing the future state, migrating code from z/OS to the Git provider, and training all the developers on the new way of working while the legacy system is still in place and active. Then, at a given conversion date, all developers will switch to using the new CI/CD pipeline, with the caveats that they will have received training in a short timeframe and that the pipeline will support all workflows from day one.</p>
+<p>However, many enterprises prefer a “phased” migration approach, with the iterative migration of applications from the legacy system to the new CI/CD pipeline. The phased migration approach begins by designing the future state, and then training and migrating just one (or a couple) complete application team(s) at a time to the new CI/CD pipeline. Additional applications are subsequently onboarded to the new CI/CD pipeline over several iterations. This iterative process allows the organization to find and iron out wrinkles in the migration process and/or pipeline on a smaller scale, and then apply the experience and improve for later iterations. By the time the enterprise is mostly using the CI/CD pipeline, the migration process will be more familiar, and the switch from the legacy system to the modern CI/CD pipeline becomes much less disruptive. Application dependencies across the new CI/CD pipeline and the legacy system are expected during the iterative migration process, but the IBM Z DevOps Acceleration Team (DAT) can provide resources that help you establish processes to address this period of co-existence.</p>
+</section>
+<section id="roles" class="level2">
+<h2 class="anchored" data-anchor-id="roles">Roles</h2>
+<p>Having a team with the right skills and mindset is critical to a successful DevOps transformation effort. While the following roles each have their own specific skillsets and tasks, an individual can perform more than one role if it makes sense for their team and organization. You can click on each role to learn about it.</p>
+<details>
+<summary>
+<p>### Architect</p>
+<p>The architect helps define the new software delivery process.</p>
+</summary>
+<p>Generally, the architect will be someone with strong z/OS skills who understands the infrastructure and current build processes. This deep background knowledge about the current z/OS infrastructure state and mainframe application build processes is important for understanding how to translate those processes into the more modern DevOps pipeline.</p>
+<p>A key task is to condense existing mainframe workflows and design the to-be state in the CI/CD pipeline. For this, the architect collaborates with the distributed teams to create a common enterprise software delivery processes. Additionally, the architect is involved in defining necessary integration points of the pipeline, as well as designing the migration process.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Strong z/OS skills (average of about 10 years of experience)</li>
+<li>Knowledge about mainframe development processes and workflows</li>
+<li>Skills and concepts to learn:
+<ul>
+<li>CI/CD and DevOps principles</li>
+<li>Git concepts and architecture</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Collaborate between the mainframe development team(s) and distributed teams to transform the existing mainframe workflows into the to-be CI/CD pipeline</li>
+</ul></li>
+<li>Job positions that you might find filling this role:
+<ul>
+<li>Enterprise architect</li>
+<li>Enterprise application architect</li>
+<li>IT architect</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Build specialist</p>
+<p>The build specialist develops and maintains the build scripts for the new pipeline.</p>
+</summary>
+<p>This is a developer type of role that focuses on turning the source code into a deployable artifact, so familiarity with z/OS build processes is required. The build specialist might adapt a distributed example of build scripting to z/OS.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Mainframe build fundamentals (for example, JCL/REXX, understanding of compile/link/bind options, and so on)</li>
+<li>Skills and concepts to learn:
+<ul>
+<li>Git concepts</li>
+<li>IBM Dependency Based Build architecture (for example, dependency management and build results)</li>
+<li>Groovy scripting</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Plan and perform migrations</li>
+<li>Develop and maintain the customized build framework</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>Build engineer</li>
+<li>z/OS build administrator</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Pipeline specialist</p>
+<p>The pipeline specialist assembles the pipeline in the CI/CD orchestrator.</p>
+</summary>
+<p>This is a developer type of role that focuses on building, scaling, and maintaining the CI/CD pipeline structure. The pipeline specialist does not need to be as z/OS-aligned as the build specialist. Rather than being concerned with building COBOL programs (or other z/OS languages), the pipeline specialist is more concerned about integrating tools together. This role often already exists in the distributed side of the enterprise.</p>
+<p>Typically, the pipeline specialist is the first role to adopt the DevOps tooling, and then teaches the tools and workflows to other teams in the organization (for example, z/OS application development teams).</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>CI/CD specialist</li>
+<li>Git concepts</li>
+<li>Change management integrations</li>
+<li>Skills and concepts to learn:
+<ul>
+<li>Foundational IBM DBB concepts</li>
+<li>Groovy, Shell scripting</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Develop and maintain customized integration scripts between the different pipeline building blocks (for example, using Groovy and Shell scripting)</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>DevOps engineer</li>
+<li>DevOps pipeline administrator</li>
+<li>DevOps team</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Change transformation specialist</p>
+<p>The change transformation specialist drives the cultural and organizational change required for a successful modernization journey.</p>
+</summary>
+<p>This role is more of a consulting and people-focused role rather than a technical one. Enterprises sometimes hire an individual specifically for this role when embarking on the DevOps transformation journey - for example, someone with specialized training in coaching DevOps/Agile methodologies, who has experience in helping teams make the transformation succeed from a cultural and cross-team point of view.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Strong communication</li>
+<li>Planning and organizing</li>
+<li>Change transformation</li>
+<li>Understanding of DevOps and Agile concepts</li>
+<li>Skills and concepts to learn:
+<ul>
+<li>Understand the needs and concerns of all groups, in order to be the “voice of the transformation”</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Effectively communicate to teams the motivation and purpose behind the transformation journey</li>
+<li>Collaborate with teams to coordinate training for the cultural and organizational change</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>Change transformation specialist</li>
+<li>DevOps/Agile coach</li>
+<li>Transformation enablement team</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Deployment specialist</p>
+<p>The application deployment specialist implements the deployment solution.</p>
+</summary>
+<p>This developer type of role may be part of the DevOps team (with the pipeline specialist), and might already be using a deployment manager with distributed teams. It is helpful for them to have some understanding of the mainframe subsystem and infrastructure interfaces, as those will also be involved in the z/OS application deployment processes.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Deployment management</li>
+<li>Git concepts</li>
+<li>Skills and concepts to learn:
+<ul>
+<li>Mainframe subsystem and infrastructure interfaces</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Develop and maintain central deployment processes</li>
+<li>Collaborate with the build specialist and pipeline specialist to design the to-be solution</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>DevOps engineer</li>
+<li>DevOps team</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Integrated development environment specialist</p>
+<p>The integrated development environment (IDE) specialist is a developer type of role that helps implement the workflows within the IDE.</p>
+</summary>
+<p>Since the IDE is a central tool used by application developers, it is important that someone in the organization is trained on how to use the IDE effectively, and can also guide others on using it. The IDE specialist understands (or learns) how to use the IDE, and shares this knowledge with others in their organization.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Software development tasks and use cases</li>
+<li>Skills and concepts to learn (if not already acquired):
+<ul>
+<li>IDE customization</li>
+<li>Git concepts</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Customization and documentation of the IDE</li>
+<li>IDE installation and deployment to developer workstations (including upgrades)</li>
+<li>Training and coaching others on using the IDE</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>Software developer (or application developer)</li>
+<li>Software engineer</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Middleware specialist</p>
+<p>The middleware specialist role is an umbrella term that covers different technical roles that help install and configure the tools for the CI/CD pipeline.</p>
+</summary>
+<p>This role might be handled by more than one individual, as it can cover setup tasks on both Linux and mainframe environments, depending on the enterprise’s needs.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Background in managing or administering the requisite middleware system</li>
+<li>Skills and concepts to learn (if not already acquired):
+<ul>
+<li>Initial install and configure steps for DevOps tooling</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Assist with installation and configuration of Linux-based components and/or z/OS host components (depending on selected DevOps technology stack)</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>Middleware system programmer or system administrator (for example, CICS administrator and/or Db2 administrator)</li>
+<li>Infrastructure team</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Migration specialist</p>
+<p>The migration specialist is typically a transitional role that focuses on facilitating the migration from the legacy development tools and processes to the modern CI/CD pipeline.</p>
+</summary>
+<p>This role can either be handled by a selected team in the enterprise, or by a business partner.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Mainframe data fundamentals</li>
+<li>Understanding of the legacy development system</li>
+<li>Skills and concepts to learn (if not already acquired):
+<ul>
+<li>Git concepts</li>
+<li>IBM Dependency Based Build fundamentals (for example, <a href="./dbb-migration-tool.md">DBB Migration Tool</a>)</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Help move data from legacy z/OS application development systems to Git</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>DevOps implementation architect</li>
+<li>Build engineer and DevOps team</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+<details>
+<summary>
+<p>### Testing specialist</p>
+<p>The testing specialist is technical role that focuses on quality assurance in the software.</p>
+</summary>
+<p>While testing in legacy development workflows is often manual and time consuming, the move to a modernized DevOps toolchain allows the testing specialist to create tests that can be automatically run by the developer, and/or as part of a CI/CD pipeline. The scope of these tests can range from individual unit tests to larger-scale integration tests on dedicated testing platforms.</p>
+<ul>
+<li>Background skills and knowledge:
+<ul>
+<li>Understanding of the z/OS application functionality and use cases</li>
+<li>Experience testing z/OS applications</li>
+<li>Skills and concepts to learn (if not already acquired):
+<ul>
+<li>Git concepts</li>
+<li>IBM Dependency Based Build fundamentals (for example, running a DBB User Build)</li>
+<li>Modern z/OS testing tools such as zUnit, IBM Virtual Dev and Test for z/OS (ZVDT), and/or IBM Z Virtual Test Platform (VTP)</li>
+</ul></li>
+<li>Tasks:
+<ul>
+<li>Create and automate testing processes for the CI/CD pipeline (for example, unit and/or integration testing)</li>
+</ul></li>
+<li>Job positions that might fill this role:
+<ul>
+<li>Quality engineer</li>
+<li>Quality assurance team</li>
+<li>Testing team</li>
+</ul></li>
+</ul></li>
+</ul>
+</details>
+</section>
+<section id="migration-journey-milestones" class="level2">
+<h2 class="anchored" data-anchor-id="migration-journey-milestones">Migration journey milestones</h2>
+<p>As you migrate from the green screen to CI/CD, there are several key milestones along the way. IBM teams and partners are available to help you at each step of the way:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../static/img/journey-to-cicd.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Milestones in the journey to a CI/CD pipeline</figcaption>
+</figure>
 </div>
+<ul>
+<li><p>Milestone 1: Design and validate the high level future design:</p>
+<ul>
+<li>This is where you learn about and validate the pipeline approach. It involves sketching out a high-level design of the to-be future state, and understanding the technical composition of the pipeline. In this milestone, building a proof-of-concept (POC) and/or a pilot will help further validate the approach and build up skills, either to implement the pipeline with in-house resources or to be able to make informed decisions together with a delivery organization. The POC/pilot will also help establish support from technical champions and management/leadership, which is key for a successful DevOps transformation.</li>
+<li>Milestone 1 resources:
+<ul>
+<li>At the start of Milestone 1, free online resources and training provided by IBM can help you explore the IBM Z DevOps solution.</li>
+<li>Engage with the IBM Sales and Tech Sales team to learn more about how the IBM Z DevOps solution can benefit your enterprise.</li>
+<li>When your team is ready to build a POC and/or a pilot, the DAT can help with additional training and design sessions for the POC/pilot, including a primer on how to analyze your current application to design its to-be state in Git repository layouts.</li>
+</ul></li>
+</ul></li>
+<li><p>Milestone 2: Deep-dive analysis to build business case and migration strategy</p>
+<ul>
+<li>This milestone is about understanding your system’s current state. Your system has evolved over time, perhaps over decades. Therefore, it requires a detailed assessment of the current build setup, the current repository layouts, and how ownership of code is defined. By assessing and understanding your system’s current state, you can clarify the designs for your future state, as well as the steps for how to get there. This is also when you will want to consider the best way for your organization to migrate to the new CI/CD pipeline, whether that would be to take a phased migration approach (which most customers do) or a big-bang approach.</li>
+<li>Milestone 2 resources: The following IBM teams and business partners can help with analysis and refinement, leading to a proposal to move off of the legacy source control manager (SCM):
+<ul>
+<li>IBM Services such as the Software Migration Project Office (SMPO) and Global Business Services (GBS)</li>
+<li>IBM business partners</li>
+<li>System integrators</li>
+<li>IBM DevOps Acceleration Program</li>
+</ul></li>
+</ul></li>
+<li><p>Milestone 3: Architect and implement the future state and new way of working</p>
+<ul>
+<li>Milestone 3 gets into the details of the solution by refining designs and ideas from the previous milestones to create a low-level design of the future workflow. This includes planning the timing of different parts of the DevOps transformation journey to prioritize core pieces. If the design for the pipeline is in a stable state, then the necessary pipeline pieces can go forward with implementation. This is when the “plumbing” work for the pipeline begins, integrating the different CI/CD components together in the context of your selected technologies (for example: pipeline orchestrator, Git provider, deployment manager, and so on). In this milestone, it is also important to communicate the DevOps transformation journey to the intended users of the new CI/CD pipeline. This can include demos, training, and provisioning of sandbox systems where the users can explore hands-on the cuture state.</li>
+<li>Milestone 3 resources:
+<ul>
+<li>Build framework samples for zAppBuild can be found in zAppBuild’s <a href="https://github.com/IBM/dbb-zappbuild/tree/main/docs">GitHub documentation</a>.</li>
+<li>First-class implementation support and guidance are available from IBM Services (SMPO, GBS), IBM business partners, and system integrators.</li>
+</ul></li>
+</ul></li>
+<li><p>Milestone 4: Roll out the new way of working</p>
+<ul>
+<li>In Milestone 4, the plan is put into action. This means the application development and operation teams are trained and onboarded with the new way of working, and the migration plan begins to move applications from the legacy system to the new CI/CD pipeline. This can be done in an iterative way (that is, a phased migration approach), allowing the organization to continuously incorporate feedback for improving the solution and migration process. By the end of this milestone, a CI/CD pipeline is in place and active.</li>
+<li>Milestone 4 resources:
+<ul>
+<li>Launch the new pipeline and make the change stick using IBM Services (SMPO, GBS), IBM business partners, and system integrators.</li>
+</ul></li>
+</ul></li>
+<li><p>Milestone 5: Realize the benefits</p>
+<ul>
+<li>Milestone 5 wraps up the migration part of the DevOps transformation journey, with teams now working in a standardized CI/CD pipeline. At this point, any independent software vendor (ISV) licenses can be returned, and the organization can refine the CI/CD pipeline to enable new capabilities and optimize the DevOps workflow.</li>
+</ul></li>
+</ul>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
