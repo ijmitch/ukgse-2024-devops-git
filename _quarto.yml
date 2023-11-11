@@ -13,7 +13,11 @@ website:
       - about.qmd
   sidebar:
     contents: auto
-
+  page-footer: 
+    center: "Copyright &copy; 2023 IBM Corporation"
+    left: "Markdown, Github, Quarto and RevealJS"
+  repo-url: https://github.ibm.com/ianj-mitchell/quartotest
+  repo-actions: [edit, issue]
 format:
   html:
     theme:
