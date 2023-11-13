@@ -17,7 +17,7 @@ It is important, especially for build outputs on mainframes, to keep track of ea
 It is imperative that you consider build outputs as part of your package. Examples of these items are highlighted in yellow in the following image. However, it is equally important to also consider the application-specific configuration artifacts (items highlighted in blue). Doing so will help teams avoid a flood of change requests, limit constant back and forth communication, and will enable the continued use of deployment automation.
 Application-specific configurations should be treated as source code, in the same way you manage your application source code (although, not everything needs to end up in a single package; we can also consider configuration and application packages). The following image shows a list of package items that are typical in the mainframe domain.
 
-![Example of typical package items for a mainframe application](../static/img/package-items.png)
+![Example of typical package items for a mainframe application](static/img/package-items.png)
 
 The package is represented in an archive format such as `.tar` (common in the UNIX world). This format is consistent with distributed applications, where teams usually work with full application packages in archives such as a WAR or a JAR file.
 
@@ -28,7 +28,7 @@ In all cases, the package consists of two items:
 
 For mainframe applications, a package will contain executables required to run your application, such as program objects, DBRM, JCL, and control cards – as well as a manifest file. An example of package contents in a typical mainframe application package is shown in the following image.
 
-![Example of package contents in a typical mainframe application package](../static/img/package-contents.png)
+![Example of package contents in a typical mainframe application package](static/img/package-contents.png)
 
 :::tip
 
@@ -56,7 +56,7 @@ As you might have seen already, there are many factors you will need to consider
 - The build runs three times. It produces three packages. Each of them is deployed in Test. However, QA is not updated yet.
 - The next phase of tests is performed in the QA environment, when a first level of validation has occurred in Test.
 
-![A packaging scenario where execution environments are not updated at the same pace](../static/img/package-strategy-scenario.png)
+![A packaging scenario where execution environments are not updated at the same pace](static/img/package-strategy-scenario.png)
 
 Currently, most mainframe development practices only work within a static and fixed set of known execution environments. Introducing a new execution environment is, today, a significant task in mainframe shops. It prohibits provisioning of test environments for specific projects and/or sprints; a requirement for most agile teams.
 
@@ -89,7 +89,7 @@ The limits of which environment a package may or may not go is another piece of 
 
 The format of the manifest is more of a secondary consideration: it can be `.yaml`, `.json`, `.xml`, and so on.  Considering the direction of containers with Kubernetes using Helm charts and OpenShift templates using `.yaml`, using `.yaml` for the metadata will make it more consistent with other industry work and make it clearly understandable by z/OS and non z/OS developers. The following image shows a sample schema of an application package manifest.
 
-![A sample schema of an application package manifest](../static/img/app-package-manifest.png)
+![A sample schema of an application package manifest](static/img/app-package-manifest.png)
 
 ## Resources
 

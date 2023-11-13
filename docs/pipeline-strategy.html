@@ -306,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/pipeline-strategy.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/pipeline-strategy.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="pipeline-strategy.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -328,7 +328,7 @@ ul.task-list li input[type="checkbox"] {
 <p>It is imperative that you consider build outputs as part of your package. Examples of these items are highlighted in yellow in the following image. However, it is equally important to also consider the application-specific configuration artifacts (items highlighted in blue). Doing so will help teams avoid a flood of change requests, limit constant back and forth communication, and will enable the continued use of deployment automation. Application-specific configurations should be treated as source code, in the same way you manage your application source code (although, not everything needs to end up in a single package; we can also consider configuration and application packages). The following image shows a list of package items that are typical in the mainframe domain.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/package-items.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/package-items.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Example of typical package items for a mainframe application</figcaption>
 </figure>
 </div>
@@ -341,7 +341,7 @@ ul.task-list li input[type="checkbox"] {
 <p>For mainframe applications, a package will contain executables required to run your application, such as program objects, DBRM, JCL, and control cards – as well as a manifest file. An example of package contents in a typical mainframe application package is shown in the following image.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/package-contents.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/package-contents.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Example of package contents in a typical mainframe application package</figcaption>
 </figure>
 </div>
@@ -368,7 +368,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/package-strategy-scenario.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/package-strategy-scenario.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">A packaging scenario where execution environments are not updated at the same pace</figcaption>
 </figure>
 </div>
@@ -399,7 +399,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The format of the manifest is more of a secondary consideration: it can be <code>.yaml</code>, <code>.json</code>, <code>.xml</code>, and so on. Considering the direction of containers with Kubernetes using Helm charts and OpenShift templates using <code>.yaml</code>, using <code>.yaml</code> for the metadata will make it more consistent with other industry work and make it clearly understandable by z/OS and non z/OS developers. The following image shows a sample schema of an application package manifest.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/app-package-manifest.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/app-package-manifest.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">A sample schema of an application package manifest</figcaption>
 </figure>
 </div>

@@ -17,7 +17,7 @@ Building a program involves different steps:
 
 These steps are summarized in the following diagram.
 
-![Producing object code and executables](../static/img/build-mainframe-app.png)
+![Producing object code and executables](static/img/build-mainframe-app.png)
 
 As part of the traditional build process, some additional steps, such as binds to databases, are sometimes included. The function of these steps is to prepare the runtime for a given execution environment. These should not be included in the build process itself, but should instead be included in the deployment process.
 
@@ -41,7 +41,7 @@ Different mechanisms exist to share pieces of data based on the language or the 
 
 Commonly, shared data structure is defined in an included source file - for example, COBOL uses copybooks.
 
-![Transfer of control sharing data between a program and subprogram](../static/img/programs-sharing-data.png)
+![Transfer of control sharing data between a program and subprogram](static/img/programs-sharing-data.png)
 
 It is very common to define multiple copybooks for programs in order to isolate data structures and reuse them in other areas of an application component. Using copybooks allows more modularity at source level and facilitates dealing with private and shared data structures, or even private or shared functions.
 
@@ -67,17 +67,17 @@ It is important to note that shared copybooks could be shared not only within an
 
 The following diagram illustrates the concept of an application having a private implementation (its inner workings, represented in tan), and a public interface to interact with other programs and applications (represented in blue).
 
-![An application exposes a public interface](../static/img/app-public-interface.png)
+![An application exposes a public interface](static/img/app-public-interface.png)
 
 As applications communicate, their implementation consumes the public interface of the applications with which they interact. This concept of a public interface is common in Java programs and the way the communication between applications is defined. This principle can also be applied to existing COBOL and PL/I programs to help explain the structure required for a modern SCM, and is illustrated in the following diagram, with the applications' usage of other applications' interfaces indicated in red.
 
-![Applications consume public interfaces of other applications](../static/img/app-interface-interaction.png)
+![Applications consume public interfaces of other applications](static/img/app-interface-interaction.png)
 
 ## Cross-cutting interfaces
 
 There are additional capabilities that might need to be shared in addition to sets of data structures for application communication. These capabilities might include standard security or logging functions and can be considered cross-cutting, infrastructure-level interfaces (represented in brown in the following diagram). These capabilities may be developed once and then included in many different programs. It would be very helpful if these additional included capabilities could also be handled as shared components with their own application lifecycle. The challenge comes when these components change in a non-compatible way. These types of changes are generally infrequent but might be needed at times.
 
-![Interfaces used by applications, including cross-cutting interfaces](../static/img/app-interfaces-cross-cut.png)
+![Interfaces used by applications, including cross-cutting interfaces](static/img/app-interfaces-cross-cut.png)
 
 In the preceding sections, we have laid out some of the key factors when considering the source code of traditional mainframe applications. The environment generally consists of many different applications that can provide shared interfaces and could consume shared components, or cross-cutting interfaces.
 

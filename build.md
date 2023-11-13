@@ -46,7 +46,7 @@ The main script of zAppBuild, `build.groovy`, initializes the build environment,
 
 The following chart provides a high-level summary of the steps that zAppBuild performs during a build:
 
-![zAppBuild workflow](../static/img/zappbuild-workflow.png)
+![zAppBuild workflow](static/img/zappbuild-workflow.png)
 
 ### zAppBuild architecture
 
@@ -74,7 +74,7 @@ This folder is located within the application's repository, and defines applicat
 - Property files for further customization of the language script processing. For example, `Cobol.properties` is one of the language properties files to define compiler and link-edit options, among other properties.
 
 The following diagram illustrates how zAppBuild's application- and enterprise-level configurations feed into its build scripts to generate build artifacts from an application repository:
-![zAppBuild architecture](../static/img/zappbuild-architecture.png)
+![zAppBuild architecture](static/img/zappbuild-architecture.png)
 
 ## Resources
 

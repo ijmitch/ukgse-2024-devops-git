@@ -34,7 +34,7 @@ In a similar sense, the districts within the city could be likened to groupings 
 
 The following diagram illustrates the point more literally. In this example, there are three applications, which we can again think of like the city districts:
 
-![Three applications with interfaces](../static/img/app-interface-interaction.png)
+![Three applications with interfaces](static/img/app-interface-interaction.png)
 
 - Each application has its own inner workings in the private implementation (represented by the tan parts of the above diagram). In the city analogy, an example of this could be the school system each district has. In the mainframe context, an example of these inner workings could be the COBOL programs for that application.
 - Additionally, each application needs to be able to communicate with other applications, which is accomplished via its public interface (shown in blue on the diagram). Using the city analogy again, the bus stop for each district could be considered as the district's "public interface". In the mainframe context, the public interface could be the copybooks defining data structures that are passed between programs.
@@ -74,6 +74,6 @@ To help guide the SCM layout design process, we can approach the SCM design with
 
 The result of the analysis in the steps above can be reflected within each application's repository. In the following example, you can see that the file structure is organized to indicate private versus public files and interfaces.
 
-![An application repository with private and public interfaces organized into different folders](../static/img/branch-contents.png)
+![An application repository with private and public interfaces organized into different folders](static/img/branch-contents.png)
 
 More details about managing dependencies can be found in the documentation for [Defining dependency management](./dependency-management.md).

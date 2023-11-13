@@ -186,11 +186,11 @@ To github.ibm.com:user1/Migration.git
 
 Once the Git push command has completed to the distributed Git server, the resulting files should be translated into the correct UTF-8 code page.
 
-![DBB Migration Tool scenario 1, .gitattributes file](../static/img/migration-git-scen1-gitattributes.png)
+![DBB Migration Tool scenario 1, .gitattributes file](static/img/migration-git-scen1-gitattributes.png)
 
-![DBB Migration Tool scenario 1, ibm1047.src file](../static/img/migration-git-scen1-ibm1047.png)
+![DBB Migration Tool scenario 1, ibm1047.src file](static/img/migration-git-scen1-ibm1047.png)
 
-![DBB Migration Tool scenario 1, ibm037.src file](../static/img/migration-git-scen1-ibm037.png)
+![DBB Migration Tool scenario 1, ibm037.src file](static/img/migration-git-scen1-ibm037.png)
 
 However, as indicated in the last picture above, the `ibm037.src` file reveals an encoding issue. This will be discussed in the next scenario.
 
@@ -263,7 +263,7 @@ To github.ibm.com:user1/Migration.git
 
 Now when examining the offending file on the distributed Git server, the contents of the file should be translated correctly:
 
-![DBB Migration Tool scenario 2, ibm037.src file](../static/img/migration-git-scen2-ibm037.png)
+![DBB Migration Tool scenario 2, ibm037.src file](static/img/migration-git-scen2-ibm037.png)
 
 The probability that members of a single PDS were written using a different code page, though possible, is extremely low. However, it is worth pointing out that it could expose an issue in how the migration tool generates the `.gitattributes` file.
 
@@ -354,7 +354,7 @@ To github.ibm.com:user1/Migration.git
 
 Once the Git push action has completed to the distributed Git server, the resulting file will be treated as binary:
 
-![DBB Migration Tool scenario 3, binary nround.cpy file in Git](../static/img/migration-git-scen3-bin.png)
+![DBB Migration Tool scenario 3, binary nround.cpy file in Git](static/img/migration-git-scen3-bin.png)
 
 This may not be an ideal situation as described in the documentation on [Managing non-printable and non-roundtripable characters](./managing-code-page-conversion.md#managing-non-printable-and-non-roundtripable-characters), and should be corrected/reconciled before continuing with the migration.
 

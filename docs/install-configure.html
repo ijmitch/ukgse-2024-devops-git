@@ -327,7 +327,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/install-configure.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/install-configure.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="install-configure.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -426,14 +426,14 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p>In the terminal, navigate to the folder where you would like to clone the repository.</p></li>
 <li><p>Retrieve the Git repository URL or SSH path from IBM’s public zAppBuild repository from https://github.com/IBM/dbb-zappbuild:</p>
-<img src="../static/img/dbb-zappbuild-code.png" class="img-fluid" alt="Retrieving the Git repository URL from IBM’s public zAppBuild repository"></li>
+<img src="static/img/dbb-zappbuild-code.png" class="img-fluid" alt="Retrieving the Git repository URL from IBM’s public zAppBuild repository"></li>
 <li><p>In your terminal, enter the command for cloning the repository. (The following command uses the Git repository URL, but the SSH path can also be used if you have SSH keys set up.):</p>
 <pre class="shell"><code>git clone https://github.com/IBM/dbb-zappbuild.git</code></pre>
 <ul>
 <li><p>Example Git clone command with output in a terminal:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/dbb-zappbuild-clone-output.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/dbb-zappbuild-clone-output.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Example Git clone command with output in a terminal</figcaption>
 </figure>
 </div></li>
@@ -456,7 +456,7 @@ git push -u origin --tags</code></pre></li>
 <li><p>The following screenshot shows an example of a populated central zAppBuild repository with GitLab as the Git provider:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/dbb-zappbuild-pushed.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/dbb-zappbuild-pushed.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Example of a populated central zAppBuild repository in GitLab’s web UI</figcaption>
 </figure>
 </div></li>
@@ -472,23 +472,23 @@ git push -u origin --tags</code></pre></li>
 <li>Add a new Git remote definition to connect to IBM’s official public zAppBuild GitHub repository. (Note: This step requires internet connectivity.)
 <ol type="1">
 <li><p>First, list the remotes by issuing <code>git remote -v</code>:</p>
-<img src="../static/img/dbb-zappbuild-remote-v1.png" class="img-fluid" alt="Output from initial listing of the remote tracked repositories">
+<img src="static/img/dbb-zappbuild-remote-v1.png" class="img-fluid" alt="Output from initial listing of the remote tracked repositories">
 <ul>
 <li>For more on Git remotes, see the <a href="https://git-scm.com/docs/git-remote">git-remote</a> documentation.</li>
 </ul></li>
 <li><p>Add a new remote named <code>zappbuild-official</code> to connect to GitHub by issuing the following command:</p>
 <pre class="shell"><code>git remote add zappbuild-official https://github.com/IBM/dbb-zappbuild.git</code></pre></li>
 <li><p>Verify that the new remote is available by issuing the command to list the remotes again: <code>git remote -v</code>:</p>
-<img src="../static/img/dbb-zappbuild-remote-v2.png" class="img-fluid" alt="Output from listing the remote tracked repositories after adding the zappbuild-official remote"></li>
+<img src="static/img/dbb-zappbuild-remote-v2.png" class="img-fluid" alt="Output from listing the remote tracked repositories after adding the zappbuild-official remote"></li>
 <li><p>Fetch the latest information from the official repository, by executing a Git fetch for the official dbb-zappubuild repository:</p>
 <pre class="shell"><code>git fetch zappbuild-official</code></pre>
-<img src="../static/img/dbb-zappbuild-fetch.png" class="img-fluid" alt="Output from Git fetch of the zappbuild-official remote"></li>
+<img src="static/img/dbb-zappbuild-fetch.png" class="img-fluid" alt="Output from Git fetch of the zappbuild-official remote"></li>
 <li><p>Make sure that your feature branch is checked out, before attempting to merge the changes from zappbuild-official. To merge the changes run into your branch <code>update-zappbuild</code>, run the following command:</p>
 <pre class="shell"><code>git merge zappbuild-official/main</code></pre>
-<img src="../static/img/dbb-zappbuild-conflict.png" class="img-fluid" alt="Merge conflict when attempting to merge in changes from zappbuild-official">
+<img src="static/img/dbb-zappbuild-conflict.png" class="img-fluid" alt="Merge conflict when attempting to merge in changes from zappbuild-official">
 <p>Potentially, you face merge conflicts. In the above case, the merge processor could not automatically resolve the <code>utilities/ImpactUtilities.groovy</code>.</p>
 <p>Run the command <code>git status</code> to see which files changed:</p>
-<img src="../static/img/dbb-zappbuild-status.png" class="img-fluid" alt="Output of Git status to view files changed during the merge attempt"></li>
+<img src="static/img/dbb-zappbuild-status.png" class="img-fluid" alt="Output of Git status to view files changed during the merge attempt"></li>
 <li><p>Open the unmerged files and resolve them manually. Either use the terminal, or an IDE for this task.</p>
 <p>:::tip</p>
 <p>The Git integration in many modern IDEs (for example, VS Code) is able to provide a side-by-side comparison highlighting the diff between your feature branch and the incoming changes from the merge attempt (in this case, from <code>zappbuild-official</code>). This can help make manual resolution of any merge conflicts much easier.</p>

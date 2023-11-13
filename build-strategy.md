@@ -34,7 +34,7 @@ A pipeline build is also possible for the short-lived topic (or feature) branche
 
 A full build compiles the full defined configuration. The full list of source files is provided as input from the pipeline to the build scripts. One strategy is to allow the specification of the build type in the pipeline orchestrator, as demonstrated in the following screenshot of a Jenkins sample pipeline. The build script would then need to handle this input as the build type.
 
-![Jenkins build parameterization](../static/img/jenkins-parameter.png)
+![Jenkins build parameterization](static/img/jenkins-parameter.png)
 
 #### Impact build
 
@@ -54,7 +54,7 @@ While dependency-based impact builds cover strategies with a good level of autom
 
 A file containing the build list is stored as part of the repository.
 
-![User-defined build list](../static/img/user-defined-build-list.png)
+![User-defined build list](static/img/user-defined-build-list.png)
 
 Similar to the build scripts, we recommend storing the user-defined build list as part of the Git repository. Additionally, you need to consider a parameterized Jenkins job including the relevant logic, which can serve all three build types: full build, dependency-based impact build, and user-defined build.
 

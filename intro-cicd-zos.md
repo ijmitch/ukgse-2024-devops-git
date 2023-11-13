@@ -42,7 +42,7 @@ The [developer's workflow](#day-in-the-life-of-a-developer) in the previous sect
 
 All subsequent steps, in green, are performed by the pipeline. These steps include building, publishing to an artifact repository, and deploying to an execution environment.
 
-![Main components of a CI/CD pipeline for z/OS applications](../static/img/pipeline-big-picture.png)
+![Main components of a CI/CD pipeline for z/OS applications](static/img/pipeline-big-picture.png)
 
 You can click on each component in the following list to learn more about it and see common technology options:
 

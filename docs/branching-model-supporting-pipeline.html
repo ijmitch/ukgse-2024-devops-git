@@ -322,7 +322,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/branching-model-supporting-pipeline.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/branching-model-supporting-pipeline.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="branching-model-supporting-pipeline.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -351,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="configurations-to-support-working-with-feature-branches">Configurations to support working with feature branches</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/image16.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/image16.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Branching diagram of a feature branch</figcaption>
 </figure>
 </div>
@@ -380,7 +380,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The following screen capture shows the stages included a sample pipeline build for a feature branch.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/image17.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/image17.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Screen capture of pipeline steps for the feature branch</figcaption>
 </figure>
 </div>
@@ -404,7 +404,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The deployment process must ensure that these preliminary packages cannot be deployed into any production environment.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/image18.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/image18.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Diagram showing optional feature branch packaging and deployment of a preliminary package</figcaption>
 </figure>
 </div>
@@ -422,7 +422,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="the-basic-build-pipeline-for-main-epic-and-release-branches">The Basic Build Pipeline for main, epic, and release branches</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/image6.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/image6.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Branching diagram with build pipeline on the main branch</figcaption>
 </figure>
 </div>
@@ -431,7 +431,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Additional steps such as automated code reviews or updates of application discovery repositories can be included in the pipeline process, as shown in the sample pipeline setup in the following screen capture.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/image17.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/image17.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Screen capture of a build pipeline for the main branch</figcaption>
 </figure>
 </div>
@@ -445,14 +445,14 @@ ul.task-list li input[type="checkbox"] {
 <p>In the <a href="./git-branching-model-for-mainframe-dev.html#deliver-changes-with-the-next-planned-release">default workflow</a> with <code>main</code> as the base branch, the baseline reference is defined by the commit hash (or the Git tag) of the previous release (that is, the release currently in production). In the following diagram, the blue dotted line shows the changes calculated from the baseline to the point at which the <code>feature_2</code> branch is merged in.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/basicBuildPipeline-computeChanges-default-workflow.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/basicBuildPipeline-computeChanges-default-workflow.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Diagram showing the calculation of changes for the next planned release</figcaption>
 </figure>
 </div>
 <p>For the <a href="./git-branching-model-for-mainframe-dev.html#implement-a-fix-for-the-current-production-state">hotfix workflow</a>, the hotfixes are planned to be implemented from a release maintenance branch whose baseline reference is the commit (or Git tag) that represents the state of the repository for the release. This is also the commit from which the respective release maintenance branch was created, as depicted in the below diagram.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/basicBuildPipeline-computeChanges-fix-workflow.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/basicBuildPipeline-computeChanges-fix-workflow.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Diagram showing the calculation of changes in a release fix workflow</figcaption>
 </figure>
 </div>
@@ -461,7 +461,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="basic-build-pipeline-install-outputs-to-a-development-and-test-environment" class="level3">
 <h3 class="anchored" data-anchor-id="basic-build-pipeline-install-outputs-to-a-development-and-test-environment">Basic Build Pipeline: Install outputs to a development and test environment</h3>
 <p>In this phase of the development lifecycle for the <a href="./git-branching-model-for-mainframe-dev.html#deliver-changes-with-the-next-planned-release">default workflow</a> implementing and delivering changes for the next planned release, the build typically operates with the compile options to enable <a href="https://github.com/IBM/dbb-zappbuild/blob/3.3.0/docs/BUILD.md#common-pipeline-invocation-examples">testing and debugging</a> of programs. As most organizations restrict the deployment to the production environments with optimized code only, these build artifacts can be seen as temporary and only for initial testing and debugging purposes.</p>
-<p><img src="../static/img/branching-model/defaultWorkflow_buildPipelineAfterMerge.png" class="img-fluid" alt="Branching diagram with build pipeline on the main branch producing a preliminary package for the development and test environment"><br>
+<p><img src="static/img/branching-model/defaultWorkflow_buildPipelineAfterMerge.png" class="img-fluid" alt="Branching diagram with build pipeline on the main branch producing a preliminary package for the development and test environment"><br>
 There are two options to deploy the generated artifacts to the shared development test system - represented by the blue DEV-TEST shape in the above figure.</p>
 <p>(Recommended) Option A: Extend the pipeline with a packaging stage and a deployment stage to create a preliminary package similar to <a href="#release-pipeline-packaging-stage">Release Pipeline: Packaging stage</a>. It is traditionally the responsibility of the deployment solution to install the preliminary package into different environments. Doing so in this phase of the workflow will give the necessary traceability to understand which versions are installed in the development and test environment.</p>
 <p>Option B: Use a post-build script to copy the output artifacts from the build libraries to the associated target runtime libraries and manually run the necessary activation steps such as a Db2 bind process or an online refresh. However, even given the temporary nature of the outputs created by this build, this circumvents the formal packaging and deployment process. The major drawback of this approach is a lack of traceability and understanding of what runs on the development and test environment.</p>
@@ -477,7 +477,7 @@ There are two options to deploy the generated artifacts to the shared developmen
 <h2 class="anchored" data-anchor-id="the-release-pipeline-with-build-packaging-and-deploy-stages">The Release Pipeline with Build, Packaging, and Deploy stages</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/defaultWorkflow_releasePipeline_RC1_cropped.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/defaultWorkflow_releasePipeline_RC1_cropped.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Diagram showing the Release Pipeline building a release candidate package for deployment in test environments</figcaption>
 </figure>
 </div>
@@ -488,7 +488,7 @@ There are two options to deploy the generated artifacts to the shared developmen
 <p>The Deploy stage can only be present in the pipeline for the default workflow (with <code>main</code>) when delivering changes with the next planned release, because the pipeline is unaware of the assigned environments for the epic and release maintenance workflows.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/image22.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/image22.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Build, package and deploy pipeline</figcaption>
 </figure>
 </div>
@@ -523,7 +523,7 @@ There are two options to deploy the generated artifacts to the shared developmen
 <p>The following screen capture shows the Deploy stage of a sample Release Pipeline.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/branching-model/image23.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/branching-model/image23.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Screen capture of the Deploy stage of the Release Pipeline</figcaption>
 </figure>
 </div>

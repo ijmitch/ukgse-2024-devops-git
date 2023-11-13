@@ -8,7 +8,7 @@ This page details the technical implementation of the different continuous integ
 
 ## Configurations to support working with feature branches
 
-![Branching diagram of a feature branch](../static/img/branching-model/image16.png)  
+![Branching diagram of a feature branch](static/img/branching-model/image16.png)  
 
 When developers start working on a new task, they will first create a feature branch. Feature branches are created off the latest code state of the source configuration, whether that is the `main` branch or an epic or release maintenance branch.
 
@@ -46,7 +46,7 @@ The pipeline configuration requires processing logic to compute a dedicated high
 
 The following screen capture shows the stages included a sample pipeline build for a feature branch.
 
-![Screen capture of pipeline steps for the feature branch](../static/img/branching-model/image17.png)
+![Screen capture of pipeline steps for the feature branch](static/img/branching-model/image17.png)
 
 The build leverages the dependency metadata managed by IBM Dependency Based Build via DBB collections, which are consumed by the build framework, zAppBuild. At the first execution of the build process for feature branches, zAppBuild will duplicate this metadata by cloning the related collections for efficiency purposes[^1]. This cloning phase ensures the accuracy of the dependency information for this pipeline build. To be able to clone the collection, zAppBuild needs to understand which collection contains the most accurate information and should be duplicated. As collection names are derived from the name of the branch, it is easy to identify which collection should be cloned. In the zAppBuild configuration, the originating collection reference is defined via the `mainBuildBranch`[^1] property.
 
@@ -71,7 +71,7 @@ This strategy is supported by feature branch packaging and deployment of a preli
 
 The deployment process must ensure that these preliminary packages cannot be deployed into any production environment.
 
-![Diagram showing optional feature branch packaging and deployment of a preliminary package](../static/img/branching-model/image18.png)
+![Diagram showing optional feature branch packaging and deployment of a preliminary package](static/img/branching-model/image18.png)
 
 Often, these controlled development test environments are used as shared test environments for multiple application teams. To use the same runtime environment, such as a CICS region, for both prototyping and for testing integrated changes, we recommend separating the preliminary (feature) packages from the planned release packages by separating these types into different libraries. The package for the prototyping workflow is deployed via its dedicated deployment environment model, illustrated in the above diagram as DEV-1-FEATURE-TEST.
 
@@ -87,7 +87,7 @@ Specific scripts can be integrated into the pipeline to delete [collections](htt
 
 ## The Basic Build Pipeline for main, epic, and release branches
 
-![Branching diagram with build pipeline on the main branch](../static/img/branching-model/image6.png)
+![Branching diagram with build pipeline on the main branch](static/img/branching-model/image6.png)
 
 It is common practice to build every time the head of the `main`, epic, or release branch is modified.
 
@@ -95,7 +95,7 @@ When a feature branch is merged into a shared integration branch, a new pipeline
 
 Additional steps such as automated code reviews or updates of application discovery repositories can be included in the pipeline process, as shown in the sample pipeline setup in the following screen capture.
 
-![Screen capture of a build pipeline for the main branch](../static/img/branching-model/image17.png)
+![Screen capture of a build pipeline for the main branch](static/img/branching-model/image17.png)
 
 ### Basic Build Pipeline: Build and Test stage
 
@@ -111,11 +111,11 @@ The option `--baselineRef` is a sub-parameter of the `--impactBuild` option in z
 
 In the [default workflow](./git-branching-model-for-mainframe-dev.md#deliver-changes-with-the-next-planned-release) with `main` as the base branch, the baseline reference is defined by the commit hash (or the Git tag) of the previous release (that is, the release currently in production). In the following diagram, the blue dotted line shows the changes calculated from the baseline to the point at which the `feature_2` branch is merged in.
 
-![Diagram showing the calculation of changes for the next planned release](../static/img/branching-model/basicBuildPipeline-computeChanges-default-workflow.png)
+![Diagram showing the calculation of changes for the next planned release](static/img/branching-model/basicBuildPipeline-computeChanges-default-workflow.png)
 
 For the [hotfix workflow](./git-branching-model-for-mainframe-dev.md#implement-a-fix-for-the-current-production-state), the hotfixes are planned to be implemented from a release maintenance branch whose baseline reference is the commit (or Git tag) that represents the state of the repository for the release. This is also the commit from which the respective release maintenance branch was created, as depicted in the below diagram.
 
-![Diagram showing the calculation of changes in a release fix workflow](../static/img/branching-model/basicBuildPipeline-computeChanges-fix-workflow.png)
+![Diagram showing the calculation of changes in a release fix workflow](static/img/branching-model/basicBuildPipeline-computeChanges-fix-workflow.png)
 
 For the [epic branch workflow](./git-branching-model-for-mainframe-dev.md#characteristics-of-mainline-based-development-with-feature-branches), the baseline reference for the build pipeline is the commit (or Release tag) from which the epic branch was created, also referred to as the fork point.
 
@@ -123,7 +123,7 @@ For the [epic branch workflow](./git-branching-model-for-mainframe-dev.md#charac
 
 In this phase of the development lifecycle for the [default workflow](./git-branching-model-for-mainframe-dev.md#deliver-changes-with-the-next-planned-release) implementing and delivering changes for the next planned release, the build typically operates with the compile options to enable [testing and debugging](https://github.com/IBM/dbb-zappbuild/blob/3.3.0/docs/BUILD.md#common-pipeline-invocation-examples) of programs. As most organizations restrict the deployment to the production environments with optimized code only, these build artifacts can be seen as temporary and only for initial testing and debugging purposes.
 
-![Branching diagram with build pipeline on the main branch producing a preliminary package for the development and test environment](../static/img/branching-model/defaultWorkflow_buildPipelineAfterMerge.png)  
+![Branching diagram with build pipeline on the main branch producing a preliminary package for the development and test environment](static/img/branching-model/defaultWorkflow_buildPipelineAfterMerge.png)  
 There are two options to deploy the generated artifacts to the shared development test system - represented by the blue DEV-TEST shape in the above figure.
 
 (Recommended) Option A: Extend the pipeline with a packaging stage and a deployment stage to create a preliminary package similar to [Release Pipeline: Packaging stage](#release-pipeline-packaging-stage). It is traditionally the responsibility of the deployment solution to install the preliminary package into different environments. Doing so in this phase of the workflow will give the necessary traceability to understand which versions are installed in the development and test environment.
@@ -140,7 +140,7 @@ Submitting a Sonarqube scan at this point of the workflow can also help the deve
 
 ## The Release Pipeline with Build, Packaging, and Deploy stages
 
-![Diagram showing the Release Pipeline building a release candidate package for deployment in test environments](../static/img/branching-model/defaultWorkflow_releasePipeline_RC1_cropped.png)  
+![Diagram showing the Release Pipeline building a release candidate package for deployment in test environments](static/img/branching-model/defaultWorkflow_releasePipeline_RC1_cropped.png)  
 
 The Release Pipeline is leveraged by the development team when they want to create a release candidate package that can be deployed to controlled test environments. The development team manually requests the pipeline to run. The pipeline is not expected to be used for every merge into the `main` branch.
 
@@ -152,7 +152,7 @@ The following diagram outlines the steps of a GitLab pipeline for the Build, Pac
 
 The Deploy stage can only be present in the pipeline for the default workflow (with `main`) when delivering changes with the next planned release, because the pipeline is unaware of the assigned environments for the epic and release maintenance workflows.
 
-![Build, package and deploy pipeline](../static/img/branching-model/image22.png)
+![Build, package and deploy pipeline](static/img/branching-model/image22.png)
 
 ### Release Pipeline: Build stage
 
@@ -198,7 +198,7 @@ IBM Wazi Deploy is a deployment manager for z/OS artifacts and comes with a comm
 
 The following screen capture shows the Deploy stage of a sample Release Pipeline.
 
-![Screen capture of the Deploy stage of the Release Pipeline](../static/img/branching-model/image23.png)
+![Screen capture of the Deploy stage of the Release Pipeline](static/img/branching-model/image23.png)
 
 Implementation details of the Deploy stage can vary based on the pipeline orchestrator being used. In a GitLab CI/CD implementation, a pipeline can stay on hold and wait for user input. This allows the pipeline to automatically trigger the deployment of the application package into the first configured environment, and lets the application team decide when to deploy to the next environment through a manual step (for instance, deployment to the Acceptance environment).
 

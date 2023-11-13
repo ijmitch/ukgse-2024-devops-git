@@ -25,6 +25,11 @@ format:
       dark:  [darkly, custom.scss]
     css: styles.css
     toc: true
+  pdf:
+    toc: true
+    mainfont: "IBM Plex Sans"
+    number-sections: true
+    colorlinks: true
 
 
 

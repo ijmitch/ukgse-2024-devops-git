@@ -315,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/dependency-management.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/dependency-management.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="dependency-management.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -338,7 +338,7 @@ ul.task-list li input[type="checkbox"] {
 <p>These steps are summarized in the following diagram.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/build-mainframe-app.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/build-mainframe-app.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Producing object code and executables</figcaption>
 </figure>
 </div>
@@ -358,7 +358,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Commonly, shared data structure is defined in an included source file - for example, COBOL uses copybooks.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/programs-sharing-data.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/programs-sharing-data.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Transfer of control sharing data between a program and subprogram</figcaption>
 </figure>
 </div>
@@ -381,14 +381,14 @@ ul.task-list li input[type="checkbox"] {
 <p>The following diagram illustrates the concept of an application having a private implementation (its inner workings, represented in tan), and a public interface to interact with other programs and applications (represented in blue).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/app-public-interface.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/app-public-interface.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">An application exposes a public interface</figcaption>
 </figure>
 </div>
 <p>As applications communicate, their implementation consumes the public interface of the applications with which they interact. This concept of a public interface is common in Java programs and the way the communication between applications is defined. This principle can also be applied to existing COBOL and PL/I programs to help explain the structure required for a modern SCM, and is illustrated in the following diagram, with the applications’ usage of other applications’ interfaces indicated in red.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/app-interface-interaction.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/app-interface-interaction.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Applications consume public interfaces of other applications</figcaption>
 </figure>
 </div>
@@ -398,7 +398,7 @@ ul.task-list li input[type="checkbox"] {
 <p>There are additional capabilities that might need to be shared in addition to sets of data structures for application communication. These capabilities might include standard security or logging functions and can be considered cross-cutting, infrastructure-level interfaces (represented in brown in the following diagram). These capabilities may be developed once and then included in many different programs. It would be very helpful if these additional included capabilities could also be handled as shared components with their own application lifecycle. The challenge comes when these components change in a non-compatible way. These types of changes are generally infrequent but might be needed at times.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../static/img/app-interfaces-cross-cut.png" class="img-fluid figure-img"></p>
+<p><img src="static/img/app-interfaces-cross-cut.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Interfaces used by applications, including cross-cutting interfaces</figcaption>
 </figure>
 </div>

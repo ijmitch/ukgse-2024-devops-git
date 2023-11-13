@@ -250,7 +250,7 @@ Having a team with the right skills and mindset is critical to a successful DevO
 
 As you migrate from the green screen to CI/CD, there are several key milestones along the way. IBM teams and partners are available to help you at each step of the way:
 
-![Milestones in the journey to a CI/CD pipeline](../static/img/journey-to-cicd.png)
+![Milestones in the journey to a CI/CD pipeline](static/img/journey-to-cicd.png)
 
 - Milestone 1: Design and validate the high level future design:
 

@@ -22,17 +22,17 @@ Consider the following example where a file containing the French sentence “Bo
 
 - Using the IBM-1147 code page:
 
-  ![Using the IBM-1147 code page](../static/img/bonjour-ibm-1147.png)
+  ![Using the IBM-1147 code page](static/img/bonjour-ibm-1147.png)
 
 - Using the IBM-1047 code page:
 
-  ![Using the IBM-1047 code page](../static/img/bonjour-ibm-1047.png)
+  ![Using the IBM-1047 code page](static/img/bonjour-ibm-1047.png)
 
 To be correctly displayed with the IBM-1047 code page, the contents of this file must be transformed. Please note how the hexadecimal codes for the `à` and the `!` characters changed, respectively from x’7C’ to x’44’ and from x’4F’ to x’5A’:
 
 - Transforming to the IBM-1047 code page:
 
-  ![Transforming to the IBM-1047 code page](../static/img/bonjour-transform.png)
+  ![Transforming to the IBM-1047 code page](static/img/bonjour-transform.png)
 
 It is important to understand that the code page plays a determining role not only when displaying a file, but also when editing it. To ensure the content of a file is consistent when used by different people, the code page used for editing and displaying will likely be the same for all the users. If Alice edits a file with the IBM-1147 code page and introduces characters (like accents) specific to that code page, then Bob will need to use the IBM-1147 code page to display the content of this file. Otherwise, he may experience the situation depicted earlier, where accents are not displayed correctly. If Bob uses the IBM-1047 code page to edit the file and change the content to replace the special characters by the corresponding accents, then Alice will not be able to display the content of this file like she entered it on her terminal.
 
@@ -40,17 +40,17 @@ Consider this next example.  A program file, such as C/370, employs the left (`[
 
 - Using the IBM-037 code page:
 
-  ![Using the IBM-1147 code page](../static/img/void-main-ibm-037.png)
+  ![Using the IBM-1147 code page](static/img/void-main-ibm-037.png)
 
 - Using the IBM-1047 code page:
 
-  ![Using the IBM-1047 code page](../static/img/void-main-ibm-1047.png)
+  ![Using the IBM-1047 code page](static/img/void-main-ibm-1047.png)
 
 To be correctly displayed with the IBM-1047 code page, the contents of this file must be transformed. The hexadecimal codes for the `[` and the `]` characters must be changed from x’BA’ and x’BB’ to x’AD’ and x’BD’, respectively:
 
 - Transforming to the IBM-1047 code page:
 
-  ![Transforming to the IBM-1047 code page](../static/img/void-main-transform.png)
+  ![Transforming to the IBM-1047 code page](static/img/void-main-transform.png)
 
 Again, it is very important that anyone and everyone who displays or edits the file uses a consistent code page. This can sometimes be a challenge, as the code page to be used is generally specified in the 3270 Emulator (TN3270) client session set-up. Another challenge is trying to determine the original encoding used to create the file.
 
@@ -68,7 +68,7 @@ For reference, a list of code pages is available in the [Personal Communications
 
 If you have ever tried transferring a z/OS data set to a distributed machine running a traditional operating system (like Microsoft Windows or Linux), you probably ended up with similar content when opening the file:
 
-![Unreadable file due to transfer without code page conversion](../static/img/unreadable.png)
+![Unreadable file due to transfer without code page conversion](static/img/unreadable.png)
 
 The content is unreadable because the transfer was performed without a code page conversion. This generally happens when the file was transferred as binary, which leaves the content of the file untouched. Most of the transfer utilities offer the capability to transfer the files as binary or as text. In the latter option, code page conversion occurs, and the file should be readable on distributed platforms.
 
@@ -97,11 +97,11 @@ The alternative is to opt for a transformation of the content that contains non-
 
 - Initial values:
 
-  ![Initial values](../static/img/code-page-initial-values.jpg)
+  ![Initial values](static/img/code-page-initial-values.jpg)
 
 - Final values after transformation:
 
-  ![Final values after transformation](../static/img/code-page-values-after-transformation.jpg)
+  ![Final values after transformation](static/img/code-page-values-after-transformation.jpg)
 
 This transformation could even be automated (albeit cautiously) through scripting. Other use cases for these characters should be analyzed carefully, and developers should be encouraged to write their source code in a way that allows for code page conversion.
 

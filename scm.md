@@ -16,7 +16,7 @@ The following diagram draws analogies between legacy mainframe SCM processes and
 
 It shows the key features of an SCM process, starting with source code storage, and ending with the deployment to the development or other upper environments such as Q/A and Production.
 
-![Analogies between legacy mainframe SCM and DevOps with Git on z/OS](../static/img/legacy-vs-git.png)
+![Analogies between legacy mainframe SCM and DevOps with Git on z/OS](static/img/legacy-vs-git.png)
 
 ## Git basics
 
@@ -30,7 +30,7 @@ With Git’s branching and merging features, changes can be performed in isolati
 
 In Git, all changes are committed (saved) in a repo using a commit hash (unique identifier) and a descriptive comment. Most IDEs provide a Git history tool to navigate changes and drill down to line-by-line details in Git diff reports. The following image of an Azure Repos example setup shows the Git history on the right panel, and a Git diff report on the left.
 
-![Git history and Git diff in Azure Repos](../static/img/azure-history-diff.png)
+![Git history and Git diff in Azure Repos](static/img/azure-history-diff.png)
 
 ### Git branching
 
@@ -52,7 +52,7 @@ One of the biggest benefits of using Git is its merge conflict detection. This i
 
 To illustrate this example of parallel development, in the following diagram, Developer 1 (Dev1) and Developer 2 (Dev2) have each created their own feature branch from the same version of their team's shared branch of code. Note that there are no commits (indicated by purple dots) on the team's shared branch between when Dev2 and Dev1 created their respective feature branches. Now, each developer can work on their own feature in isolation: Dev1 has his `feature1` branch where he is working on his copy of hte code, and Dev2 has her `feature2` branch where she is working on her copy of the code.
 
-![Diagram illustrating parallel development use case](../static/img/parallel-dev.png)
+![Diagram illustrating parallel development use case](static/img/parallel-dev.png)
 
 Doing this kind of parallel development is complicated on legacy systems, especially with PDSs, because developers have to figure out how to merge the code at the end, especially when working on the same files. Additionally, legacy SCMs typically lock files that are being worked on. In contrast, Git branching allows the developers to work on the files at the same time, in parallel.
 
@@ -72,7 +72,7 @@ The following diagram illustrates how teams can define repos to securely share c
 
 Another example (also illustrated in the following diagram) is that an enterprise-wide team can maintain source that is common across many applications.
 
-![Best practices for sharing code in Git](../static/img/git-sharing-code.png)
+![Best practices for sharing code in Git](static/img/git-sharing-code.png)
 
 ## Common Git provider options
 
