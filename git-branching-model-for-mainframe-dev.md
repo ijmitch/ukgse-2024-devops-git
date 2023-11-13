@@ -13,6 +13,7 @@ format:
         \pagestyle{fancy}
         \fancyhead{}
         \fancyfoot{}
+        \rhead{Git branching model for mainframe development}
         \fancyfoot[LE,RO]{\thepage}
         \fancyfoot[C]{\textcopyright 2023 IBM Corporation}
         \fancypagestyle{plain}{\pagestyle{fancy}}
