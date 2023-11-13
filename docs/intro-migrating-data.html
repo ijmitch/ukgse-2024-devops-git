@@ -303,7 +303,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#steps-for-migrating-data-from-zos-to-git" id="toc-steps-for-migrating-data-from-zos-to-git" class="nav-link" data-scroll-target="#steps-for-migrating-data-from-zos-to-git">Steps for migrating data from z/OS to Git</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/intro-migrating-data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/intro-migrating-data.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -329,7 +329,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Migrating data from z/OS to Git</h1>
 <section id="introduction-to-migrating-data" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-migrating-data">Introduction to migrating data</h2>
-<p>Migrating your source code data from z/OS to Git is one of the first steps in implementing a modern CI/CD pipeline. Once you have planned your to-be Git repository layouts, you can use the steps in the following section to migrate your data from z/OS to Git. During the migration process, it is important to be aware of potential issues with migrating non-printable or non-roundtrippable characters, and to have a plan for how to handle them if you encounter them. You can read more about how to handle these characters in <a href="./managing-code-page-conversion.md">Managing code page conversion</a>.</p>
+<p>Migrating your source code data from z/OS to Git is one of the first steps in implementing a modern CI/CD pipeline. Once you have planned your to-be Git repository layouts, you can use the steps in the following section to migrate your data from z/OS to Git. During the migration process, it is important to be aware of potential issues with migrating non-printable or non-roundtrippable characters, and to have a plan for how to handle them if you encounter them. You can read more about how to handle these characters in <a href="./managing-code-page-conversion.html">Managing code page conversion</a>.</p>
 </section>
 <section id="steps-for-migrating-data-from-zos-to-git" class="level2">
 <h2 class="anchored" data-anchor-id="steps-for-migrating-data-from-zos-to-git">Steps for migrating data from z/OS to Git</h2>
@@ -338,9 +338,9 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Unload the source code from the legacy version control system to PDS libraries: Legacy version control systems often store data in a proprietary format, which IBM’s Dependency Based Build (DBB) cannot directly access. Therefore, the source code should first be unloaded to PDS libraries.</p></li>
 <li><p>Load files from PDS libraries to a Git repository on z/OS UNIX System Services (z/OS UNIX) using one of the following methods:</p>
 <ul>
-<li><a href="./dbb-migration-tool.md">DBB migration tool</a>: The DBB migration tool is provided with DBB, and is the most commonly-used method for migrating data from z/OS to Git.</li>
-<li><a href="./sclm-git-migration-tool.md">SCLM-to-Git migration tool</a>: You can use the SCLM-to-Git migration tool if you are moving away from SCLM as your current library manager.</li>
-<li><a href="./manual-migration.md">Manual migration</a>: Manual migration of source code from z/OS to Git is possible, but is generally not recommended since it tends to be slower, more tedious, and prone to human error.</li>
+<li><a href="./dbb-migration-tool.html">DBB migration tool</a>: The DBB migration tool is provided with DBB, and is the most commonly-used method for migrating data from z/OS to Git.</li>
+<li><a href="./sclm-git-migration-tool.html">SCLM-to-Git migration tool</a>: You can use the SCLM-to-Git migration tool if you are moving away from SCLM as your current library manager.</li>
+<li><a href="./manual-migration.html">Manual migration</a>: Manual migration of source code from z/OS to Git is possible, but is generally not recommended since it tends to be slower, more tedious, and prone to human error.</li>
 </ul></li>
 <li><p>Once your code is in z/OS UNIX, you can use Git to push it up to your central Git provider.</p></li>
 </ol>

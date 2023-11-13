@@ -6,11 +6,11 @@ website:
   title: "Quartotest"
   navbar:
     left:
-      - href: index.qmd
+      - href: index.md
         text: Home
-      - href: p1.qmd
+      - href: p1.md
         text: Pres
-      - about.qmd
+      - about.md
   sidebar:
     contents: auto
   page-footer: 

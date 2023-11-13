@@ -318,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/managing-code-page-conversion.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-git"></i></div><div class="action-links"><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/managing-code-page-conversion.md" class="toc-action">Edit this page</a></p><p><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -541,12 +541,12 @@ t IBM-1047    T=on  -rw-r--r--   1 USER1    OMVS        6882 Jan 12 14:06 epsnbr
 </section>
 <section id="using-the-dbb-migration-tool" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-dbb-migration-tool">Using the DBB Migration Tool</h2>
-<p>IBM® Dependency Based Build (DBB) provides a migration tool to help facilitate the copying of source artifacts to Git from your z/OS development software configuration management (SCM). This tool can be used to copy the source code contained in your z/OS partitioned data sets (PDSs) to a local Git repository on z/OS UNIX that will later be committed and pushed to a distributed Git server. The DBB Migration Tool has built-in functionality that automates the detection of non-printable and non-roundtripable characters, copies the files to z/OS UNIX, tags them on z/OS UNIX, and generates a <code>.gitattributes</code> file. More information on the DBB Migration Tool and its usage in common migration scenarios can be found in <a href="./dbb-migration-tool.md">DBB Migration Tool</a>.</p>
+<p>IBM® Dependency Based Build (DBB) provides a migration tool to help facilitate the copying of source artifacts to Git from your z/OS development software configuration management (SCM). This tool can be used to copy the source code contained in your z/OS partitioned data sets (PDSs) to a local Git repository on z/OS UNIX that will later be committed and pushed to a distributed Git server. The DBB Migration Tool has built-in functionality that automates the detection of non-printable and non-roundtripable characters, copies the files to z/OS UNIX, tags them on z/OS UNIX, and generates a <code>.gitattributes</code> file. More information on the DBB Migration Tool and its usage in common migration scenarios can be found in <a href="./dbb-migration-tool.html">DBB Migration Tool</a>.</p>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>This document highlighted some pitfalls to avoid when migrating source code from z/OS PDSs to Git: correctly determining the original code page used when editing and reading source code members in z/OS is a key activity to ensure a smooth migration of these elements to Git. The second aspect is about managing the specific EBCDIC characters which are not easily converted to their UTF-8 counterparts. For these specific characters, known as non-printable and non-roundtripable characters, a decision must be taken to either refactor the source code to eliminate those characters, or transfer the files as binary. Both options have drawbacks that should be evaluated prior to the final migration to Git, as there is no easy way back.</p>
-<p>The DBB Migration Tool shipped with IBM Dependency Based Build helps perform this migration activity by automating the detection of non-printable and non-roundtripable characters, copying the files to z/OS UNIX, tagging them on z/OS UNIX, and generating a <code>.gitattributes</code> file. You can learn more about this utility in <a href="./dbb-migration-tool.md">DBB Migration Tool</a>.</p>
+<p>The DBB Migration Tool shipped with IBM Dependency Based Build helps perform this migration activity by automating the detection of non-printable and non-roundtripable characters, copying the files to z/OS UNIX, tagging them on z/OS UNIX, and generating a <code>.gitattributes</code> file. You can learn more about this utility in <a href="./dbb-migration-tool.html">DBB Migration Tool</a>.</p>
 </section>
 <section id="resources" class="level2">
 <h2 class="anchored" data-anchor-id="resources">Resources</h2>
