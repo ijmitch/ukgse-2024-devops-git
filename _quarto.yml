@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Quartotest"
+  title: "IBM Z DevOps Acceleration Program"
   navbar:
     left:
       - href: index.md
