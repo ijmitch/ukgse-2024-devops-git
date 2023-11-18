@@ -17,41 +17,33 @@ However, many enterprises prefer a "phased" migration approach, with the iterati
 
 Having a team with the right skills and mindset is critical to a successful DevOps transformation effort. While the following roles each have their own specific skillsets and tasks, an individual can perform more than one role if it makes sense for their team and organization. You can click on each role to learn about it.
 
-<details>
-  <summary>
+::: {.callout-note collapse=true}
+### Architect
 
-  ### Architect
+The architect helps define the new software delivery process.
 
-  The architect helps define the new software delivery process.
+Generally, the architect will be someone with strong z/OS skills who understands the infrastructure and current build processes. This deep background knowledge about the current z/OS infrastructure state and mainframe application build processes is important for understanding how to translate those processes into the more modern DevOps pipeline.
 
-  </summary>
+A key task is to condense existing mainframe workflows and design the to-be state in the CI/CD pipeline. For this, the architect collaborates with the distributed teams to create a common enterprise software delivery processes. Additionally, the architect is involved in defining necessary integration points of the pipeline, as well as designing the migration process.
 
-  Generally, the architect will be someone with strong z/OS skills who understands the infrastructure and current build processes. This deep background knowledge about the current z/OS infrastructure state and mainframe application build processes is important for understanding how to translate those processes into the more modern DevOps pipeline.
+- Background skills and knowledge:
+  - Strong z/OS skills (average of about 10 years of experience)
+  - Knowledge about mainframe development processes and workflows
+- Skills and concepts to learn:
+  - CI/CD and DevOps principles
+  - Git concepts and architecture
+- Tasks:
+  - Collaborate between the mainframe development team(s) and distributed teams to transform the existing mainframe workflows into the to-be CI/CD pipeline
+- Job positions that you might find filling this role:
+  - Enterprise architect
+  - Enterprise application architect
+  - IT architect
+:::
 
-  A key task is to condense existing mainframe workflows and design the to-be state in the CI/CD pipeline. For this, the architect collaborates with the distributed teams to create a common enterprise software delivery processes. Additionally, the architect is involved in defining necessary integration points of the pipeline, as well as designing the migration process.
-
-  - Background skills and knowledge:
-    - Strong z/OS skills (average of about 10 years of experience)
-    - Knowledge about mainframe development processes and workflows
-  - Skills and concepts to learn:
-    - CI/CD and DevOps principles
-    - Git concepts and architecture
-  - Tasks:
-    - Collaborate between the mainframe development team(s) and distributed teams to transform the existing mainframe workflows into the to-be CI/CD pipeline
-  - Job positions that you might find filling this role:
-    - Enterprise architect
-    - Enterprise application architect
-    - IT architect
-
-</details>
-<details>
-  <summary>
-
-  ### Build specialist
+::: {.callout-note collapse=true}
+### Build specialist
 
   The build specialist develops and maintains the build scripts for the new pipeline.
-
-  </summary>
 
   This is a developer type of role that focuses on turning the source code into a deployable artifact, so familiarity with z/OS build processes is required. The build specialist might adapt a distributed example of build scripting to z/OS.
 
@@ -68,15 +60,12 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - Build engineer
     - z/OS build administrator
 
-</details>
-<details>
-  <summary>
+:::
 
-  ### Pipeline specialist
+::: {.callout-note collapse=true}
+### Pipeline specialist
 
   The pipeline specialist assembles the pipeline in the CI/CD orchestrator.
-
-  </summary>
 
   This is a developer type of role that focuses on building, scaling, and maintaining the CI/CD pipeline structure. The pipeline specialist does not need to be as z/OS-aligned as the build specialist. Rather than being concerned with building COBOL programs (or other z/OS languages), the pipeline specialist is more concerned about integrating tools together. This role often already exists in the distributed side of the enterprise.
 
@@ -96,15 +85,12 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - DevOps pipeline administrator
     - DevOps team
 
-</details>
-<details>
-  <summary>
+:::
 
-  ### Change transformation specialist
+::: {.callout-note collapse=true}
+### Change transformation specialist
 
   The change transformation specialist drives the cultural and organizational change required for a successful modernization journey.
-
-  </summary>
 
   This role is more of a consulting and people-focused role rather than a technical one. Enterprises sometimes hire an individual specifically for this role when embarking on the DevOps transformation journey - for example, someone with specialized training in coaching DevOps/Agile methodologies, who has experience in helping teams make the transformation succeed from a cultural and cross-team point of view.
 
@@ -123,15 +109,12 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - DevOps/Agile coach
     - Transformation enablement team
 
-</details>
-<details>
-  <summary>
+:::
 
-  ### Deployment specialist
+::: {.callout-note collapse=true}
+### Deployment specialist
 
   The application deployment specialist implements the deployment solution.
-
-  </summary>
 
   This developer type of role may be part of the DevOps team (with the pipeline specialist), and might already be using a deployment manager with distributed teams. It is helpful for them to have some understanding of the mainframe subsystem and infrastructure interfaces, as those will also be involved in the z/OS application deployment processes.
 
@@ -147,15 +130,12 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - DevOps engineer
     - DevOps team
 
-</details>
-<details>
-  <summary>
+:::
 
-  ### Integrated development environment specialist
+::: {.callout-note collapse=true}
+### Integrated development environment specialist
 
   The integrated development environment (IDE) specialist is a developer type of role that helps implement the workflows within the IDE.
-
-  </summary>
 
   Since the IDE is a central tool used by application developers, it is important that someone in the organization is trained on how to use the IDE effectively, and can also guide others on using it. The IDE specialist understands (or learns) how to use the IDE, and shares this knowledge with others in their organization.
 
@@ -172,15 +152,11 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - Software developer (or application developer)
     - Software engineer
 
-</details>
-<details>
-  <summary>
-
-  ### Middleware specialist
+:::
+::: {.callout-note collapse=true}
+### Middleware specialist
 
   The middleware specialist role is an umbrella term that covers different technical roles that help install and configure the tools for the CI/CD pipeline.
-
-  </summary>
 
   This role might be handled by more than one individual, as it can cover setup tasks on both Linux and mainframe environments, depending on the enterprise's needs.
 
@@ -194,15 +170,12 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - Middleware system programmer or system administrator (for example, CICS administrator and/or Db2 administrator)
     - Infrastructure team
 
-</details>
-<details>
-  <summary>
+:::
 
-  ### Migration specialist
+::: {.callout-note collapse=true}
+### Migration specialist
 
   The migration specialist is typically a transitional role that focuses on facilitating the migration from the legacy development tools and processes to the modern CI/CD pipeline.
-  
-  </summary>
 
   This role can either be handled by a selected team in the enterprise, or by a business partner.
 
@@ -218,15 +191,12 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - DevOps implementation architect
     - Build engineer and DevOps team
 
-</details>
-<details>
-  <summary>
+:::
 
-  ### Testing specialist
+::: {.callout-note collapse=true}
+### Testing specialist
 
   The testing specialist is technical role that focuses on quality assurance in the software.
-
-  </summary>
 
   While testing in legacy development workflows is often manual and time consuming, the move to a modernized DevOps toolchain allows the testing specialist to create tests that can be automatically run by the developer, and/or as part of a CI/CD pipeline. The scope of these tests can range from individual unit tests to larger-scale integration tests on dedicated testing platforms.
 
@@ -244,7 +214,7 @@ Having a team with the right skills and mindset is critical to a successful DevO
     - Quality assurance team
     - Testing team
 
-</details>
+:::
 
 ## Migration journey milestones
 

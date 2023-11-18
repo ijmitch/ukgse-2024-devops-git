@@ -24,3 +24,11 @@ guidance to our customers on their respective DevOps journeys. The information h
 been structured in an easily consumable and searchable manner following each step 
 of the journey, from learning about the solution to implementing it, simplifying the 
 navigation of these materials.
+
+::: {layout-ncol=3}
+![(Overview)[ibm-z-devops-solution.md]](static/img/icon_overview.svg)
+
+![Getting Started](static/img/icon_getting_started.svg)
+
+![Coming soon... News and blogs](static/img/icon_blog_news.svg)
+:::
