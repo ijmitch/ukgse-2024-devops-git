@@ -67,8 +67,8 @@ website:
 format:
   html:
     theme:
-      light: [flatly, custom.scss]
-      dark:  [darkly, custom.scss]
+      light: [materia, custom.scss]
+      dark:  [cyborg, custom.scss]
     css: styles.css
     toc: true
     toc-expand: true
