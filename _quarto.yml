@@ -64,6 +64,9 @@ website:
 # repo-url: https://github.ibm.com/ianj-mitchell/quartotest
 # repo-actions: [issue]
   page-navigation: true
+#  comments:
+#    giscus:
+#      repo: ijmitch/z-devops-acceleration-program
 format:
   html:
     theme:
