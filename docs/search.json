@@ -1288,14 +1288,14 @@
     "href": "p1.html#starting-simple",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Starting Simple",
-    "text": "Starting Simple\n\n\nEvery change starts in a branch"
+    "text": "Starting Simple\nEvery change starts in a branch.\n\n\nDevelopers work in the branch to make changes, perform user builds and unit tests.\nA branch holds multiple commits (changes to multiple files)."
   },
   {
     "objectID": "p1.html#starting-simple-1",
     "href": "p1.html#starting-simple-1",
     "title": "The workflow for  git-based z/OS DevOps",
-    "section": "Starting Simple 1",
-    "text": "Starting Simple 1\n\n\nEvery change starts in a branch\n\n\n\n\nMultiple commits (changes to multiple files) made to a branch by developers."
+    "section": "Starting Simple",
+    "text": "Starting Simple\nEvery change starts in a branch.\n\nThese branches are\n\nbuilt,\ntested,\nreviewed and\napproved before merging to main."
   },
   {
     "objectID": "deployment-manager.html",
@@ -1338,7 +1338,7 @@
     "href": "p1.html#starting-simple-2",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Starting Simple 2",
-    "text": "Starting Simple 2\n\n\nEvery change starts in a branch   These branches merge to main"
+    "text": "Starting Simple 2\nEvery change starts in a branch.\n\nThese branches are built, tested, reviewed and approved before merging to main."
   },
   {
     "objectID": "p1.html#scaling-up",
@@ -1380,7 +1380,7 @@
     "href": "p1.html#merging-into-main",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Merging into main",
-    "text": "Merging into main\nFeature Team/Developers will:\n\nBuild\n\nBuilds may be done to any commit on any branch\nFeature branch must build cleanly for a Pull Request\n\nTest their built feature\n\nTo prove quality so that…\n\n\nTeam Leaders/Release Controllers will:\n\nReview\n\nCode and Test results\n\nApprove\n\nSafeguard the quality of main"
+    "text": "Merging into main\nFeature Team/Developers will:\n\nBuild\n\nBuilds may be done to any commit on any branch\nFeature branch must build cleanly for a Pull Request\n\nTest\n\nTo prove quality of the changes in their feature branch\n\n\nCreate a Pull Request (PR) to signal to Team Leaders/Release Controllers to:\n\nReview\n\nCode and Test results\n\nApprove\n\nSafeguard the quality of main"
   },
   {
     "objectID": "p1.html#before-you-ask-no-no-production-branch",
