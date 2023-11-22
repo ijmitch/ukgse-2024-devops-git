@@ -1260,7 +1260,7 @@
     "href": "index.html",
     "title": "IBM Z DevOps Acceleration Program",
     "section": "",
-    "text": "IBM strongly believes that DevOps transformations are anything but plug-and-play; each enterprise brings with it its own culture, IT infrastructure, and mission. Transformation requires an absolute paradigm shift in your organization. It can be tough, we get it. Perhaps many enterprises wish to begin their transformation today but find themselves always putting it off until tomorrow.\nWe wanted to create a better way of bridging the gap between the intention to move towards a DevOps model and the successful transformation of such a move. That’s why we’ve created the DevOps Acceleration Program (DAP) and associated documentation on this website. Our goal is to ensure we are providing prescriptive guidance to our customers on their respective DevOps journeys. The information has been structured in an easily consumable and searchable manner following each step of the journey, from learning about the solution to implementing it, simplifying the navigation of these materials.\n\n\n\n\n\n\n\n\n(Overview)[ibm-z-devops-solution.md]\n\n\n\n\n\nGetting Started\n\n\n\n\n\nComing soon… News and blogs"
+    "text": "IBM strongly believes that DevOps transformations are anything but plug-and-play; each enterprise brings with it its own culture, IT infrastructure, and mission. Transformation requires an absolute paradigm shift in your organization. It can be tough, we get it. Perhaps many enterprises wish to begin their transformation today but find themselves always putting it off until tomorrow.\nWe wanted to create a better way of bridging the gap between the intention to move towards a DevOps model and the successful transformation of such a move. That’s why we’ve created the DevOps Acceleration Program (DAP) and associated documentation on this website. Our goal is to ensure we are providing prescriptive guidance to our customers on their respective DevOps journeys. The information has been structured in an easily consumable and searchable manner following each step of the journey, from learning about the solution to implementing it, simplifying the navigation of these materials.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOverview\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "p1.html#agenda",
@@ -1359,7 +1359,7 @@
     "href": "p1.html#delivering-changes-via-a-release",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Delivering changes via a release",
-    "text": "Delivering changes via a release"
+    "text": "Delivering changes via a release\n\n\n\n\nflowchart LR\n   id1[(Backlog)] ==&gt; id2[\"`create *feature* branch`\"]\n   id2 ==&gt; id3[\"`clone or pull to IDE\n   and make changes`\"]\n   id3 ==&gt; id4[\"`User Build\n   Commit to branch\n   Push to remote`\"]\n   id4 ==&gt; id5[\"`Feature build\n   and test`\"]\n   id5 ==&gt; id6[Create Pull Request]"
   },
   {
     "objectID": "p1.html#hot-fix-for-production",
@@ -1409,5 +1409,26 @@
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "No baggage",
     "text": "No baggage\nWell… “travel light” perhaps!\n\nAre we prescriptive or just opinionated?\nWe start with a recommendation\n\nConfidently\n\nWe question everything\n\nYAGNI - “you aren’t gonna need it”\n\nWe strive for simplicity\n\nFor each user’s experience"
+  },
+  {
+    "objectID": "p1.html#three-foundation-workflows",
+    "href": "p1.html#three-foundation-workflows",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Three foundation workflows",
+    "text": "Three foundation workflows\n\nDeliver changes with the next planned release\nImplement a fix for the current production state\nUse an epic branch for a significant development initiative"
+  },
+  {
+    "objectID": "p1.html#testing-a-release-candidate",
+    "href": "p1.html#testing-a-release-candidate",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Testing a release candidate",
+    "text": "Testing a release candidate\nAny point in the history of main can be declared a release candidate.\n\nBuild a release candidate package\nDeploy it\nTest it\n\n\nTag the commit (point in main’s history) with a release name."
+  },
+  {
+    "objectID": "p1.html#deploying-to-production",
+    "href": "p1.html#deploying-to-production",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Deploying to production",
+    "text": "Deploying to production\nWhen all the committed work items for the next planned release are ready to be shipped, and all quality gates have passed successfully and the required approvals have been issued by the appropriate reviewers, the release package and be deployed to production.\n\nTag the commit (point in main’s history) with a release name."
   }
 ]

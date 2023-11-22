@@ -1,8 +1,10 @@
 ---
 title: IBM Z DevOps solution
+subtitle: Overview
+image: static/img/icon_overview.svg
 ---
 
-# IBM Z DevOps solution overview
+# IBM Z DevOps solution
 
 ## What is IBM Z DevOps?
 

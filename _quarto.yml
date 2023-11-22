@@ -8,7 +8,7 @@ website:
     left:
       - href: ibm-z-devops-solution.md
         text: Docs
-      - href: p1.md
+      - href: p1.qmd
         text: Pres
   sidebar:
     collapse-level: 1
@@ -81,6 +81,9 @@ format:
     mainfont: "IBM Plex Sans"
     number-sections: true
     colorlinks: true
-
+body-header: | 
+  This page brought to you by <https://example.com>
+margin-footer: |
+  ![](IBM_logo%C2%AE_pos_blue60_RGB.png)
 
 
