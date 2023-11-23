@@ -1569,7 +1569,7 @@
     "href": "p1.html#using-the-epic-branch-workflow",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Using the Epic branch workflow",
-    "text": "Using the Epic branch workflow\nDealing with significant development initiatives such as:\n\nUpdates in regulatory frameworks\nStart the development phase of subsequent releases\n\n-&gt; A process to work independently from the default workflow."
+    "text": "Using the Epic branch workflow\nDealing with significant development initiatives such as:\n\nUpdates in regulatory frameworks\nStart the development phase of subsequent releases\n\n→ A process to work independently from the default workflow."
   },
   {
     "objectID": "p1.html#epic-branch-workflow",
