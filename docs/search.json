@@ -1267,7 +1267,7 @@
     "href": "p1.html#agenda",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Agenda",
-    "text": "Agenda\n\nAims and Assumptions\nChoosing a branching model and workflow\nStarting simple\nScaling up\nIntegration branches\nDelivering changes via a release\nHot-fix for production\nUsing an Epic branch"
+    "text": "Agenda\n\nAims and Assumptions\nFundamentals of the branching strategy\nSupported workflows\nImplementing pipelines"
   },
   {
     "objectID": "p1.html#scaling",
@@ -1366,7 +1366,7 @@
     "href": "p1.html#hot-fix-for-production",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Hot-fix for production",
-    "text": "Hot-fix for production"
+    "text": "Hot-fix for production\n\nThe process of urgent fixes for modules in the production environment follows the fix-forward approach, rather than rolling back the affected modules and reverting to the previous deployed state.\nThe development team starts this process by creating a release maintenance branch of the git tag that represents the most recent release, that was deployed to production."
   },
   {
     "objectID": "p1.html#using-an-epic-branch",
@@ -1380,7 +1380,7 @@
     "href": "p1.html#merging-into-main",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Merging into main",
-    "text": "Merging into main\nFeature Team/Developers will:\n\nBuild\n\nBuilds may be done to any commit on any branch\nFeature branch must build cleanly for a Pull Request\n\nTest\n\nTo prove quality of the changes in their feature branch\n\n\n\nCreate a Pull Request (PR) to signal to Team Leaders/Release Controllers to:\n\nReview\n\nCode and Test results\n\nApprove\n\nSafeguard the quality of main"
+    "text": "Merging into main\nCreate a Pull Request (PR) to signal to Team Leaders/Release Controllers to:\n\nReview\n\nCode and Test results\n\nApprove\n\nSafeguard the quality of main\n\n\n\nmain and other long-lived branches are protected (not everyone can push or merge to them)."
   },
   {
     "objectID": "p1.html#before-you-ask-no-no-production-branch",
@@ -1408,7 +1408,7 @@
     "href": "p1.html#no-baggage",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "No baggage",
-    "text": "No baggage\nWell… “travel light” perhaps!\n\nAre we prescriptive or just opinionated?\nWe start with a recommendation\n\nConfidently\n\nWe question everything\n\nYAGNI - “you aren’t gonna need it”\n\nWe strive for simplicity\n\nFor each user’s experience"
+    "text": "No baggage\nWell… “travel light” perhaps!\n\nAre we prescriptive or just opinionated?\nWe start with a recommendation\n\nConfidently\n\nWe question everything\n\nYAGNI - “you aren’t gonna need it”\n\nWe strive for simplicity\n\nFor each user’s experience\n\nBe git-native!"
   },
   {
     "objectID": "p1.html#three-foundation-workflows",
@@ -1542,5 +1542,89 @@
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Using an Epic branch",
     "text": "Using an Epic branch\n\n\n\nCopyright © 2023 IBM Corporation"
+  },
+  {
+    "objectID": "p1.html#release-maintenance-branches",
+    "href": "p1.html#release-maintenance-branches",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Release maintenance branches",
+    "text": "Release maintenance branches\nA release maintenance branch will be used if hot-fixes must be developed and delivered."
+  },
+  {
+    "objectID": "p1.html#the-types-of-workflows",
+    "href": "p1.html#the-types-of-workflows",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "The types of workflows",
+    "text": "The types of workflows\n\nWork and focus on the next planned release via the main branch. After planning the work items for the next release, the development team is adding changes to the main branch.\nResolution of a production problem in the currently-released version of the application by leveraging a release maintenance branch that is used for maintenance purposes,\nconcurrent development activities for significant development initiatives, which include multiple planned work items for a later delivery (including starting development of a future release) by creating an epic branch from a commit point in the history of main."
+  },
+  {
+    "objectID": "p1.html#building-the-fix-package",
+    "href": "p1.html#building-the-fix-package",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Building the fix package",
+    "text": "Building the fix package\n\nChanges contributed to the release maintenance branch are build and packaged.\nThe fix package is tested in the appropriate test environment(s)\nFinally deployed to production\n\n\n\nThe commit is tagged as the new version 2.1.1."
+  },
+  {
+    "objectID": "p1.html#using-the-epic-branch-workflow",
+    "href": "p1.html#using-the-epic-branch-workflow",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Using the Epic branch workflow",
+    "text": "Using the Epic branch workflow\nDealing with significant development initiatives such as:\n\nUpdates in regulatory frameworks\nStart the development phase of subsequent releases\n\n-&gt; A process to work independently from the default workflow."
+  },
+  {
+    "objectID": "p1.html#epic-branch-workflow",
+    "href": "p1.html#epic-branch-workflow",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Epic branch workflow",
+    "text": "Epic branch workflow"
+  },
+  {
+    "objectID": "p1.html#guidelines-and-policies-in-the-epic-branch-workflow",
+    "href": "p1.html#guidelines-and-policies-in-the-epic-branch-workflow",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Guidelines and policies in the epic branch workflow",
+    "text": "Guidelines and policies in the epic branch workflow\n\nFrequently synchronize with main into the epic branch to avoid making the merge of the epic branch into main difficult.\nPreliminary packages must not be deployed to a production runtime."
+  },
+  {
+    "objectID": "p1.html#pipeline-principles",
+    "href": "p1.html#pipeline-principles",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Pipeline principles",
+    "text": "Pipeline principles\nGit tags are used to calculate the changes for the next planned release\n\nPackages are always cumulative."
+  },
+  {
+    "objectID": "p1.html#basic-build-pipeline",
+    "href": "p1.html#basic-build-pipeline",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Basic Build pipeline",
+    "text": "Basic Build pipeline\n\n(Typically) runs on each commit added to the history of a branch\nProduces a preliminary package that is stored in a binary repository\nMay include an automated step to install it into the DEV-TEST environment"
+  },
+  {
+    "objectID": "p1.html#release-pipeline",
+    "href": "p1.html#release-pipeline",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Release pipeline",
+    "text": "Release pipeline\n\nProduces binaries optimized for performance\n(Typically) is manually requested by the development team when a level of stability is reached\nproduces a release candidate package that can be deployed to higher test environments."
+  },
+  {
+    "objectID": "p1.html#preparing-to-merge-into-main",
+    "href": "p1.html#preparing-to-merge-into-main",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Preparing to Merge into main",
+    "text": "Preparing to Merge into main\nFeature Team/Developers will:\n\nBuild\n\nBuilds may be done to any commit on any branch\nFeature branch must build cleanly for a Pull Request\n\nTest\n\nTo prove quality of the changes in their feature branch"
+  },
+  {
+    "objectID": "p1.html#before-you-ask-no-there-is-no-production-branch",
+    "href": "p1.html#before-you-ask-no-there-is-no-production-branch",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Before you ask… no, there is no Production branch",
+    "text": "Before you ask… no, there is no Production branch\nCI/CD decouples the building and deploying to test environments and production.\nWe have no branches named prod (or test or QA)\n\nThose are environments to which builds can be deployed\nSuch extra branches:\n\nare unnecessary\ncause ambiguity\nimpose merging and building overheads\n\nDeployment manager is maintaining what is deployed where and provides traceability to"
+  },
+  {
+    "objectID": "p1.html#features-for-the-next-planned-release",
+    "href": "p1.html#features-for-the-next-planned-release",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Features for the next planned release",
+    "text": "Features for the next planned release\nTO-DO"
   }
 ]
