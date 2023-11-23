@@ -1281,7 +1281,7 @@
     "href": "p1.html#planning",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Planning",
-    "text": "Planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices typically encourage that, where possible, development teams should strive to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration. This reduces the number of “in-flight” changes, and allows the team to deliver value (end-to-end functionality) more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
+    "text": "Planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThe cadence of the next planned release is defined by the application team.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices typically encourage that, where possible, development teams should strive to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration. This reduces the number of “in-flight” changes, and allows the team to deliver value (end-to-end functionality) more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
   },
   {
     "objectID": "p1.html#starting-simple",
@@ -1295,7 +1295,7 @@
     "href": "p1.html#starting-simple-1",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Starting Simple",
-    "text": "Starting Simple\nEvery change starts in a branch.\n\nThese branches are\n\nbuilt,\ntested,\nreviewed and\napproved before merging to main."
+    "text": "Starting Simple\nEvery change starts in a branch.\n\nThese changes on these branches are\n\nbuilt,\ntested,\nreviewed and\napproved before merging to main."
   },
   {
     "objectID": "deployment-manager.html",
@@ -1359,7 +1359,7 @@
     "href": "p1.html#delivering-changes-via-a-release",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Delivering changes via a release",
-    "text": "Delivering changes via a release\n\n\n\n\nflowchart LR\n   id1[(Backlog)] ==&gt; id2[\"`create *feature* branch`\"]\n   id2 ==&gt; id3[\"`clone or pull to IDE\n   and make changes`\"]\n   id3 ==&gt; id4[\"`User Build\n   Commit to branch\n   Push to remote`\"]\n   id4 ==&gt; id5[\"`Feature build\n   and test`\"]\n   id5 ==&gt; id6[Create Pull Request]"
+    "text": "Delivering changes via a release"
   },
   {
     "objectID": "p1.html#hot-fix-for-production",
@@ -1380,21 +1380,21 @@
     "href": "p1.html#merging-into-main",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Merging into main",
-    "text": "Merging into main\nFeature Team/Developers will:\n\nBuild\n\nBuilds may be done to any commit on any branch\nFeature branch must build cleanly for a Pull Request\n\nTest\n\nTo prove quality of the changes in their feature branch\n\n\nCreate a Pull Request (PR) to signal to Team Leaders/Release Controllers to:\n\nReview\n\nCode and Test results\n\nApprove\n\nSafeguard the quality of main"
+    "text": "Merging into main\nFeature Team/Developers will:\n\nBuild\n\nBuilds may be done to any commit on any branch\nFeature branch must build cleanly for a Pull Request\n\nTest\n\nTo prove quality of the changes in their feature branch\n\n\n\nCreate a Pull Request (PR) to signal to Team Leaders/Release Controllers to:\n\nReview\n\nCode and Test results\n\nApprove\n\nSafeguard the quality of main"
   },
   {
     "objectID": "p1.html#before-you-ask-no-no-production-branch",
     "href": "p1.html#before-you-ask-no-no-production-branch",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Before you ask… no, no Production branch",
-    "text": "Before you ask… no, no Production branch\nWe have no branches named prod (or test or QA)\n\nThose are environments to which builds can be deployed\nSuch extra branches:\n\nare unnecessary\ncause ambiguity\nimpose merging and building overheads"
+    "text": "Before you ask… no, no Production branch\nCI/CD decouples the building and deploying to test environments and production.\nWe have no branches named prod (or test or QA)\n\nThose are environments to which builds can be deployed\nSuch extra branches:\n\nare unnecessary\ncause ambiguity\nimpose merging and building overheads\n\nDeployment manager is maintaining what is deployed where and provides traceability to"
   },
   {
     "objectID": "p1.html#release-branches",
     "href": "p1.html#release-branches",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Release branches",
-    "text": "Release branches\nAny point in the history of main can be declared a release candidate.\n\nBuild a release candidate package\nTest it\nDeploy it\n\nTag the commit (point in main’s history) with a release name.\nA release maintenance branch will be used if hot-fixes must be developed and delivered."
+    "text": "Release branches\nA release maintenance branch will be used if hot-fixes must be developed and delivered."
   },
   {
     "objectID": "p1.html#release-branches-1",
@@ -1430,5 +1430,117 @@
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Deploying to production",
     "text": "Deploying to production\nWhen all the committed work items for the next planned release are ready to be shipped, and all quality gates have passed successfully and the required approvals have been issued by the appropriate reviewers, the release package and be deployed to production.\n\nTag the commit (point in main’s history) with a release name."
+  },
+  {
+    "objectID": "p2.html#agenda",
+    "href": "p2.html#agenda",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Agenda",
+    "text": "Agenda\n\nAims and Assumptions\nChoosing a branching model and workflow\nStarting simple\nScaling up\nIntegration branches\nDelivering changes via a release\nHot-fix for production\nUsing an Epic branch"
+  },
+  {
+    "objectID": "p2.html#no-baggage",
+    "href": "p2.html#no-baggage",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "No baggage",
+    "text": "No baggage\nWell… “travel light” perhaps!\n\nAre we prescriptive or just opinionated?\nWe start with a recommendation\n\nConfidently\n\nWe question everything\n\nYAGNI - “you aren’t gonna need it”\n\nWe strive for simplicity\n\nFor each user’s experience"
+  },
+  {
+    "objectID": "p2.html#scaling",
+    "href": "p2.html#scaling",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Scaling",
+    "text": "Scaling\n\nThe workflow and branching scheme should both scale up and scale down.\n\nSmall teams with simple and infrequent changes will be able to easily understand, adopt, and have a good experience.\nLarge, busy teams with many concurrent activities will be able to plan, track, and execute with maximum agility using the same fundamental principles."
+  },
+  {
+    "objectID": "p2.html#planning",
+    "href": "p2.html#planning",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Planning",
+    "text": "Planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices typically encourage that, where possible, development teams should strive to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration. This reduces the number of “in-flight” changes, and allows the team to deliver value (end-to-end functionality) more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
+  },
+  {
+    "objectID": "p2.html#starting-simple",
+    "href": "p2.html#starting-simple",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Starting Simple",
+    "text": "Starting Simple\nEvery change starts in a branch.\n\n\nDevelopers work in the branch to make changes, perform user builds and unit tests.\nA branch holds multiple commits (changes to multiple files)."
+  },
+  {
+    "objectID": "p2.html#starting-simple-1",
+    "href": "p2.html#starting-simple-1",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Starting Simple",
+    "text": "Starting Simple\nEvery change starts in a branch.\n\nThese branches are\n\nbuilt,\ntested,\nreviewed and\napproved before merging to main."
+  },
+  {
+    "objectID": "p2.html#merging-into-main",
+    "href": "p2.html#merging-into-main",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Merging into main",
+    "text": "Merging into main\nFeature Team/Developers will:\n\nBuild\n\nBuilds may be done to any commit on any branch\nFeature branch must build cleanly for a Pull Request\n\nTest\n\nTo prove quality of the changes in their feature branch\n\n\nCreate a Pull Request (PR) to signal to Team Leaders/Release Controllers to:\n\nReview\n\nCode and Test results\n\nApprove\n\nSafeguard the quality of main"
+  },
+  {
+    "objectID": "p2.html#before-you-ask-no-no-production-branch",
+    "href": "p2.html#before-you-ask-no-no-production-branch",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Before you ask… no, no Production branch",
+    "text": "Before you ask… no, no Production branch\nWe have no branches named prod (or test or QA)\n\nThose are environments to which builds can be deployed\nSuch extra branches:\n\nare unnecessary\ncause ambiguity\nimpose merging and building overheads"
+  },
+  {
+    "objectID": "p2.html#release-branches",
+    "href": "p2.html#release-branches",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Release branches",
+    "text": "Release branches\nAny point in the history of main can be declared a release candidate.\n\nBuild a release candidate package\nTest it\nDeploy it\n\nTag the commit (point in main’s history) with a release name.\nA release maintenance branch will be used if hot-fixes must be developed and delivered."
+  },
+  {
+    "objectID": "p2.html#release-branches-1",
+    "href": "p2.html#release-branches-1",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Release branches",
+    "text": "Release branches"
+  },
+  {
+    "objectID": "p2.html#scaling-up",
+    "href": "p2.html#scaling-up",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Scaling up",
+    "text": "Scaling up\nConcurrent feature branches scale very well, but assume short cycle times.\n\nIdeally live within a release delivery cycle\nBut no big deal if they don’t\n\nEpic branches can collect multiple features\n\nBefore going to main\nWhen the delivery is planned beyond the next release\n\n(Epic branches are a form of integration branch.)"
+  },
+  {
+    "objectID": "p2.html#integration-branches",
+    "href": "p2.html#integration-branches",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Integration branches",
+    "text": "Integration branches"
+  },
+  {
+    "objectID": "p2.html#three-foundation-workflows",
+    "href": "p2.html#three-foundation-workflows",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Three foundation workflows",
+    "text": "Three foundation workflows\n\nDeliver changes with the next planned release\nImplement a fix for the current production state\nUse an epic branch for a significant development initiative"
+  },
+  {
+    "objectID": "p2.html#delivering-changes-via-a-release",
+    "href": "p2.html#delivering-changes-via-a-release",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Delivering changes via a release",
+    "text": "Delivering changes via a release\n\n\n\n\nflowchart LR\n   id1[(Backlog)] ==&gt; id2[\"`create *feature* branch`\"]\n   id2 ==&gt; id3[\"`clone or pull to IDE\n   and make changes`\"]\n   id3 ==&gt; id4[\"`User Build\n   Commit to branch\n   Push to remote`\"]\n   id4 ==&gt; id5[\"`Feature build\n   and test`\"]\n   id5 ==&gt; id6[Create Pull Request]"
+  },
+  {
+    "objectID": "p2.html#hot-fix-for-production",
+    "href": "p2.html#hot-fix-for-production",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Hot-fix for production",
+    "text": "Hot-fix for production"
+  },
+  {
+    "objectID": "p2.html#using-an-epic-branch",
+    "href": "p2.html#using-an-epic-branch",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Using an Epic branch",
+    "text": "Using an Epic branch\n\n\n\nCopyright © 2023 IBM Corporation"
   }
 ]

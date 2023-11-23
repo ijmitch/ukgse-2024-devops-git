@@ -8,7 +8,7 @@ website:
     left:
       - href: ibm-z-devops-solution.md
         text: Docs
-      - href: p1.qmd
+      - href: p1.md
         text: Pres
   sidebar:
     collapse-level: 1
