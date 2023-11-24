@@ -1408,7 +1408,7 @@
     "href": "p1.html#no-baggage",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "No baggage",
-    "text": "No baggage\nWell… “travel light” perhaps!\n\nAre we prescriptive or just opinionated?\nWe start with a recommendation\n\nConfidently\n\nWe question everything\n\nYAGNI - “you aren’t gonna need it”\n\nWe strive for simplicity\n\nFor each user’s experience\n\nBe git-native!"
+    "text": "No baggage\nWell… “travel light” perhaps!\n\nAre we prescriptive or just opinionated?\n\nAim to be git-native!\n\nWe start with a recommendation\n\nConfidently\n\nWe question everything\n\nYAGNI - “you aren’t gonna need it”\n\nWe strive for simplicity\n\nFor each user’s experience"
   },
   {
     "objectID": "p1.html#three-foundation-workflows",
@@ -1597,14 +1597,14 @@
     "href": "p1.html#basic-build-pipeline",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Basic Build pipeline",
-    "text": "Basic Build pipeline\n\n(Typically) runs on each commit added to the history of a branch\nProduces a preliminary package that is stored in a binary repository\nMay include an automated step to install it into the DEV-TEST environment"
+    "text": "Basic Build pipeline\n\n(Typically) runs on each commit added to the history of a branch\nProduces a preliminary package that is stored in a binary repository\nMay include an automated step to deploy it into the DEV-TEST environment"
   },
   {
     "objectID": "p1.html#release-pipeline",
     "href": "p1.html#release-pipeline",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Release pipeline",
-    "text": "Release pipeline\n\nProduces binaries optimized for performance\n(Typically) is manually requested by the development team when a level of stability is reached\nproduces a release candidate package that can be deployed to higher test environments."
+    "text": "Release pipeline\n\nProduces binaries optimized for performance\n(Typically) is manually requested by the development team when a level of stability is reached\nProduces a release candidate package that can be deployed to higher test environments."
   },
   {
     "objectID": "p1.html#preparing-to-merge-into-main",
