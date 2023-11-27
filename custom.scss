@@ -5,3 +5,5 @@
 /*-- scss:defaults --*/
 $font-family-sans-serif: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif !default;
 $presentation-heading-font: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif !default;
+
+.reveal pre code {background-color: blue;}
