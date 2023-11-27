@@ -1281,7 +1281,7 @@
     "href": "p1.html#planning",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Planning",
-    "text": "Planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThe cadence of the next planned release is defined by the application team.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices typically encourage that, where possible, development teams should strive to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration. This reduces the number of “in-flight” changes, and allows the team to deliver value (end-to-end functionality) more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
+    "text": "Planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThe cadence of the next planned release is defined by the application team.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration.\nThis reduces the number of “in-flight” changes, and allows the team to deliver value more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
   },
   {
     "objectID": "p1.html#starting-simple",
@@ -1555,7 +1555,7 @@
     "href": "p1.html#the-types-of-workflows",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "The types of workflows",
-    "text": "The types of workflows\n\nWork and focus on the next planned release via the main branch. After planning the work items for the next release, the development team is adding changes to the main branch.\nResolution of a production problem in the currently-released version of the application by leveraging a release maintenance branch that is used for maintenance purposes,\nconcurrent development activities for significant development initiatives, which include multiple planned work items for a later delivery (including starting development of a future release) by creating an epic branch from a commit point in the history of main."
+    "text": "The types of workflows\n\nWork and focus on the next planned release via the main branch. After planning the work items for the next release, the development team is adding changes to the main branch.\nResolution of a production problem in the currently-released version of the application by leveraging a release maintenance branch that is used for maintenance purposes,\nconcurrent development activities for significant development initiatives, which include multiple planned work items for a later delivery (including starting development of a future release) by creating an epic branch from a commit point in the history of main.\n\nThe following narratives complement the structure."
   },
   {
     "objectID": "p1.html#building-the-fix-package",
@@ -1618,13 +1618,34 @@
     "href": "p1.html#before-you-ask-no-there-is-no-production-branch",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Before you ask… no, there is no Production branch",
-    "text": "Before you ask… no, there is no Production branch\nCI/CD decouples the building and deploying to test environments and production.\nWe have no branches named prod (or test or QA)\n\nThose are environments to which builds can be deployed\nSuch extra branches:\n\nare unnecessary\ncause ambiguity\nimpose merging and building overheads\n\nDeployment manager is maintaining what is deployed where and provides traceability to"
+    "text": "Before you ask… no, there is no Production branch\nCI/CD decouples the building and deploying to test environments and production.\nWe have no branches named prod (or test or QA)\n\nThose are environments to which builds can be deployed\nSuch extra branches:\n\nare unnecessary\ncause ambiguity\nimpose merging and building overheads\n\nDeployment manager is maintaining what is deployed where and provides traceability from developer to production deployment"
   },
   {
     "objectID": "p1.html#features-for-the-next-planned-release",
     "href": "p1.html#features-for-the-next-planned-release",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Features for the next planned release",
-    "text": "Features for the next planned release\nTO-DO"
+    "text": "Features for the next planned release\nDeveloper activities:\n\n\nTake item from backlog\nCreate feature branch\nCode locally\nBuild with DBB User Build\nCommit into feature branch, build and test feature functionality\nCreate Pull Request for review and approval"
+  },
+  {
+    "objectID": "p1.html#convention-over-configuration",
+    "href": "p1.html#convention-over-configuration",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Convention over configuration",
+    "text": "Convention over configuration\nThe principles are more important that the tools and names.\nNaming conventions - making purpose obvious:\n\nmain: single source of truth\nrelease/rel-2.0.1: explicit versioning numbering of releases\nfeature/&lt;jira-id|servicenow-id&gt;/new-mortage-calculation: traceable to other processes\nepic/ai-fraud-detection: maybe put Jira or ServiceNow ids in here too\nhotfix/rel-2.0.1/fix-mortgage-calc\n\nNames of branches and tags flow through to builds and deployments."
+  },
+  {
+    "objectID": "p1.html#features-for-the-next-planned-release-.incremental",
+    "href": "p1.html#features-for-the-next-planned-release-.incremental",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Features for the next planned release (.incremental)",
+    "text": "Features for the next planned release (.incremental)\n\nBuild result of merging to main\nWhen planned features have merged, build and tag Release Candidate package\nDeploy Release Candidate to test environments\nRelease candidate can be superceded\nFinalise Release package in Artifactory (or equivalent)\nTag commit from step 8 as the production release and deploy"
+  },
+  {
+    "objectID": "p1.html#features-for-the-next-planned-release-1",
+    "href": "p1.html#features-for-the-next-planned-release-1",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Features for the next planned release",
+    "text": "Features for the next planned release\nRelease control activities:\n\n\nMerge approved branches to main and build\nWhen planned features have merged, build and tag Release Candidate package\nDeploy Release Candidate to test environments\n(Release candidate can be superceded)\nFinalise Release package in Artifactory (or equivalent)\nTag commit from step 8 as the production release and deploy"
   }
 ]
