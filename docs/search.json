@@ -71,13 +71,6 @@
     "text": "Planning\n\nPlanning and design activities as well as code development aim to align to a regular release cadence.\nThe cadence of the next planned release is defined by the application team.\nThere is no magic answer to managing large numbers of “in-flight” changes, so planning assumptions should aim as much as possible to complete changes quickly, ideally within one release cycle.\n\nDevOps/Agile practices to break down larger changes into sets of smaller, incremental deliverables that can each be completed within an iteration.\nThis reduces the number of “in-flight” changes, and allows the team to deliver value more quickly while still building towards a larger development goal.\n\nWe know it is sometimes unavoidable for work to take longer than one release cycle and we accommodate that as a variant of the base workflow."
   },
   {
-    "objectID": "p1.html#convention-over-configuration",
-    "href": "p1.html#convention-over-configuration",
-    "title": "The workflow for  git-based z/OS DevOps",
-    "section": "Convention over configuration",
-    "text": "Convention over configuration\nThe principles are more important that the tools and names.\nNaming conventions - making purpose obvious:\n\nmain: single source of truth\nrelease/rel-2.0.1: explicit versioning numbering of releases\nfeature/&lt;jira-id|servicenow-id&gt;/new-mortage-calculation: traceable to other processes\nepic/ai-fraud-detection: maybe put Jira or ServiceNow ids in here too\nhotfix/rel-2.0.1/fix-mortgage-calc\n\nNames of branches and tags flow through to builds and deployments."
-  },
-  {
     "objectID": "p1.html#starting-simple",
     "href": "p1.html#starting-simple",
     "title": "The workflow for  git-based z/OS DevOps",
@@ -148,6 +141,13 @@
     "text": "Integration branches"
   },
   {
+    "objectID": "p1.html#convention-over-configuration",
+    "href": "p1.html#convention-over-configuration",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Convention over configuration",
+    "text": "Convention over configuration\nThe principles are more important that the tools and names.\nNaming conventions - making purpose obvious:\n\nmain : single source of truth. The only long-living branch.\nrelease/rel-2.0.1 : explicit versioning numbering to identify releases maintenance branch.\nepic/47-ai-fraud-detection : development initiative identified by epic id and description.\nfeature/&lt;jira-id|servicenow-id&gt;/new-mortgage-calculation : references to other planning tools for new features for the next planned release.\nfeature/47-ai-fraud-detection/refactor-mortgage-calculation: feature implemented for development initiative\nhotfix/rel-2.0.1/fix-mortgage-calc: fix implemented for release rel-2.0.1\n\nNames of branches and tags flow through to builds and deployments."
+  },
+  {
     "objectID": "p1.html#the-types-of-workflows",
     "href": "p1.html#the-types-of-workflows",
     "title": "The workflow for  git-based z/OS DevOps",
@@ -169,25 +169,46 @@
     "text": "Features for the next planned release\nRelease control activities:\n\n\nMerge approved branches to main and build\nWhen planned features have merged, build and tag Release Candidate package\nDeploy Release Candidate to test environments\n(Release candidate can be superceded)\nFinalise Release package in Artifactory (or equivalent)\nTag commit from step 8 as the production release and deploy"
   },
   {
-    "objectID": "p1.html#hot-fix-for-production",
-    "href": "p1.html#hot-fix-for-production",
+    "objectID": "p1.html#fix-a-production-defect",
+    "href": "p1.html#fix-a-production-defect",
     "title": "The workflow for  git-based z/OS DevOps",
-    "section": "Hot-fix for production",
-    "text": "Hot-fix for production\n\nThe process of urgent fixes for modules in the production environment follows the fix-forward approach, rather than rolling back the affected modules and reverting to the previous deployed state.\nThe development team starts this process by creating a release maintenance branch of the git tag that represents the most recent release, that was deployed to production."
+    "section": "Fix a production defect",
+    "text": "Fix a production defect\n\nThe process of urgent fixes for modules in the production environment follows the fix-forward approach, rather than rolling back the affected modules and reverting to the previous deployed state.\nThe development team starts this process by creating a release maintenance branch of the git tag that represents the most recent release, that was deployed to production."
   },
   {
-    "objectID": "p1.html#building-the-fix-package",
-    "href": "p1.html#building-the-fix-package",
+    "objectID": "p1.html#fix-a-production-defect-1",
+    "href": "p1.html#fix-a-production-defect-1",
     "title": "The workflow for  git-based z/OS DevOps",
-    "section": "Building the fix package",
-    "text": "Building the fix package\n\nChanges contributed to the release maintenance branch are build and packaged.\nThe fix package is tested in the appropriate test environment(s)\nFinally deployed to production\n\n\n\nThe commit is tagged as the new version 2.1.1."
+    "section": "Fix a production defect",
+    "text": "Fix a production defect\nDeveloper activities resolving a production defect:\n\n\nCreates the release/rel-2.1.0 branch based on the existing Git tag\nCreates a feature branch hotfix/rel-2.1.0/urgent-fix from the release maintenance branch.\nImplement the fix locally\nBuild with DBB User Build\nCommit into hotfix branch, push, build and test feature functionality\nCreate Pull Request for review and approval"
+  },
+  {
+    "objectID": "p1.html#fix-a-production-defect-2",
+    "href": "p1.html#fix-a-production-defect-2",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Fix a production defect",
+    "text": "Fix a production defect\nRelease control activities resolving a production defect:\n\n\nMerge hotfix branch to release maintenance branch and build\nUse release pipeline to create fix package\nDeploy fix package to controlled test environments and test it\nDeploy fix package to production\nTag commit from step 8 indicating the new version\nMerge release maintenance branch into main."
   },
   {
     "objectID": "p1.html#using-the-epic-branch-workflow",
     "href": "p1.html#using-the-epic-branch-workflow",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Using the Epic branch workflow",
-    "text": "Using the Epic branch workflow\nDealing with significant development initiatives such as:\n\nUpdates in regulatory frameworks\nStart the development phase of subsequent releases\n\n→ A process to work independently from the default workflow."
+    "text": "Using the Epic branch workflow\nDealing with significant development initiatives such as:\n\nUpdates in regulatory frameworks\nStart the development phase of subsequent releases\n\n→ A process to work independently from the base workflow."
+  },
+  {
+    "objectID": "p1.html#using-the-epic-branch-workflow-1",
+    "href": "p1.html#using-the-epic-branch-workflow-1",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Using the Epic branch workflow",
+    "text": "Using the Epic branch workflow\nDeveloper activities for implementing significant development initiatives:\n\n\nCreates the epic/ai-fraud-detection branch based on the existing Git tag\nCreates a feature branch feature/ai-fraud-detection/introduce-ai-model-to-mortgage-calculation from the epic branch.\nCode locally\nBuild with DBB User Build\nCommit into feature branch, push, build and test feature functionality\nCreate Pull Request for review and approval to merge into the integration branch"
+  },
+  {
+    "objectID": "p1.html#using-the-epic-branch-workflow-2",
+    "href": "p1.html#using-the-epic-branch-workflow-2",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "Using the Epic branch workflow",
+    "text": "Using the Epic branch workflow\nRelease activities for implementing significant development initiatives:\n\n\nMerge feature branch to epic branch and build\nUse release pipeline to create preliminary package\nDeploy package to project test environment\nFrequently synchronize with main into the epic branch to avoid making the merge of the epic branch into main difficult.\nDecision when the changes on the epic branch should be released\nMerge epic branch into main and deliver via the base workflow."
   },
   {
     "objectID": "p1.html#epic-branch-workflow",
@@ -197,32 +218,32 @@
     "text": "Epic branch workflow"
   },
   {
-    "objectID": "p1.html#guidelines-and-policies-in-the-epic-branch-workflow",
-    "href": "p1.html#guidelines-and-policies-in-the-epic-branch-workflow",
+    "objectID": "p1.html#pipeline-implementation-conventions-principles",
+    "href": "p1.html#pipeline-implementation-conventions-principles",
     "title": "The workflow for  git-based z/OS DevOps",
-    "section": "Guidelines and policies in the epic branch workflow",
-    "text": "Guidelines and policies in the epic branch workflow\n\nFrequently synchronize with main into the epic branch to avoid making the merge of the epic branch into main difficult.\nPreliminary packages must not be deployed to a production runtime."
+    "section": "Pipeline implementation conventions & principles",
+    "text": "Pipeline implementation conventions & principles\n\n\n\n\nGit tags are used to calculate the changes for the next planned release, release maintenance packages and larger development activities.\nPackages are cumulative which is making it easier to get a test environment to the desired state (avoiding coordination of several incremental packages) \n\nA new release candidate package supersedes preview release candidates."
   },
   {
-    "objectID": "p1.html#pipeline-principles",
-    "href": "p1.html#pipeline-principles",
+    "objectID": "p1.html#basic-build-pipeline-characteristics",
+    "href": "p1.html#basic-build-pipeline-characteristics",
     "title": "The workflow for  git-based z/OS DevOps",
-    "section": "Pipeline principles",
-    "text": "Pipeline principles\nGit tags are used to calculate the changes for the next planned release\n\nPackages are always cumulative."
-  },
-  {
-    "objectID": "p1.html#basic-build-pipeline",
-    "href": "p1.html#basic-build-pipeline",
-    "title": "The workflow for  git-based z/OS DevOps",
-    "section": "Basic Build pipeline",
-    "text": "Basic Build pipeline\n\n(Typically) runs on each commit added to the history of a branch\nProduces a preliminary package that is stored in a binary repository\nMay include an automated step to deploy it into the DEV-TEST environment"
+    "section": "Basic Build pipeline characteristics",
+    "text": "Basic Build pipeline characteristics\n\n(Typically) runs on each commit added to the history of a branch\nCan produce a preliminary package that is stored in a binary artifact repository\n\nCan be deployed to test environments, but not production\n\nMay include an automated step to deploy it into the DEV-TEST environment"
   },
   {
     "objectID": "p1.html#release-pipeline",
     "href": "p1.html#release-pipeline",
     "title": "The workflow for  git-based z/OS DevOps",
     "section": "Release pipeline",
-    "text": "Release pipeline\n\nProduces binaries optimized for performance\n(Typically) is manually requested by the development team when a level of stability is reached\nProduces a release candidate package that can be deployed to higher test environments."
+    "text": "Release pipeline\n\n\n\n\nProduces binaries optimized for performance\n\nthat can be deployed to test and production environments.\n\n(Typically) is manually requested by the development team when a level of stability is reached\nProduces a release candidate package that can be deployed to higher test environments."
+  },
+  {
+    "objectID": "p1.html#references",
+    "href": "p1.html#references",
+    "title": "The workflow for  git-based z/OS DevOps",
+    "section": "References",
+    "text": "References\n\n\n\n\nzDevOps adoption enablement website - Git branching for mainframe development\nRecent blog post - A no-baggage approach to new Mainframe development practices\nDecember 6th - Accelerating Git Migration Initiatives - Setting up an Azure pipeline for a mainframe application with the common backend scripts\n\n\n\n\n\n\n\n\n\n\nCopyright © 2023 IBM Corporation"
   },
   {
     "objectID": "index.html",
