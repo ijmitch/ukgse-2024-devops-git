@@ -3,13 +3,13 @@ python:
   - "3.9"
 before_install:
   - sudo apt-get update
-  # - sudo apt-get -y install pandoc
-  # - sudo apt-get -y install texlive-xetex
+  - sudo apt-get -y install pandoc
+  - sudo apt-get -y install texlive-full
   # - sudo apt-get -y install texlive-latex-extra
   # - sudo apt-get -y install fonts-font-awesome
   # - sudo apt-get -y install lmodern
   # - sudo apt-get -y install texlive-fonts-recommended
-  # - sudo apt-get -y install fonts-ibm-plex
+  - sudo apt-get -y install fonts-ibm-plex
   - sudo apt-get -y install gdebi-core
   - curl -o quarto-linux-amd64.deb -L https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.549/quarto-1.4.549-linux-amd64.deb
   - sudo gdebi --non-interactive quarto-linux-amd64.deb
