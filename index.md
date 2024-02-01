@@ -8,7 +8,7 @@ format-links: false
 format: 
   html:
     page-layout: full
-  pdf: default
+  # pdf: default
 listing:
   type: grid
   fields: [subtitle, image]
