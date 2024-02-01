@@ -4,7 +4,7 @@ python:
 before_install:
   - sudo apt-get update
   - sudo apt-get -y install pandoc
-  - sudo apt-get -y install texlive-extra
+  - sudo apt-get -y install texlive-latex-extra
   # - sudo apt-get -y install texlive-latex-extra
   # - sudo apt-get -y install fonts-font-awesome
   # - sudo apt-get -y install lmodern
