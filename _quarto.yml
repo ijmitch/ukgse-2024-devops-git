@@ -58,7 +58,7 @@ website:
           - implementing-pipeline-actions.md
       - section: "Resources"
   page-footer: 
-    center: "Copyright &copy; 2023 IBM Corporation"
+    center: "Copyright &copy; 2024 IBM Corporation"
     left: "Authored in Markdown </br>Built with [Quarto](https://quarto.org) and [RevealJS](https://revealjs.com/) </br>Served from Github Enterprise Pages"
 # repo-url: https://github.ibm.com/ianj-mitchell/quartotest
 # repo-actions: [issue]
