@@ -10,8 +10,8 @@ format:
     footer: "Copyright &copy; 2023 IBM Corporation"
     logo: "IBM_logo®_pos_blue60_RGB.png"
     css: logo.css
-  pptx:
-    title: ""
+  # pptx:
+  #   title: ""
 ---
 
 ## Agenda
