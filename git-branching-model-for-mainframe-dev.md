@@ -2,21 +2,21 @@
 title: Git branching model for mainframe development
 format:
   html: default
-  pdf:
-    toc: true
-    mainfont: "IBM Plex Sans"
-    number-sections: true
-    colorlinks: true
-    include-in-header: 
-      text: |
-        \usepackage{fancyhdr}
-        \pagestyle{fancy}
-        \fancyhead{}
-        \fancyfoot{}
-        \rhead{Git branching model for mainframe development}
-        \fancyfoot[LE,RO]{\thepage}
-        \fancyfoot[C]{\textcopyright 2023 IBM Corporation}
-        \fancypagestyle{plain}{\pagestyle{fancy}}
+#   pdf:
+#     toc: true
+#     mainfont: "IBM Plex Sans"
+#     number-sections: true
+#     colorlinks: true
+#     include-in-header: 
+#       text: |
+#         \usepackage{fancyhdr}
+#         \pagestyle{fancy}
+#         \fancyhead{}
+#         \fancyfoot{}
+#         \rhead{Git branching model for mainframe development}
+#         \fancyfoot[LE,RO]{\thepage}
+#         \fancyfoot[C]{\textcopyright 2023 IBM Corporation}
+#         \fancypagestyle{plain}{\pagestyle{fancy}}
 ---
 
 # The Git branching model for mainframe development
