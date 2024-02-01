@@ -4,11 +4,11 @@ python:
 before_install:
   - sudo apt-get update
   - sudo apt-get -y install pandoc
+  - sudo apt-get -y install texlive
   - sudo apt-get -y install gdebi-core
   - curl -o quarto-linux-amd64.deb -L https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.549/quarto-1.4.549-linux-amd64.deb
   - sudo gdebi --non-interactive quarto-linux-amd64.deb
 script:
-  - quarto install tool tinytex --log-level warning
   - quarto render
 deploy:
  - provider: pages
