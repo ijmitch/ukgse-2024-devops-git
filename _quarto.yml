@@ -3,6 +3,11 @@ project:
 
 website:
   title: "IBM Z DevOps Acceleration Program"
+  repo-url: https://github.ibm.com/ianj-mitchell/quartotest
+  repo-actions: [edit, issue]
+  search:
+    location: navbar
+    type: textbox
   navbar:
     left:
       - href: ibm-z-devops-solution.md
