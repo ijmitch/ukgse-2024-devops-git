@@ -10,58 +10,8 @@ website:
     type: textbox
   navbar:
     left:
-      - href: ibm-z-devops-solution.md
-        text: Docs
-      - href: p1.md
+      - href: p1.qmd
         text: Pres
-  sidebar:
-    collapse-level: 1
-    contents:
-      - section: "Overview"
-        contents:
-          - ibm-z-devops-solution.md
-          - section: "CI/CD for z/OS applications"
-            contents:
-              - intro-cicd-zos.md
-              - ide.md
-              - scm.md
-              - build.md
-              - artifact-repository.md
-              - deployment-manager.md
-              - pipeline-orchestrator.md
-      - section: "Getting Started"
-        contents:
-          - journey-to-cicd.md
-          - install-configure.md
-      - section: "Tutorials"
-        contents:
-          - tutorial.md
-      - section: "Designing the CI/CD pipeline"
-        contents: 
-          - repository-layouts.md
-          - dependency-management.md
-          - section: "Git branching for mainframe development"
-            contents:
-              - branching-models.md
-              - git-branching-model-for-mainframe-dev.md
-              - branching-model-supporting-pipeline.md
-              - branching-appendix.md
-          - build-strategy.md
-          - pipeline-strategy.md
-          - deployment-strategy.md
-      - section: "Migrating data from z/OS to Git"
-        contents:
-          - intro-migrating-data.md
-          - managing-code-page-conversion.md
-          - section: "Methods for migrating data"
-            contents:
-              - dbb-migration-tool.md
-              - sclm-migration-tool.md
-              - manual-migration.md
-      - section: "Implementing CI/CD"
-        contents:
-          - implementing-pipeline-actions.md
-      - section: "Resources"
   page-footer: 
     center: "Copyright &copy; 2024 IBM Corporation"
     left: "Authored in Markdown </br>Built with [Quarto](https://quarto.org) and [RevealJS](https://revealjs.com/) </br>Served from Github Enterprise Pages"
@@ -79,7 +29,13 @@ format:
     css: styles.css
     toc: true
     toc-expand: true
-    page-layout: full
+    grid:
+      sidebar-width: 300px
+      body-width: 1200px
+      margin-width: 300px
+      gutter-width: 1.5rem
+    mermaid:
+      theme: forest
   pdf:
     toc: true
     mainfont: "IBM Plex Sans"

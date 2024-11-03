@@ -9,13 +9,6 @@ format:
   html:
     page-layout: full
   # pdf: default
-listing:
-  type: grid
-  fields: [subtitle, image]
-  contents:
-    - ibm-z-devops-solution.md
-    - journey-to-cicd.md
-    - index.md
 ---
 
 IBM strongly believes that DevOps transformations are anything but
