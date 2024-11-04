@@ -1,0 +1,2510 @@
+<!DOCTYPE html>
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-dark" lang="en-us" dir="ltr" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" style="--window-inner-height: 611px !important; --atlas-header-height: 0px !important; --atlas-footer-height: 0px !important; --atlas-header-visible-height: 0px !important; --atlas-footer-visible-height: 0px !important;"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Git branching guidance - Azure Repos">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops"><meta property="og:description" content="Git branching guidance"><meta property="og:image" content="https://learn.microsoft.com/en-us/media/open-graph-image.png">
+
+	<meta property="og:image:alt" content="Microsoft Learn">
+
+	<meta name="twitter:card" content="summary_large_image">
+
+	<meta name="twitter:site" content="@MicrosoftLearn">
+
+	<meta name="color-scheme" content="light dark"><meta name="archive_url" content="https://docs.microsoft.com/en-us/previous-versions/azure/devops/all/">
+<meta name="author" content="vijayma">
+<meta name="breadcrumb_path" content="/azure/devops/breadcrumb/toc.json">
+<meta name="default_moniker" content="azure-devops">
+<meta name="depot_name" content="MSDN.azure-devops-docs">
+<meta name="description" content="Git branching guidance">
+<meta name="document_id" content="d81cb742-b96c-ab35-50f9-877a824de1e2">
+<meta name="document_version_independent_id" content="1cfb9766-2a25-ded7-4c52-33c93cc69e97">
+<meta name="exclude_monikers" content="tfs-2018">
+<meta name="feedback_help_link_type" content="">
+<meta name="feedback_help_link_url" content="">
+<meta name="feedback_product_url" content="https://developercommunity.visualstudio.com/AzureDevOps">
+<meta name="feedback_system" content="Standard">
+<meta name="git_commit_id" content="66b53fed64da23bd8d418c8383a60dd4bb92eef9">
+<meta name="gitcommit" content="https://github.com/MicrosoftDocs/azure-devops-docs-pr/blob/66b53fed64da23bd8d418c8383a60dd4bb92eef9/docs/repos/git/git-branching-guidance.md">
+<meta name="locale" content="en-us">
+<meta name="monikerRange" content="&lt;= azure-devops">
+<meta name="monikers" content="azure-devops">
+<meta name="monikers" content="azure-devops-2019">
+<meta name="monikers" content="azure-devops-2020">
+<meta name="monikers" content="azure-devops-2022">
+<meta name="ms.assetid" content="9445be16-3bf4-46ff-bef8-52b72da03d0a">
+<meta name="ms.author" content="vijayma">
+<meta name="ms.custom" content="UpdateFrequency3">
+<meta name="ms.date" content="09/18/2020">
+<meta name="ms.manager" content="mijacobs">
+<meta name="ms.prodfamily" content="ALM">
+<meta name="ms.service" content="azure-devops-repos">
+<meta name="ms.subservice" content="azure-devops-repos-git">
+<meta name="ms.topic" content="conceptual">
+<meta name="ms.version" content="ALM">
+<meta name="MSHAttr.msprod" content="ms.prod:ALM">
+<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/azure-devops-docs-pr/blob/live/docs/repos/git/git-branching-guidance.md">
+<meta name="page_type" content="conceptual">
+<meta name="pdf_url_template" content="https://learn.microsoft.com/pdfstore/en-us/MSDN.azure-devops-docs/{branchName}{pdfName}">
+<meta name="recommendations" content="true">
+<meta name="schema" content="Conceptual">
+<meta name="site_name" content="Docs">
+<meta name="toc_rel" content="../toc.json">
+<meta name="uhfHeaderId" content="MSDocsHeader-AzureDevOps">
+<meta name="updated_at" content="2024-03-25 04:57 PM">
+<meta name="word_count" content="1282">
+<meta name="persistent_id" content="9cbd8031-9f3d-076d-d117-d98de92a18bf">
+	
+	<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47" data-source="generated">
+	<meta name="cmProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/5bd2b3fa-c186-4b92-a3c8-09f22a249d37" data-source="generated">
+	
+	<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6" data-source="generated">
+	<meta name="spProducts" content="https://authoring-docs-microsoft.poolparty.biz/devrel/7eba7926-b7b2-4a7a-bf89-e6ac53b3e7f6" data-source="generated">
+	<meta name="scope" content="Azure DevOps Services"><meta name="github_feedback_content_git_url" content="https://github.com/MicrosoftDocs/azure-devops-docs/blob/main/docs/repos/git/git-branching-guidance.md"><link href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops" rel="canonical"><title>Git branching guidance - Azure Repos | Microsoft Learn</title><link rel="stylesheet" href="microsoft-azure-branching-guidance_files/site-ltr.css">
+
+	<script id="msdocs-script">
+	var msDocs = {environment: {
+			supportLevel: 'production',
+			accessLevel: 'online',
+			reviewFeatures: false,
+			systemContent: true,
+			azurePortalHostname: 'portal.azure.com',
+			legacyHosting: false,
+			siteName: 'learn',
+		},data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {},
+			hasBinaryRating: true,
+			feedbackHelpLinkType:'',
+			feedbackHelpLinkUrl:'',
+			standardFeedback: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'Standard',
+			feedbackGitHubRepo: '',
+			feedbackProductUrl: 'https://developercommunity.visualstudio.com/AzureDevOps',extendBreadcrumb: false,isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasPrintButton: true,
+			hasBookmark: true,
+			hasShare: true,
+			isPermissioned: false,
+			isPrivateUnauthorized: false,hasRecommendations: true,contributors: [{ name: "vijayma", url: "https://github.com/vijayma" },{ name: "steved0x", url: "https://github.com/steved0x" },{ name: "WilliamAntonRohm", url: "https://github.com/WilliamAntonRohm" },{ name: "ramiMSFT", url: "https://github.com/ramiMSFT" },{ name: "KathrynEE", url: "https://github.com/KathrynEE" },{ name: "v-thepet", url: "https://github.com/v-thepet" },{ name: "vtbassmatt", url: "https://github.com/vtbassmatt" },{ name: "mijacobs", url: "https://github.com/mijacobs" },{ name: "TimShererWithAquent", url: "https://github.com/TimShererWithAquent" },{ name: "chcomley", url: "https://github.com/chcomley" },{ name: "alexhomer1", url: "https://github.com/alexhomer1" },{ name: "davidstaheli", url: "https://github.com/davidstaheli" }],},
+		functions:{}
+	};
+	</script><script src="microsoft-azure-branching-guidance_files/wcp-consent.js"></script>
+	<script src="microsoft-azure-branching-guidance_files/ms.jsll-4.min.js"></script><script src="microsoft-azure-branching-guidance_files/deprecation.js"></script><script src="microsoft-azure-branching-guidance_files/index-docs.js"></script><style>
+		[data-moniker]:not([data-moniker~='azure-devops']) {
+			display: none !important;
+		}
+	</style><style id="ms-consent-banner-main-styles">.w8hcgFksdo30C8w-bygqu{color:#000}.ydkKdaztSS0AeHWIeIHsQ a{color:#0067B8}.erL690_8JwUW-R4bJRcfl{background-color:#EBEBEB;border:none;color:#000}.erL690_8JwUW-R4bJRcfl:enabled:hover{color:#000;background-color:#DBDBDB;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:none}.erL690_8JwUW-R4bJRcfl:enabled:focus{background-color:#DBDBDB;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:2px solid #000}.erL690_8JwUW-R4bJRcfl:disabled{opacity:1;color:rgba(0,0,0,0.2);background-color:rgba(0,0,0,0.2);border:none}._1zNQOqxpBFSokeCLGi_hGr{border:none;background-color:#0067B8;color:#fff}._1zNQOqxpBFSokeCLGi_hGr:enabled:hover{color:#fff;background-color:#0067B8;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:none}._1zNQOqxpBFSokeCLGi_hGr:enabled:focus{background-color:#0067B8;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:2px solid #000}._1zNQOqxpBFSokeCLGi_hGr:disabled{opacity:1;color:rgba(0,0,0,0.2);background-color:rgba(0,120,215,0.2);border:none}._23tra1HsiiP6cT-Cka-ycB{position:relative;display:flex;z-index:9999;width:100%;background-color:#F2F2F2;justify-content:space-between;text-align:left}div[dir="rtl"]._23tra1HsiiP6cT-Cka-ycB{text-align:right}._1Upc2NjY8AlDn177YoVj0y{margin:0;padding-left:5%;padding-top:8px;padding-bottom:8px}div[dir="rtl"] ._1Upc2NjY8AlDn177YoVj0y{margin:0;padding:8px 5% 8px 0;float:none}._23tra1HsiiP6cT-Cka-ycB svg{fill:none;max-width:none;max-height:none}._1V_hlU-7jdtPiooHMu89BB{display:table-cell;padding:12px;width:24px;height:24px;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:24px;line-height:0}.f6QKJD7fhSbnJLarTL-W-{display:table-cell;vertical-align:middle;padding:0;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:13px;line-height:16px}.f6QKJD7fhSbnJLarTL-W- a{text-decoration:underline}._2j0fmugLb1FgYz6KPuB91w{display:inline-block;margin-left:5%;margin-right:5%;min-width:40%;min-width:calc((150px + 3 * 4px) * 2 + 150px);min-width:-webkit-fit-content;min-width:-moz-fit-content;min-width:fit-content;align-self:center;position:relative}._1XuCi2WhiqeWRUVp3pnFG3{margin:4px;padding:5px;min-width:150px;min-height:36px;vertical-align:top;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-align:center}._1XuCi2WhiqeWRUVp3pnFG3:focus{box-sizing:border-box}._1XuCi2WhiqeWRUVp3pnFG3:disabled{cursor:not-allowed}._2bvsb3ubApyZ0UGoQA9O9T{display:block;position:fixed;z-index:10000;top:0;left:0;width:100%;height:100%;background-color:rgba(255,255,255,0.6);overflow:auto;text-align:left}div[dir="rtl"]._2bvsb3ubApyZ0UGoQA9O9T{text-align:right}div[dir="rtl"] ._2bvsb3ubApyZ0UGoQA9O9T{left:auto;right:0}.AFsJE948muYyzCMktdzuk{position:relative;top:8%;margin-bottom:40px;margin-left:auto;margin-right:auto;box-sizing:border-box;width:640px;background-color:#fff;border:1px solid #0067B8}._3kWyBRbW_dgnMiEyx06Fu4{float:right;z-index:1;margin:2px;padding:12px;border:none;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:13px;line-height:13px;display:flex;align-items:center;text-align:center;color:#666;background-color:#fff}div[dir="rtl"] ._3kWyBRbW_dgnMiEyx06Fu4{margin:2px;padding:12px;float:left}.uCYvKvHXrhjNgflv1VqdD{position:static;margin-top:36px;margin-left:36px;margin-right:36px}._17pX1m9O_W--iZbDt3Ta5r{margin-top:0;margin-bottom:12px;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:600;font-size:20px;line-height:24px;text-transform:none}._1kBkHQ1V1wu3kl-YcLgUr6{height:446px;overflow:auto}._20_nXDf6uFs9Q6wxRXG-I-{margin-top:0;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px}._20_nXDf6uFs9Q6wxRXG-I- a{text-decoration:underline}dl._2a0NH_GDQEQe5Ynfo7suVH{margin-top:36px;margin-bottom:0;padding:0;list-style:none;text-transform:none}dt._3j_LCPv7fyXv3A8FIXVwZ4{margin-top:20px;float:none;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:600;font-size:18px;line-height:24px;list-style:none}.k-vxTGFbdq1aOZB2HHpjh{margin:0;padding:0;border:none}._2Bucyy75c_ogoU1g-liB5R{margin:0;padding:0;border-bottom:none;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:600;font-size:18px;line-height:24px;text-transform:none}._63gwfzV8dclrsl2cfd90r{display:inline-block;margin-top:0;margin-bottom:13px;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px}._1l8wM_4mRYGz3Iu7l3BZR7{display:block}._2UE03QS02aZGkslegN_F-i{display:inline-block;position:relative;left:5px;margin-bottom:13px;margin-right:34px;padding:3px}div[dir="rtl"] ._2UE03QS02aZGkslegN_F-i{margin:0 0 13px 34px;padding:3px;float:none}div[dir="rtl"] ._2UE03QS02aZGkslegN_F-i{left:auto;right:5px}._23tra1HsiiP6cT-Cka-ycB *::before,._2bvsb3ubApyZ0UGoQA9O9T *::before,._23tra1HsiiP6cT-Cka-ycB *::after,._2bvsb3ubApyZ0UGoQA9O9T *::after{box-sizing:inherit}._1HSFn0HzGo6w4ADApV8-c4{outline:2px solid rgba(0,0,0,0.8)}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2{display:inline-block;position:relative;margin-top:0;margin-left:0;margin-right:0;height:0;width:0;border-radius:0;cursor:pointer;outline:none;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2+label::before{display:block;position:absolute;top:5px;left:3px;height:19px;width:19px;content:"";border-radius:50%;border:1px solid #000;background-color:#fff}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2+label::before{left:auto;right:3px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:hover::before{border:1px solid #0067B8}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:hover::after{display:block;position:absolute;top:10px;left:8px;height:9px;width:9px;content:"";border-radius:50%;background-color:rgba(0,0,0,0.8)}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:hover::after{left:auto;right:8px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:focus::before{border:1px solid #0067B8}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:focus::after{display:block;position:absolute;top:10px;left:8px;height:9px;width:9px;content:"";border-radius:50%;background-color:#000}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:focus::after{left:auto;right:8px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:checked+label::after{display:block;position:absolute;top:10px;left:8px;height:9px;width:9px;content:"";border-radius:50%;background-color:#000}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:checked+label::after{left:auto;right:8px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:disabled+label{cursor:not-allowed}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:disabled+label::before{border:1px solid rgba(0,0,0,0.2);background-color:rgba(0,0,0,0.2)}._3RJzeL3l9Rl_lAQEm6VwdX{display:block;position:static;float:right;margin-top:0;margin-bottom:0;margin-left:19px;margin-right:0;padding-top:0;padding-bottom:0;padding-left:8px;padding-right:0;width:80%;width:calc(100% - 19px);font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-transform:none;cursor:pointer;box-sizing:border-box}div[dir="rtl"] ._3RJzeL3l9Rl_lAQEm6VwdX{margin:0 19px 0 0;padding:0 8px 0 0;float:left}.nohp3sIG12ZBhzcMnPala{margin-top:20px;margin-bottom:48px}._2uhaEsmeotZ3P-M0AXo2kF{padding:0;width:278px;height:36px;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-align:center}._2uhaEsmeotZ3P-M0AXo2kF:focus{box-sizing:border-box}._2uhaEsmeotZ3P-M0AXo2kF:disabled{cursor:not-allowed}._3tOu1FJ59c_xz_PmI1lKV5{float:right;padding:0;width:278px;height:36px;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-align:center}._3tOu1FJ59c_xz_PmI1lKV5:focus{box-sizing:border-box}._3tOu1FJ59c_xz_PmI1lKV5:disabled{cursor:not-allowed}div[dir="rtl"] ._3tOu1FJ59c_xz_PmI1lKV5{margin:0;padding:0;float:left}@media only screen and (max-width: 768px){._2j0fmugLb1FgYz6KPuB91w,._1Upc2NjY8AlDn177YoVj0y{padding-top:8px;padding-bottom:12px;padding-left:3.75%;padding-right:3.75%;margin:0;width:92.5%}._23tra1HsiiP6cT-Cka-ycB{display:block}._1XuCi2WhiqeWRUVp3pnFG3{margin-bottom:8px;margin-left:0;margin-right:0;width:100%}._2bvsb3ubApyZ0UGoQA9O9T{overflow:hidden}.AFsJE948muYyzCMktdzuk{top:1.8%;width:93.33%;height:96.4%;overflow:hidden}.uCYvKvHXrhjNgflv1VqdD{margin-top:24px;margin-left:24px;margin-right:24px;height:100%}._1kBkHQ1V1wu3kl-YcLgUr6{height:62%;height:calc(100% - 188px);min-height:50%}._2uhaEsmeotZ3P-M0AXo2kF{width:100%}._3tOu1FJ59c_xz_PmI1lKV5{margin-bottom:12px;margin-left:0;width:100%}div[dir="rtl"] ._3tOu1FJ59c_xz_PmI1lKV5{margin:0 0 12px 0;padding:0;float:none}}@media only screen and (max-width: 768px) and (orientation: landscape), only screen and (max-height: 260px), only screen and (max-width: 340px){.AFsJE948muYyzCMktdzuk{overflow:auto}}@media only screen and (max-height: 260px), only screen and (max-width: 340px){._1XuCi2WhiqeWRUVp3pnFG3{min-width:0}._3kWyBRbW_dgnMiEyx06Fu4{padding:3%}.uCYvKvHXrhjNgflv1VqdD{margin-top:3%;margin-left:3%;margin-right:3%}._17pX1m9O_W--iZbDt3Ta5r{margin-bottom:3%}._1kBkHQ1V1wu3kl-YcLgUr6{height:calc(79% - 64px)}.nohp3sIG12ZBhzcMnPala{margin-top:5%;margin-bottom:10%}._3tOu1FJ59c_xz_PmI1lKV5{margin-bottom:3%}div[dir="rtl"] ._3tOu1FJ59c_xz_PmI1lKV5{margin:0 0 3% 0;padding:0;float:none}}
+</style><style type="text/css" id="ms-consent-banner-theme-styles">._23tra1HsiiP6cT-Cka-ycB {
+            background-color: #242424 !important;
+        }.w8hcgFksdo30C8w-bygqu {
+            color: #E3E3E3 !important;
+        }.ydkKdaztSS0AeHWIeIHsQ a {
+            color: #4DB2FF !important;
+        }._2bvsb3ubApyZ0UGoQA9O9T {
+            background-color: rgba(23, 23, 23, 0.6) !important;
+        }.AFsJE948muYyzCMktdzuk {
+            background-color: #171717 !important;
+            border: 1px solid #4DB2FF !important;
+        }._3kWyBRbW_dgnMiEyx06Fu4 {
+            color: #E3E3E3 !important;
+            background-color: #171717 !important;
+        }._1zNQOqxpBFSokeCLGi_hGr {
+            border: 1px solid #4DB2FF !important;
+            background-color: #4DB2FF !important;
+            color: black !important;
+        }._1zNQOqxpBFSokeCLGi_hGr:enabled:hover {
+            color: black !important;
+            background-color: #0091FF !important;
+            box-shadow: none !important;
+            border: 1px solid rgba(0, 0, 0, 0) !important;
+        }._1zNQOqxpBFSokeCLGi_hGr:enabled:focus {
+            background-color: #0091FF !important;
+            box-shadow: none !important;
+            border: 2px solid #4DB2FF !important;
+        }._1zNQOqxpBFSokeCLGi_hGr:disabled {
+            opacity: 0.5 !important;
+            color: black !important;
+            background-color: #4DB2FF !important;
+            border: 1px solid rgba(255, 255, 255, 0) !important;
+        }.erL690_8JwUW-R4bJRcfl {
+            border: 1px solid #C7C7C7 !important;
+            background-color: #171717 !important;
+            color: #E3E3E3 !important;
+        }.erL690_8JwUW-R4bJRcfl:enabled:hover {
+            color: #E3E3E3 !important;
+            background-color: #2E2E2E !important;
+            box-shadow: none !important;
+            border: 1px solid #C7C7C7 !important;
+        }.erL690_8JwUW-R4bJRcfl:enabled:focus {
+            background-color: #2E2E2E !important;
+            box-shadow: none !important;
+            border: 2px solid #C7C7C7 !important;
+        }.erL690_8JwUW-R4bJRcfl:disabled {
+            opacity: 0.5 !important;
+            color: #E3E3E3 !important;
+            background-color: #2E2E2E !important;
+            border: 1px solid #242424 !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label::before {
+            border: 1px solid #E3E3E3 !important;
+            background-color: #171717 !important;
+        }._1HSFn0HzGo6w4ADApV8-c4 {
+            outline: 2px solid rgba(227, 227, 227, 0.8) !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:checked + label::after {
+            background-color: #E3E3E3 !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:hover::before {
+            border: 1px solid #4DB2FF !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:hover::after {
+            background-color: rgba(227, 227, 227, 0.8) !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:focus::before {
+            border: 1px solid #4DB2FF !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:focus::after {
+            background-color: #E3E3E3 !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:disabled + label::before {
+            border: 1px solid rgba(227, 227, 227, 0.2) !important;
+            background-color: rgba(227, 227, 227, 0.2) !important;
+        }</style><link href="data:text/css,%3Ais(%5Bid*%3D'google_ads_iframe'%5D%2C%5Bid*%3D'taboola-'%5D%2C.taboolaHeight%2C.taboola-placeholder%2C%23credential_picker_container%2C%23credentials-picker-container%2C%23credential_picker_iframe%2C%5Bid*%3D'google-one-tap-iframe'%5D%2C%23google-one-tap-popup-container%2C.google-one-tap-modal-div%2C%23amp_floatingAdDiv%2C%23ez-content-blocker-container)%20%7Bdisplay%3Anone!important%3Bmin-height%3A0!important%3Bheight%3A0!important%3B%7D" rel="stylesheet" type="text/css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"name":"Learn","position":1,"@type":"ListItem","item":"https://learn.microsoft.com/en-us/?view=azure-devops"},{"name":"Azure","position":2,"@type":"ListItem","item":"https://learn.microsoft.com/en-us/azure/?view=azure-devops"},{"name":"Azure DevOps","position":3,"@type":"ListItem","item":"https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops"},{"name":"Azure Repos","position":4,"@type":"ListItem","item":"https://learn.microsoft.com/en-us/azure/devops/repos/?view=azure-devops"}]}</script></head>
+
+<body lang="en-us" dir="ltr">
+	<div class="header-holder has-default-focus">
+		<a href="#main" style="z-index: 1070" class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center  has-body-background" tabindex="1">Skip to main content</a><div id="cookie-consent-holder" data-test-id="cookie-consent-container"></div><div id="banner-holder" class="has-default-focus has-overflow-hidden display-none-visual-diff theme-light"><!----><!----></div>
+
+		<div id="unsupported-browser" style="
+			background-color: white;
+			color: black;
+			padding: 16px;
+			border-bottom: 1px solid grey;" hidden="">
+			<div style="max-width: 800px; margin: 0 auto;">
+				<p style="font-size: 24px">This browser is no longer supported.</p>
+				<p style="font-size: 16px; margin-top: 16px;">Upgrade to Microsoft Edge to take advantage of the latest features, security updates, and technical support.</p>
+				<div style="margin-top: 12px;">
+					<a href="https://go.microsoft.com/fwlink/p/?LinkID=2092881" style="
+						background-color: #0078d4;
+						border: 1px solid #0078d4;
+						color: white;
+						padding: 6px 12px;
+						border-radius: 2px;
+						display: inline-block;
+						">Download Microsoft Edge</a>
+					<a href="https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge" style="
+							background-color: white;
+							padding: 6px 12px;
+							border: 1px solid #505050;
+							color: #171717;
+							border-radius: 2px;
+							display: inline-block;
+							">More info about Internet Explorer and Microsoft Edge</a>
+				</div>
+			</div>
+		</div>
+		<!-- liquid-tag banners global -->
+
+		<!-- site header -->
+		<header id="ms--site-header" data-test-id="site-header-wrapper" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+			<div id="ms--mobile-nav" class="site-header display-none-tablet padding-inline-none gap-none" data-bi-name="mobile-header" data-test-id="mobile-header"><!---->
+		<div id="ms--site-header-hamburger" data-test-id="site-header-hamburger">
+			<button type="button" class="button button-clear inner-focus" data-test-id="mobile-nav-open-button" data-bi-name="mobile-nav-open-button" title="Global navigation" aria-label="Global navigation">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-menu"></span>
+				</span>
+			</button>
+		</div>
+
+		<!-- Brand -->
+		
+		<a class="site-header-brand" itemprop="url" href="https://learn.microsoft.com/en-us/" data-bi-name="site-header-brand-learn-mobile" data-test-id="site-header-brand-mobile">
+			<span><!---->Learn<!----></span>
+		</a>
+	
+
+		<!-- MS logo -->
+		
+				<a href="https://www.microsoft.com/" aria-label="Microsoft" itemprop="url" data-bi-name="site-header-microsoft-logo-mobile" data-test-id="site-header-microsoft-logo-mobile" class="site-header-logo site-header-logo-centered">
+					
+		<svg aria-hidden="true" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" itemprop="logo" itemscope="itemscope">
+			<path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022"></path>
+			<path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00"></path>
+			<path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef"></path>
+			<path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900"></path>
+		</svg>
+	
+				</a>
+		  
+
+		<!-- Search -->
+		
+		<search-expander data-test-id="site-header-search-mobile" class="display-flex flex-grow-1 justify-content-flex-end">
+			<div hidden="" id="ms--site-header-search-mobile" class="display-flex align-items-center gap-xxs width-full padding-left-xxs">
+				
+		<form class="flex-grow-1" method="GET" role="search" id="ms--site-header-search-form-mobile" data-bi-name="site-header-search-form-mobile" name="site-header-search-form-mobile" aria-label="Search" action="/en-us/search/">
+			<div class="autocomplete display-block" data-bi-name="autocomplete"><!---->
+			<div class="field-body control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" id="site-header-search-autocomplete-input-mobile" data-test-id="site-header-search-autocomplete-input-mobile" class="autocomplete-input input 
+						
+						width-full" type="search" name="terms" aria-expanded="false" aria-owns="ax-1-listbox" aria-controls="ax-1-listbox" aria-activedescendant="" aria-label="Search" aria-describedby="ms--site-header-search-autocomplete-input-mobile-description" placeholder="Search" data-bi-name="site-header-search-autocomplete-input-mobile" pattern=".*">
+
+				
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+
+				<span hidden="" id="ms--site-header-search-autocomplete-input-mobile-description">
+					Suggestions will filter as you type
+				</span>
+			</div>
+
+			<ul role="listbox" id="ax-1-listbox" data-test-id="site-header-search-autocomplete-input-mobile-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
+				
+				
+			</ul>
+		<!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="">
+			
+			
+		</form>
+	
+				<button data-search-expander-trigger-close="" type="button" class="button button-clear inner-focus" aria-controls="ms--site-header-search-mobile" aria-label="Close search" data-bi-name="site-header-search-close-mobile" data-test-id="site-header-search-close-mobile">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-navigate-close"></span>
+					</span>
+				</button>
+			</div>
+			<button data-search-expander-trigger-open="" type="button" class="button button-clear inner-focus" aria-controls="ms--site-header-search-mobile" aria-label="Open search" data-bi-name="site-header-search-open-mobile" data-test-id="site-header-search-open-mobile">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-search"></span>
+				</span>
+			</button>
+		</search-expander>
+	
+
+		<!-- User avatar/Sign in -->
+		<!---->
+		<a href="#" data-bi-name="site-header-sign-in-mobile" data-test-id="site-header-sign-in-mobile" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined not-authenticated margin-right-xs margin-left-xxs">
+			Sign in
+		</a>
+	 
+		<details data-bi-name="site-header-user-mobile" class="popover popover-right auth-status-determined authenticated margin-right-xs margin-left-xxs">
+			<summary data-bi-name="site-header-user-avatar" aria-label="Your Account" data-test-id="site-header-user-mobile">
+				<div class="persona persona-sm">
+					<figure class="persona-avatar">
+						<img alt="" data-profile-property="avatarThumbnailUrl">
+					</figure>
+				</div>
+			</summary>
+			<div class="popover-content width-auto" data-bi-name="site-header-user-menu">
+				<div class="persona persona-sm">
+					<figure class="persona-avatar">
+						<img alt="" data-profile-property="avatarUrl" aria-labelledby="ms--user-display-name-mobile">
+					</figure>
+					<div class="persona-details" data-test-id="persona-detail-mobile">
+						<p class="persona-name" data-profile-property="displayName" id="ms--user-display-name-mobile"></p>
+						<p data-profile-property="upn"></p>
+					</div>
+				</div>
+				<ul class="padding-block-xs">
+					<li class="padding-bottom-xs">
+						<a data-profile-property="profileUrl" class="font-size-sm" data-bi-name="site-header-user-profile" href="https://learn.microsoft.com/en-us/users/me/activity/">
+							Profile
+						</a>
+					</li>
+					<li>
+						<a data-profile-property="settingsUrl" class="font-size-sm" data-bi-name="site-header-user-settings" href="https://learn.microsoft.com/en-us/users/me/settings/">
+							Settings
+						</a>
+					</li>
+				</ul>
+				<div class="border-top padding-top-xs">
+					<a class="docs-sign-out font-size-sm" href="#" data-bi-name="site-header-sign-out-mobile" data-test-id="site-header-user-sign-out-mobile">
+						Sign out
+					</a>
+				</div>
+			</div>
+		</details>
+	<!---->
+	<!----></div>
+			<div id="ms--primary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L1-header" data-test-id="primary-header"><!---->
+		<!-- MS logo -->
+		
+				<a href="https://www.microsoft.com/" aria-label="Microsoft" itemprop="url" data-bi-name="site-header-microsoft-logo" data-test-id="site-header-microsoft-logo" class="site-header-logo ">
+					
+		<svg aria-hidden="true" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" itemprop="logo" itemscope="itemscope">
+			<path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022"></path>
+			<path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00"></path>
+			<path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef"></path>
+			<path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900"></path>
+		</svg>
+	
+				</a>
+		  
+
+		<!-- Divider -->
+		<div class="site-header-divider"></div>
+
+		<!-- Brand -->
+		
+		<a class="site-header-brand" itemprop="url" href="https://learn.microsoft.com/en-us/" data-bi-name="site-header-brand-learn" data-test-id="site-header-brand">
+			<span><!---->Learn<!----></span>
+		</a>
+	
+
+		<div id="ms--search-expander-wrapper" class="display-flex justify-content-space-between flex-grow-1 align-items-center overflow-x-hidden height-full">
+			<!-- Main Nav -->
+			
+		<overflow-menu class="align-self-stretch" style="display: block; overflow: hidden; width: 100%;">
+			<nav class="site-header-nav" data-bi-name="primary-nav" data-overflow-menu-container="" aria-label="Global" style="visibility: visible; overflow: hidden;">
+				<button type="button" data-overflow-menu-prev-button="" data-bi-name="site-header-btn-prev" class="button button-clear button-sm inner-focus" hidden="" aria-label="Previous">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-chevron-left-light"></span>
+					</span>
+				</button>
+
+				
+		<ul class="display-flex gap-xxs-desktop">
+			<!---->
+			<li aria-setsize="4" aria-posinset="1">
+				<panel-controller data-bi-name="site-header-btn-1-discover">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-1" data-test-id="site-header-panel-controller-1" style="white-space: nowrap;">
+						<span><!---->Discover<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-1" data-bi-name="panel-1-discover" data-test-id="site-header-panel-1">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-cards">
+				<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-1-documentation">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/docs/">
+								Documentation
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->In-depth articles on Microsoft developer tools and technologies<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-2-training">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/training/">
+								Training
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Personalized learning paths and courses<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-3-credentials">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/credentials/">
+								Credentials
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Globally recognized, industry-endorsed credentials<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-4-qna">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/answers/">
+								Q&amp;A
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Technical questions and answers moderated by Microsoft<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-5-code-samples">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/samples/">
+								Code Samples
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Code sample library for Microsoft developer tools and technologies<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-6-assessments">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/assessments/">
+								Assessments
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Interactive, curated guidance and recommendations<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+				<li>
+					<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="panel-card-7-shows">
+						<div class="card-content">
+							<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/shows/">
+								Shows
+							</a>
+							<p class="card-content-description line-clamp-2"><!---->Thousands of hours of original programming from Microsoft experts<!----></p>
+						</div>
+					</article>
+				</li>
+			<!---->
+			</ul>
+			
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-microsoft-learn-for-organizations">
+					<div class="card-content">
+						<p class="card-supertitle line-clamp-2 line-height-normal"><!---->Microsoft Learn for Organizations<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/training/organizations/">
+							Boost your team's technical skills
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Access curated resources to upskill your team and close skills gaps.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+			<li aria-setsize="4" aria-posinset="2">
+				<panel-controller data-bi-name="site-header-btn-2-product-documentation">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-2" data-test-id="site-header-panel-controller-2" style="white-space: nowrap;">
+						<span><!---->Product documentation<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-2" data-bi-name="panel-2-product-documentation" data-test-id="site-header-panel-2">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-links">
+				<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/aspnet/" data-bi-name="panel-link-1-asp-dotnet">
+						ASP.NET
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/azure/" data-bi-name="panel-link-2-azure">
+						Azure
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/dynamics365/" data-bi-name="panel-link-3-dynamics365">
+						Dynamics 365
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/microsoft-365/" data-bi-name="panel-link-4-microsoft-365">
+						Microsoft 365
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/microsoft-edge/" data-bi-name="panel-link-5-microsoft-edge">
+						Microsoft Edge
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/entra/" data-bi-name="panel-link-6-microsoft-entra">
+						Microsoft Entra
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/graph/" data-bi-name="panel-link-7-microsoft-graph">
+						Microsoft Graph
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/mem/" data-bi-name="panel-link-8-microsoft-intune">
+						Microsoft Intune
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/purview/" data-bi-name="panel-link-9-microsoft-purview">
+						Microsoft Purview
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/microsoftteams/" data-bi-name="panel-link-10-microsoft-teams">
+						Microsoft Teams
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/dotnet/" data-bi-name="panel-link-11-dotnet">
+						.NET
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/power-apps/" data-bi-name="panel-link-12-power-apps">
+						Power Apps
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/power-automate/" data-bi-name="panel-link-13-power-automate">
+						Power Automate
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/power-bi/" data-bi-name="panel-link-14-power-bi">
+						Power BI
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/power-platform/" data-bi-name="panel-link-15-power-platform">
+						Power Platform
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/powershell/" data-bi-name="panel-link-16-powershell">
+						PowerShell
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/sql/" data-bi-name="panel-link-17-sql">
+						SQL
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/sysinternals/" data-bi-name="panel-link-18-sysinternals">
+						Sysinternals
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/visualstudio/" data-bi-name="panel-link-19-visual-studio">
+						Visual Studio
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/windows/" data-bi-name="panel-link-20-windows">
+						Windows
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/windows-server/" data-bi-name="panel-link-21-windows-server">
+						Windows Server
+					</a>
+				</li>
+			<!---->
+			</ul>
+			
+			<a class="button button-clear button-sm color-hyperlink justify-content-flex-start border-none background-color-transparent margin-top-sm" href="https://learn.microsoft.com/en-us/docs/" data-bi-name="panel-cta-view-all-products">
+				View all products
+			</a>
+		
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-microsoft-learn-for-organizations">
+					<div class="card-content">
+						<p class="card-supertitle line-clamp-2 line-height-normal"><!---->Microsoft Learn for Organizations<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/training/organizations/">
+							Boost your team's technical skills
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Access curated resources to upskill your team and close skills gaps.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+			<li aria-setsize="4" aria-posinset="3">
+				<panel-controller data-bi-name="site-header-btn-3-dev-languages">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-3" data-test-id="site-header-panel-controller-3" style="white-space: nowrap;">
+						<span><!---->Development languages<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-3" data-bi-name="panel-3-dev-languages" data-test-id="site-header-panel-3">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-links">
+				<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/cpp/" data-bi-name="panel-link-1-cpp">
+						C++
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/dotnet/csharp/" data-bi-name="panel-link-2-csharp">
+						C#
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/dax/" data-bi-name="panel-link-3-dax">
+						DAX
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/java/" data-bi-name="panel-link-4-java">
+						Java
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/odata/" data-bi-name="panel-link-5-odata">
+						OData
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/openapi/" data-bi-name="panel-link-6-open-api">
+						OpenAPI
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/powerquery-m/" data-bi-name="panel-link-7-power-query-m">
+						Power Query M
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/office/vba/" data-bi-name="panel-link-8-vba">
+						VBA
+					</a>
+				</li>
+			<!---->
+			</ul>
+			
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-microsoft-learn-for-organizations">
+					<div class="card-content">
+						<p class="card-supertitle line-clamp-2 line-height-normal"><!---->Microsoft Learn for Organizations<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/training/organizations/">
+							Boost your team's technical skills
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Access curated resources to upskill your team and close skills gaps.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+			<li aria-setsize="4" aria-posinset="4">
+				<panel-controller data-bi-name="site-header-btn-4-topics">
+					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-4" data-test-id="site-header-panel-controller-4" style="white-space: nowrap;">
+						<span><!---->Topics<!----></span>
+						<span class="icon expanded-indicator" aria-hidden="true">
+							<span class="docon docon-chevron-down-light"></span>
+						</span>
+					</button>
+					<div class="site-header-panel" hidden="" id="ms--panel-4" data-bi-name="panel-4-topics" data-test-id="site-header-panel-4">
+						
+		<div class="site-header-panel-content">
+			<ul class="site-header-panel-links">
+				<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/ai/" data-bi-name="panel-link-1-ai">
+						Artificial intelligence
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/compliance/" data-bi-name="panel-link-2-compliance">
+						Compliance
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/devops/" data-bi-name="panel-link-3-devops">
+						DevOps
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/platform-engineering/" data-bi-name="panel-link-4-platform-engineering">
+						Platform engineering
+					</a>
+				</li>
+			<!---->
+				<li>
+					<a class="button button-clear button-sm button-block font-weight-normal justify-content-flex-start inner-focus border-none background-color-body-accent-onhover" href="https://learn.microsoft.com/en-us/security/" data-bi-name="panel-link-5-security">
+						Security
+					</a>
+				</li>
+			<!---->
+			</ul>
+			
+		</div>
+		
+			<section class="site-header-panel-featured-content"><!----><!---->
+				<article class="card position-relative background-color-body-accent-onhover background-color-body-medium box-shadow-none" data-bi-name="featured-card-1-microsoft-learn-for-organizations">
+					<div class="card-content">
+						<p class="card-supertitle line-clamp-2 line-height-normal"><!---->Microsoft Learn for Organizations<!----></p>
+						<a class="card-title color-text background-color-transparent stretched-link" href="https://learn.microsoft.com/en-us/training/organizations/">
+							Boost your team's technical skills
+						</a>
+						<p class="card-content-description line-clamp-2"><!---->Access curated resources to upskill your team and close skills gaps.<!----></p>
+					</div>
+				</article>
+			<!----><!----></section>
+		
+	
+					</div>
+				</panel-controller>
+			</li>
+		<!---->
+		</ul>
+	
+
+				<button type="button" data-overflow-menu-next-button="" data-bi-name="site-header-btn-next" class="button button-clear button-sm inner-focus margin-left-auto" hidden="" aria-label="Next">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-chevron-right-light"></span>
+					</span>
+				</button>
+			</nav>
+		</overflow-menu>
+	
+
+			<!-- Search -->
+			
+		<search-expander data-test-id="site-header-search" class="flex-grow-1 margin-left-xxs">
+			<div hidden="" id="ms--site-header-search" class="display-flex align-items-center gap-xxs ">
+				
+		<form class="flex-grow-1" method="GET" role="search" id="ms--site-header-search-form" data-bi-name="site-header-search-form" name="site-header-search-form" aria-label="Search" action="/en-us/search/">
+			<div class="autocomplete display-block" data-bi-name="autocomplete"><!---->
+			<div class="field-body control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" id="site-header-search-autocomplete-input" data-test-id="site-header-search-autocomplete-input" class="autocomplete-input input input-sm
+						
+						width-full" type="search" name="terms" aria-expanded="false" aria-owns="ax-0-listbox" aria-controls="ax-0-listbox" aria-activedescendant="" aria-label="Search" aria-describedby="ms--site-header-search-autocomplete-input-description" placeholder="Search" data-bi-name="site-header-search-autocomplete-input" pattern=".*">
+
+				
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+
+				<span hidden="" id="ms--site-header-search-autocomplete-input-description">
+					Suggestions will filter as you type
+				</span>
+			</div>
+
+			<ul role="listbox" id="ax-0-listbox" data-test-id="site-header-search-autocomplete-input-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
+				
+				
+			</ul>
+		<!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="">
+			
+			
+		</form>
+	
+				<button data-search-expander-trigger-close="" type="button" class="button button-clear inner-focus" aria-controls="ms--site-header-search" aria-label="Close search" data-bi-name="site-header-search-close" data-test-id="site-header-search-close">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-navigate-close"></span>
+					</span>
+				</button>
+			</div>
+			<button data-search-expander-trigger-open="" type="button" class="button button-clear inner-focus" aria-controls="ms--site-header-search" aria-label="Open search" data-bi-name="site-header-search-open" data-test-id="site-header-search-open">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-search"></span>
+				</span>
+			</button>
+		</search-expander>
+	
+		</div>
+
+		<!-- User avatar/Sign in -->
+		<!---->
+		<a href="#" data-bi-name="site-header-sign-in" data-test-id="site-header-sign-in" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined not-authenticated ">
+			Sign in
+		</a>
+	 
+		<details data-bi-name="site-header-user" class="popover popover-right auth-status-determined authenticated ">
+			<summary data-bi-name="site-header-user-avatar" aria-label="Your Account" data-test-id="site-header-user">
+				<div class="persona ">
+					<figure class="persona-avatar">
+						<img alt="" data-profile-property="avatarThumbnailUrl">
+					</figure>
+				</div>
+			</summary>
+			<div class="popover-content width-auto" data-bi-name="site-header-user-menu">
+				<div class="persona ">
+					<figure class="persona-avatar">
+						<img alt="" data-profile-property="avatarUrl" aria-labelledby="ms--user-display-name">
+					</figure>
+					<div class="persona-details" data-test-id="persona-detail">
+						<p class="persona-name" data-profile-property="displayName" id="ms--user-display-name"></p>
+						<p data-profile-property="upn"></p>
+					</div>
+				</div>
+				<ul class="padding-block-xs">
+					<li class="padding-bottom-xs">
+						<a data-profile-property="profileUrl" class="font-size-sm" data-bi-name="site-header-user-profile" href="https://learn.microsoft.com/en-us/users/me/activity/">
+							Profile
+						</a>
+					</li>
+					<li>
+						<a data-profile-property="settingsUrl" class="font-size-sm" data-bi-name="site-header-user-settings" href="https://learn.microsoft.com/en-us/users/me/settings/">
+							Settings
+						</a>
+					</li>
+				</ul>
+				<div class="border-top padding-top-xs">
+					<a class="docs-sign-out font-size-sm" href="#" data-bi-name="site-header-sign-out" data-test-id="site-header-user-sign-out">
+						Sign out
+					</a>
+				</div>
+			</div>
+		</details>
+	<!---->
+	<!----></div>
+			<div id="ms--secondary-nav" class="display-none display-flex-tablet" data-bi-name="L2-header" data-test-id="secondary-header"><!----><div class="site-header width-full"><!----> 
+		<a class="site-header-brand font-size-h6 padding-inline-none margin-right-xxs" itemprop="url" href="https://learn.microsoft.com/en-us/azure/devops" data-bi-name="secondary-nav-link-category-azure-devops">
+			<span>
+				Azure DevOps
+				
+			</span>
+		</a>
+	 
+		
+		<nav class="site-header-nav width-auto" data-bi-name="secondary-nav" aria-label="Site">
+			<ul class="display-flex">
+				<!---->
+		<li class="dropdown">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  site-header-button-icon-chevron" aria-controls="bx-89" data-bi-name="secondary-nav-btn-1-services" value="undefined">
+				<span><!---->Services<!----></span>
+				<span aria-hidden="true" class="icon expanded-indicator ">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-89" aria-label="Services" data-bi-name="secondary-nav-menu-1-services">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/boards/" data-bi-name="secondary-nav-link-1-azure-boards">
+						<span><!---->Azure Boards<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/repos/" data-bi-name="secondary-nav-link-2-azure-repos">
+						<span><!---->Azure Repos<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines" data-bi-name="secondary-nav-link-3-azure-pipelines">
+						<span><!---->Azure Pipelines<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/test/" data-bi-name="secondary-nav-link-4-azure-test-plans">
+						<span><!---->Azure Test plans<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/artifacts/" data-bi-name="secondary-nav-link-5-azure-artifacts">
+						<span><!---->Azure Artifacts<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/server/server/" data-bi-name="secondary-nav-link-6-azure-devops-server">
+						<span><!---->Azure DevOps Server<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/" data-bi-name="secondary-nav-link-7-all-services">
+						<span><!---->All services<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  site-header-button-icon-chevron" aria-controls="bx-90" data-bi-name="secondary-nav-btn-2-build-and-deploy-apps" value="undefined">
+				<span><!---->Build and Deploy Apps<!----></span>
+				<span aria-hidden="true" class="icon expanded-indicator ">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-90" aria-label="Build and Deploy Apps" data-bi-name="secondary-nav-menu-2-build-and-deploy-apps">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/dotnet-core" data-bi-name="secondary-nav-link-1-dotnet-core">
+						<span><!---->.NET Core<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/javascript" data-bi-name="secondary-nav-link-2-javascript-and-nodejs">
+						<span><!---->JavaScript and Node.js<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/targets/webapp" data-bi-name="secondary-nav-link-3-azure-web-apps">
+						<span><!---->Azure Web Apps<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/kubernetes/deploy" data-bi-name="secondary-nav-link-4-kubernetes">
+						<span><!---->Kubernetes<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python" data-bi-name="secondary-nav-link-5-python">
+						<span><!---->Python<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/targets/azure-sqldb" data-bi-name="secondary-nav-link-6-azure-sql-database">
+						<span><!---->Azure SQL Database<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/#build-and-deploy-your-apps" data-bi-name="secondary-nav-link-7-all-app-types">
+						<span><!---->All app types<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  site-header-button-icon-chevron" aria-controls="bx-91" data-bi-name="secondary-nav-btn-3-get-started" value="undefined">
+				<span><!---->Get Started<!----></span>
+				<span aria-hidden="true" class="icon expanded-indicator ">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-91" aria-label="Get Started" data-bi-name="secondary-nav-menu-3-get-started">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/get-started/" data-bi-name="secondary-nav-link-1-get-started-with-azure-devops">
+						<span><!---->Get started with Azure DevOps<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/project/navigation/" data-bi-name="secondary-nav-link-2-web-portal-navigation">
+						<span><!---->Web portal navigation<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/report/dashboards/overview" data-bi-name="secondary-nav-link-3-dashboards-charts-reports-and-widgets">
+						<span><!---->Dashboards, charts, reports, &amp; widgets<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/project/wiki/wiki-create-repo" data-bi-name="secondary-nav-link-4-create-a-wiki-for-your-project">
+						<span><!---->Create a wiki for your project<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/boards/github/connect-to-github" data-bi-name="secondary-nav-link-5-azure-boards-and-github">
+						<span><!---->Azure Boards &amp; GitHub<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops//pipelines/create-first-pipeline" data-bi-name="secondary-nav-link-6-azure-pipeline-and-github">
+						<span><!---->Azure Pipelines &amp; GitHub<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  site-header-button-icon-chevron" aria-controls="bx-92" data-bi-name="secondary-nav-btn-4-tools-and-settings" value="undefined">
+				<span><!---->Tools and settings<!----></span>
+				<span aria-hidden="true" class="icon expanded-indicator ">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-92" aria-label="Tools and settings" data-bi-name="secondary-nav-menu-4-tools-and-settings">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/organizations/" data-bi-name="secondary-nav-link-1-configure-and-customize">
+						<span><!---->Configure and customize<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/organizations/security/about-security-identity" data-bi-name="secondary-nav-link-2-security-access-and-billing">
+						<span><!---->Security, access, and billing<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/marketplace/overview" data-bi-name="secondary-nav-link-3-marketplace-and-extensibility">
+						<span><!---->Marketplace and extensibility<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  site-header-button-icon-chevron" aria-controls="bx-93" data-bi-name="secondary-nav-btn-5-resources" value="undefined">
+				<span><!---->Resources<!----></span>
+				<span aria-hidden="true" class="icon expanded-indicator ">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-93" aria-label="Resources" data-bi-name="secondary-nav-menu-5-resources">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/release-notes" data-bi-name="secondary-nav-link-1-release-notes">
+						<span><!---->Release Notes<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://azure.microsoft.com/pricing/details/devops/azure-devops-services/" data-bi-name="secondary-nav-link-2-pricing">
+						<span><!---->Pricing<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://blogs.msdn.microsoft.com/devops/" data-bi-name="secondary-nav-link-3-blog">
+						<span><!---->Blog<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://azure.microsoft.com/case-studies/?term=devops" data-bi-name="secondary-nav-link-4-case-studies">
+						<span><!---->Case Studies<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/learn" data-bi-name="secondary-nav-link-5-resource-center">
+						<span><!---->Resource Center<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/platform-engineering/" data-bi-name="secondary-nav-link-6-platform-engineering">
+						<span><!---->Platform engineering<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://azure.microsoft.com/support/devops/" data-bi-name="secondary-nav-link-7-support">
+						<span><!---->Support<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown" hidden="">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  site-header-button-icon-chevron" aria-controls="bx-94" data-bi-name="secondary-nav-btn-more" value="undefined">
+				<span><!---->More<!----></span>
+				<span aria-hidden="true" class="icon expanded-indicator ">
+					<span class="docon docon-chevron-down-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-94" aria-label="More" data-bi-name="secondary-nav-menu-more">
+				<!---->
+		<li class="dropdown" hidden="">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  width-full justify-content-space-between padding-inline-xs padding-block-xxs" aria-controls="bx-95" data-bi-name="secondary-nav-btn-1-services" value="undefined">
+				<span><!---->Services<!----></span>
+				<span aria-hidden="true" class="icon  margin-left-xs">
+					<span class="docon docon-chevron-right-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-95" aria-label="Services" data-bi-name="secondary-nav-menu-1-services">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/boards/" data-bi-name="secondary-nav-link-1-azure-boards">
+						<span><!---->Azure Boards<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/repos/" data-bi-name="secondary-nav-link-2-azure-repos">
+						<span><!---->Azure Repos<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines" data-bi-name="secondary-nav-link-3-azure-pipelines">
+						<span><!---->Azure Pipelines<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/test/" data-bi-name="secondary-nav-link-4-azure-test-plans">
+						<span><!---->Azure Test plans<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/artifacts/" data-bi-name="secondary-nav-link-5-azure-artifacts">
+						<span><!---->Azure Artifacts<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/server/server/" data-bi-name="secondary-nav-link-6-azure-devops-server">
+						<span><!---->Azure DevOps Server<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/" data-bi-name="secondary-nav-link-7-all-services">
+						<span><!---->All services<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown" hidden="">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  width-full justify-content-space-between padding-inline-xs padding-block-xxs" aria-controls="bx-96" data-bi-name="secondary-nav-btn-2-build-and-deploy-apps" value="undefined">
+				<span><!---->Build and Deploy Apps<!----></span>
+				<span aria-hidden="true" class="icon  margin-left-xs">
+					<span class="docon docon-chevron-right-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-96" aria-label="Build and Deploy Apps" data-bi-name="secondary-nav-menu-2-build-and-deploy-apps">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/dotnet-core" data-bi-name="secondary-nav-link-1-dotnet-core">
+						<span><!---->.NET Core<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/javascript" data-bi-name="secondary-nav-link-2-javascript-and-nodejs">
+						<span><!---->JavaScript and Node.js<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/targets/webapp" data-bi-name="secondary-nav-link-3-azure-web-apps">
+						<span><!---->Azure Web Apps<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/kubernetes/deploy" data-bi-name="secondary-nav-link-4-kubernetes">
+						<span><!---->Kubernetes<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python" data-bi-name="secondary-nav-link-5-python">
+						<span><!---->Python<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/pipelines/targets/azure-sqldb" data-bi-name="secondary-nav-link-6-azure-sql-database">
+						<span><!---->Azure SQL Database<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/#build-and-deploy-your-apps" data-bi-name="secondary-nav-link-7-all-app-types">
+						<span><!---->All app types<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown" hidden="">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  width-full justify-content-space-between padding-inline-xs padding-block-xxs" aria-controls="bx-97" data-bi-name="secondary-nav-btn-3-get-started" value="undefined">
+				<span><!---->Get Started<!----></span>
+				<span aria-hidden="true" class="icon  margin-left-xs">
+					<span class="docon docon-chevron-right-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-97" aria-label="Get Started" data-bi-name="secondary-nav-menu-3-get-started">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/get-started/" data-bi-name="secondary-nav-link-1-get-started-with-azure-devops">
+						<span><!---->Get started with Azure DevOps<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/project/navigation/" data-bi-name="secondary-nav-link-2-web-portal-navigation">
+						<span><!---->Web portal navigation<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/report/dashboards/overview" data-bi-name="secondary-nav-link-3-dashboards-charts-reports-and-widgets">
+						<span><!---->Dashboards, charts, reports, &amp; widgets<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/project/wiki/wiki-create-repo" data-bi-name="secondary-nav-link-4-create-a-wiki-for-your-project">
+						<span><!---->Create a wiki for your project<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/boards/github/connect-to-github" data-bi-name="secondary-nav-link-5-azure-boards-and-github">
+						<span><!---->Azure Boards &amp; GitHub<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops//pipelines/create-first-pipeline" data-bi-name="secondary-nav-link-6-azure-pipeline-and-github">
+						<span><!---->Azure Pipelines &amp; GitHub<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown" hidden="">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  width-full justify-content-space-between padding-inline-xs padding-block-xxs" aria-controls="bx-98" data-bi-name="secondary-nav-btn-4-tools-and-settings" value="undefined">
+				<span><!---->Tools and settings<!----></span>
+				<span aria-hidden="true" class="icon  margin-left-xs">
+					<span class="docon docon-chevron-right-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-98" aria-label="Tools and settings" data-bi-name="secondary-nav-menu-4-tools-and-settings">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/organizations/" data-bi-name="secondary-nav-link-1-configure-and-customize">
+						<span><!---->Configure and customize<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/organizations/security/about-security-identity" data-bi-name="secondary-nav-link-2-security-access-and-billing">
+						<span><!---->Security, access, and billing<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/marketplace/overview" data-bi-name="secondary-nav-link-3-marketplace-and-extensibility">
+						<span><!---->Marketplace and extensibility<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+		<li class="dropdown" hidden="">
+			<button type="button" aria-expanded="false" class="dropdown-trigger site-header-button  width-full justify-content-space-between padding-inline-xs padding-block-xxs" aria-controls="bx-99" data-bi-name="secondary-nav-btn-5-resources" value="undefined">
+				<span><!---->Resources<!----></span>
+				<span aria-hidden="true" class="icon  margin-left-xs">
+					<span class="docon docon-chevron-right-light"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu padding-bottom-xxs background-color-body-medium" id="bx-99" aria-label="Resources" data-bi-name="secondary-nav-menu-5-resources">
+				<!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/release-notes" data-bi-name="secondary-nav-link-1-release-notes">
+						<span><!---->Release Notes<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://azure.microsoft.com/pricing/details/devops/azure-devops-services/" data-bi-name="secondary-nav-link-2-pricing">
+						<span><!---->Pricing<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://blogs.msdn.microsoft.com/devops/" data-bi-name="secondary-nav-link-3-blog">
+						<span><!---->Blog<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://azure.microsoft.com/case-studies/?term=devops" data-bi-name="secondary-nav-link-4-case-studies">
+						<span><!---->Case Studies<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/azure/devops/learn" data-bi-name="secondary-nav-link-5-resource-center">
+						<span><!---->Resource Center<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://learn.microsoft.com/en-us/platform-engineering/" data-bi-name="secondary-nav-link-6-platform-engineering">
+						<span><!---->Platform engineering<!----></span>
+					</a>
+				</li>
+		  <!---->
+				<li>
+					<a class="has-external-link-indicator site-header-button width-full justify-content-flex-start padding-inline-xs padding-block-xxs " href="https://azure.microsoft.com/support/devops/" data-bi-name="secondary-nav-link-7-support">
+						<span><!---->Support<!----></span>
+					</a>
+				</li>
+		  <!---->
+			</ul>
+		</li>
+	<!---->
+			</ul>
+		</li>
+	<!---->
+			</ul>
+		</nav>
+	
+		<span class="nav-bar-spacer"></span>
+		 <div class="buttons"><!---->
+		<a data-test-id="navbar-primary-cta" class="button button-sm button-primary " href="https://azure.microsoft.com/pricing/details/devops/azure-devops-services/" data-bi-name="secondary-nav-cta-secondary-free-account">
+			Free Account
+		</a>
+	 
+		<a data-test-id="navbar-primary-cta" class="button button-sm button-primary button-filled margin-right-none" href="https://go.microsoft.com/fwlink/?LinkId=2014676&amp;githubsi=true&amp;clcid=0x409&amp;WebUserId=3BDE6FBA852669671E3561AF84FA68A9" data-bi-name="secondary-nav-cta-primary-open-azure-devops">
+			Open Azure DevOps
+		</a>
+	<!----></div>  
+	 <!----></div><!----></div>
+		</header><div id="content-header" class="content-header uhf-container has-padding has-default-focus border-bottom-none" data-bi-name="content-header">
+				<div class="content-header-controls margin-xxs margin-inline-sm-tablet">
+					<button type="button" class="contents-button button button-sm margin-right-xxs" data-bi-name="contents-expand" aria-haspopup="true" data-contents-button="">
+						<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+						<span class="contents-expand-title">Table of contents</span>
+					</button>
+					<button type="button" class="ap-collapse-behavior ap-expanded button button-sm" data-bi-name="ap-collapse" aria-controls="action-panel">
+						<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+						<span>Exit focus mode</span>
+					</button>
+				</div>
+			</div><div id="disclaimer-holder" class="has-overflow-hidden has-default-focus">
+			<!-- liquid-tag banners sectional -->
+		</div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile "><div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="margin-top-sm-tablet position-sticky display-flex flex-direction-column" aria-label="Primary" style="top: 24px; height: calc(-49px + 100vh); max-height: 5742.9px;" data-bi-name="left toc" role="navigation"><div class="moniker-picker2" data-bi-name="moniker-picker"><!---->
+		<span class="label margin-bottom-xxs"><!---->Version<!----></span>
+		<div class="dropdown margin-bottom-xxs" role="navigation" aria-label="Version">
+			<button class="dropdown-trigger justify-content-flex-start button-block button button-sm inner-focus" aria-expanded="false" data-autofocus="" aria-controls="ax-5">
+				<span class="has-text-overflow-ellipsis"><!---->Azure DevOps Services<!----></span>
+				<span class="dropdown-button-chevron color-text" aria-hidden="true">
+					<span class="icon">
+						<span class="docon docon-chevron-down-light expanded-indicator"></span>
+					</span>
+				</span>
+			</button>
+			<ul class="dropdown-menu is-full-width is-vertically-scrollable" id="ax-5" aria-label="TFS">
+						<!----><!---->
+		<li>
+			<a class="preserve-view button button-sm button-clear button-block text-decoration-none inner-focus justify-content-flex-start has-text-wrap is-text-left" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops"><!---->Azure DevOps Services<!----></a>
+		</li>
+	<!----><!----><!---->
+		<li>
+			<a class="preserve-view button button-sm button-clear button-block text-decoration-none inner-focus justify-content-flex-start has-text-wrap is-text-left" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops-2022"><!---->Azure DevOps Server 2022<!----></a>
+		</li>
+	<!----><!----><!---->
+		<li>
+			<a class="preserve-view button button-sm button-clear button-block text-decoration-none inner-focus justify-content-flex-start has-text-wrap is-text-left" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops-2020"><!---->Azure DevOps Server 2020<!----></a>
+		</li>
+	<!----><!----><!---->
+		<li>
+			<a class="preserve-view button button-sm button-clear button-block text-decoration-none inner-focus justify-content-flex-start has-text-wrap is-text-left" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops-2019"><!---->Azure DevOps Server 2019<!----></a>
+		</li>
+	<!----><!---->
+						<li>
+									<a class="button button-sm button-clear button-block text-decoration-none border-top inner-focus justify-content-flex-start" href="https://docs.microsoft.com/en-us/previous-versions/azure/devops/all/"><!---->Previous versions<!----></a>
+							  </li>
+				  </ul>
+		</div>
+	<!----></div><form action="javascript:" role="search" aria-label="Search" class="margin-bottom-xxs"><label class="visually-hidden" for="ax-2">Search</label><div class="autocomplete display-block" data-bi-name="autocomplete"><!---->
+			<div class="field-body control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-2" data-test-id="ax-2" class="autocomplete-input input input-sm
+						control has-icons-left
+						width-full" type="text" aria-expanded="false" aria-owns="ax-3-listbox" aria-controls="ax-3-listbox" aria-activedescendant="" aria-describedby="ms--ax-2-description" placeholder="Filter by title" pattern=".*">
+
+				
+					<span aria-hidden="true" class="icon is-small is-left">
+						<span class="has-text-primary docon docon-filter-settings"></span>
+					</span>
+			  
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+
+				<span hidden="" id="ms--ax-2-description">
+					Suggestions will filter as you type
+				</span>
+			</div>
+
+			<ul role="listbox" id="ax-3-listbox" data-test-id="ax-2-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
+				
+				
+			</ul>
+		<!----></div></form><ul class="tree table-of-contents is-vertically-scrollable flex-grow-1 flex-shrink-1" role="tree" aria-label="Table of contents" data-bi-name="tree" data-is-collapsible="true"><li role="none"><a aria-setsize="12" aria-level="1" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/?view=azure-devops">Azure Repos Documentation</a></li><li role="none"><a aria-setsize="12" aria-level="1" aria-posinset="2" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/get-started/what-is-repos?view=azure-devops">What is Azure Repos?</a></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="3" role="treeitem" tabindex="-1" id="title-3-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Get started</span></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="4" role="treeitem" tabindex="-1" id="title-4-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Cross-service integration</span></li><li class="tree-item is-expanded" aria-setsize="12" aria-level="1" aria-posinset="5" role="treeitem" tabindex="-1" id="title-5-1" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Git</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="14" aria-level="2" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/?view=azure-devops">Git Repositories</a></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="2" role="treeitem" tabindex="-1" id="title-5-1_2-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Get started with Git</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="3" role="treeitem" tabindex="-1" id="title-5-1_3-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Connect &amp; authenticate</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="4" role="treeitem" tabindex="-1" id="title-5-1_4-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Key concepts</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="5" role="treeitem" tabindex="-1" id="title-5-1_5-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Create &amp; manage repos</span></li><li class="tree-item is-expanded" aria-setsize="14" aria-level="2" aria-posinset="6" role="treeitem" tabindex="-1" id="title-5-1_6-2" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Branches &amp; forks</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="7" aria-level="3" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies-overview?view=azure-devops">About branches &amp; branch policies</a></li><li role="none"><a aria-setsize="7" aria-level="3" aria-posinset="2" role="treeitem" tabindex="0" class="tree-item is-leaf has-external-link-indicator is-selected" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops" aria-current="page">Branch strategy</a></li><li role="none"><a aria-setsize="7" aria-level="3" aria-posinset="3" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/create-branch?view=azure-devops">Create a branch</a></li><li role="none"><a aria-setsize="7" aria-level="3" aria-posinset="4" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/delete-git-branch?view=azure-devops">Delete a Git branch</a></li><li role="none"><a aria-setsize="7" aria-level="3" aria-posinset="5" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?view=azure-devops">Change the default branch</a></li><li role="none"><a aria-setsize="7" aria-level="3" aria-posinset="6" role="treeitem" tabindex="-1" class="tree-item is-leaf has-external-link-indicator" data-bi-name="tree-leaf" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/forks?view=azure-devops">Forks</a></li><li class="tree-item" aria-setsize="7" aria-level="3" aria-posinset="7" role="treeitem" tabindex="-1" id="title-5-1_6-2_7-3" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Manage branches</span></li></ul></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="7" role="treeitem" tabindex="-1" id="title-5-1_7-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Commits, push, fetch, pull</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="8" role="treeitem" tabindex="-1" id="title-5-1_8-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Pull requests</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="9" role="treeitem" tabindex="-1" id="title-5-1_9-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>History</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="10" role="treeitem" tabindex="-1" id="title-5-1_10-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Cross-service operations</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="11" role="treeitem" tabindex="-1" id="title-5-1_11-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Samples</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="12" role="treeitem" tabindex="-1" id="title-5-1_12-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Command reference</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="13" role="treeitem" tabindex="-1" id="title-5-1_13-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Reference</span></li><li class="tree-item" aria-setsize="14" aria-level="2" aria-posinset="14" role="treeitem" tabindex="-1" id="title-5-1_14-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Resources</span></li></ul></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="6" role="treeitem" tabindex="-1" id="title-6-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Team Foundation version control</span></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="7" role="treeitem" tabindex="-1" id="title-7-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Security</span></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Integrations</span></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="9" role="treeitem" tabindex="-1" id="title-9-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>REST API Reference</span></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="10" role="treeitem" tabindex="-1" id="title-10-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>IDE Client Resources</span></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="11" role="treeitem" tabindex="-1" id="title-11-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>DevOps Resource Center</span></li><li class="tree-item" aria-setsize="12" aria-level="1" aria-posinset="12" role="treeitem" tabindex="-1" id="title-12-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Resources</span></li></ul><div class="padding-xxs padding-none-tablet border-top border-bottom-tablet"><button class="button button-sm button-clear button-block inner-focus justify-content-flex-start-tablet" data-bi-name="download-pdf" rel="nofollow"><!---->
+			<span class="icon" aria-hidden="true">
+				<span class="docon docon-dictionary-download"></span>
+			</span>
+			<span><!---->Download PDF<!----></span>
+		<!----></button></div></nav>
+			</div><!-- .primary-holder -->
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<!--div.columns -->
+				<div class="columns is-gapless-mobile has-large-gaps "><div id="main-column" class="column  is-full is-8-desktop">
+
+						<main id="main" class="" role="main" data-bi-name="content" lang="en-us" dir="ltr"><!-- article-header -->
+							<div id="article-header" class="background-color-body margin-top-sm-tablet margin-bottom-xs display-none-print">
+								<div class="display-flex align-items-center "><details id="article-header-breadcrumbs-overflow-popover" class="popover" data-for="article-header-breadcrumbs" hidden="">
+										<summary class="button button-clear button-primary button-sm inner-focus" aria-label="All breadcrumbs">
+											<span class="icon">
+												<span class="docon docon-more"></span>
+											</span>
+										</summary>
+										<div id="article-header-breadcrumbs-overflow" class="popover-content padding-none"><!---->
+			<nav>
+				<ol class="list-style-none">
+					<!---->
+								<li class="line-clamp-1">
+									<a class="display-block has-inner-focus padding-inline-xs padding-block-xxs border-radius font-size-sm" href="https://learn.microsoft.com/en-us/?view=azure-devops">
+										Learn
+									</a>
+								</li>
+							<!----><!---->
+								<li class="line-clamp-1">
+									<a class="display-block has-inner-focus padding-inline-xs padding-block-xxs border-radius font-size-sm" href="https://learn.microsoft.com/en-us/azure/?view=azure-devops">
+										Azure
+									</a>
+								</li>
+							<!----><!---->
+								<li class="line-clamp-1">
+									<a class="display-block has-inner-focus padding-inline-xs padding-block-xxs border-radius font-size-sm" href="https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops">
+										Azure DevOps
+									</a>
+								</li>
+							<!----><!---->
+								<li class="line-clamp-1">
+									<a class="display-block has-inner-focus padding-inline-xs padding-block-xxs border-radius font-size-sm" href="https://learn.microsoft.com/en-us/azure/devops/repos/?view=azure-devops">
+										Azure Repos
+									</a>
+								</li>
+							<!---->
+				</ol>
+			</nav>
+			
+		<!----></div>
+									</details>
+
+									<bread-crumbs id="article-header-breadcrumbs" data-test-id="article-header-breadcrumbs" class="overflow-hidden flex-grow-1 margin-right-sm margin-right-md-tablet margin-right-lg-desktop margin-left-negative-xxs padding-left-xxs" style="display: block; white-space: nowrap; overflow: hidden;"><!---->
+			<nav>
+				<ol class="breadcrumbs">
+					<!---->
+								<li class="breadcrumbs-item" data-bread-crumbs-collapse-target="">
+									<a href="https://learn.microsoft.com/en-us/?view=azure-devops"><!---->Learn<!----></a>
+								</li>
+							<!----><!---->
+								<li class="breadcrumbs-item" data-bread-crumbs-collapse-target="">
+									<a href="https://learn.microsoft.com/en-us/azure/?view=azure-devops"><!---->Azure<!----></a>
+								</li>
+							<!----><!---->
+								<li class="breadcrumbs-item" data-bread-crumbs-collapse-target="">
+									<a href="https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops"><!---->Azure DevOps<!----></a>
+								</li>
+							<!----><!---->
+								<li class="breadcrumbs-item" data-bread-crumbs-collapse-target="" style="">
+									<a href="https://learn.microsoft.com/en-us/azure/devops/repos/?view=azure-devops" style=""><!---->Azure Repos<!----></a>
+								</li>
+							<!---->
+				</ol>
+			</nav>
+		<!----></bread-crumbs><div id="article-header-page-actions" class="margin-left-auto display-flex flex-wrap-no-wrap align-items-stretch"><a id="lang-link-tablet" class="button button-primary button-clear button-sm display-none display-inline-flex-tablet" title="Read in English" data-bi-name="language-toggle" data-read-in-link="" hidden="" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops" data-bi="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+											<span class="icon margin-none" aria-hidden="true" data-read-in-link-icon="">
+												<span class="docon docon-locale-globe"></span>
+											</span>
+											<span class="is-visually-hidden" data-read-in-link-text="">Read in English</span>
+										</a><details class="popover popover-right add-item-popover">
+		<summary class="button button-clear button-sm button-primary display-none display-inline-flex-tablet" data-list-type="collection" data-list-item-title="Git branching guidance - Azure Repos | Microsoft Learn" data-list-item-url="/azure/devops/repos/git/git-branching-guidance?view=azure-devops" data-list-source="module" data-resource-type="" data-bi-name="add-to-list" aria-describedby="popover-content" aria-expanded="false">
+			
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-circle-addition"></span>
+												</span>
+												<span class="collection-status is-visually-hidden">Save</span>
+											
+		</summary>
+		<div class="popover-content has-z-index-one">
+			<ul class="list-style-none margin-inline-none">
+				<li>
+					<button class="button button-clear button-sm button-primary" data-list-type="collection" data-list-item-title="Git branching guidance - Azure Repos | Microsoft Learn" data-list-item-url="/azure/devops/repos/git/git-branching-guidance?view=azure-devops" data-bi-name="add-to-collections" data-pressed="false" title="Add Git branching guidance - Azure Repos | Microsoft Learn to a collection">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-circle-addition"></span>
+						</span>
+						<span class="collection-status">Add to Collections</span>
+					</button>
+				</li>
+				<li>
+					<button class="button button-clear button-sm button-primary" data-list-type="plan" data-list-item-title="Git branching guidance - Azure Repos | Microsoft Learn" data-list-item-url="/azure/devops/repos/git/git-branching-guidance?view=azure-devops" data-bi-name="add-to-plans" data-pressed="false" title="Add Git branching guidance - Azure Repos | Microsoft Learn to a Plan">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-circle-addition"></span>
+						</span>
+						<span class="plan-status">Add to Plan</span>
+					</button>
+				</li>
+				
+			</ul>
+		</div>
+	</details><a data-contenteditbtn="" class="button button-clear button-sm text-decoration-none button-primary display-none display-inline-flex-tablet" aria-label="Edit" title="Edit This Document" data-bi-name="edit" href="https://github.com/MicrosoftDocs/azure-devops-docs/blob/main/docs/repos/git/git-branching-guidance.md" data-original_content_git_url="https://github.com/MicrosoftDocs/azure-devops-docs-pr/blob/live/docs/repos/git/git-branching-guidance.md" data-original_content_git_url_template="{repo}/blob/{branch}/docs/repos/git/git-branching-guidance.md" data-pr_repo="" data-pr_branch="">
+												<span class="icon margin-none" aria-hidden="true">
+													<span class="docon docon-edit-outline"></span>
+												</span>
+											</a>
+										<details class="popover popover-right" id="article-header-page-actions-overflow">
+											<summary class="justify-content-flex-start button button-clear button-sm button-primary" aria-label="More actions" title="More actions">
+												<span class="icon" aria-hidden="true">
+													<span class="docon docon-more-vertical"></span>
+												</span>
+											</summary>
+											<div class="popover-content padding-xs"><button data-page-action-item="overflow-mobile" type="button" class="justify-content-flex-start button-block button-sm has-inner-focus button button-clear display-none-tablet" data-bi-name="contents-expand" data-contents-button="" data-popover-close="">
+														<span class="icon">
+															<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+														</span><span class="contents-expand-title">Table of contents</span></button><a id="lang-link-overflow" class="justify-content-flex-start button-sm has-inner-focus button button-clear button-block display-none-tablet" title="Read in English" data-bi-name="language-toggle" data-page-action-item="overflow-mobile" data-check-hidden="true" data-read-in-link="" hidden="" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops" data-bi="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+													<span class="icon" aria-hidden="true" data-read-in-link-icon="">
+														<span class="docon docon-locale-globe"></span>
+													</span>
+													<span data-read-in-link-text="">Read in English</span>
+												</a><button type="button" class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet" data-list-type="collection" data-bi-name="collection" title="Add Git branching guidance - Azure Repos | Microsoft Learn to a collection" data-page-action-item="overflow-mobile" data-check-hidden="true" data-popover-close="" data-pressed="false">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="collection-status">Add to Collections</span>
+													</button>
+
+			 										
+													<button type="button" class="collection justify-content-flex-start button button-clear button-sm has-inner-focus button-block display-none-tablet" data-list-type="plan" data-bi-name="plan" title="Add Git branching guidance - Azure Repos | Microsoft Learn to a Plan" data-page-action-item="overflow-mobile" data-check-hidden="true" data-popover-close="" data-pressed="false">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-circle-addition"></span>
+														</span>
+														<span class="plan-status">Add to Plan</span>
+													</button><a data-contenteditbtn="" class="button button-clear button-block button-sm has-inner-focus justify-content-flex-start text-decoration-none display-none-tablet" aria-label="Edit" title="Edit This Document" data-bi-name="edit" href="https://github.com/MicrosoftDocs/azure-devops-docs/blob/main/docs/repos/git/git-branching-guidance.md" data-original_content_git_url="https://github.com/MicrosoftDocs/azure-devops-docs-pr/blob/live/docs/repos/git/git-branching-guidance.md" data-original_content_git_url_template="{repo}/blob/{branch}/docs/repos/git/git-branching-guidance.md" data-pr_repo="" data-pr_branch="">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-edit-outline"></span>
+														</span>
+														<span>Edit</span>
+													</a><div aria-hidden="true" class="margin-none" data-page-action-item="overflow-all"></div>
+														<hr class="display-none-tablet margin-bottom-xxs margin-top-xxs">
+														<h4 class="font-size-sm padding-left-xxs">Share via</h4>
+
+													<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start share-facebook" data-bi-name="facebook" data-page-action-item="overflow-all" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fdevops%2Frepos%2Fgit%2Fgit-branching-guidance%3Fview%3Dazure-devops%26WT.mc_id%3Dfacebook">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-facebook-share font-size-md color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Facebook</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-twitter" data-bi-name="twitter" data-page-action-item="overflow-all" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fdevops%2Frepos%2Fgit%2Fgit-branching-guidance%3Fview%3Dazure-devops%26WT.mc_id%3Dtwitter&amp;text=Today%20I%20completed%20%22Git%20branching%20guidance%20-%20Azure%20Repos%20%7C%20Microsoft%20Learn%22!%20I%27m%20so%20proud%20to%20be%20celebrating%20this%20achievement%20and%20hope%20this%20inspires%20you%20to%20start%20your%20own%20%40MicrosoftLearn%20journey!&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fdevops%2Frepos%2Fgit%2Fgit-branching-guidance%3Fview%3Dazure-devops%26WT.mc_id%3Dtwitter">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-xlogo-share font-size-xxs"></span>
+															</span>
+															<span class="margin-left-xxs">x.com</span>
+														</a>
+														<a class="button button-clear button-sm has-inner-focus button-block text-decoration-none justify-content-flex-start share-linkedin" data-bi-name="linkedin" data-page-action-item="overflow-all" href="https://www.linkedin.com/feed/?shareActive=true&amp;text=Today%20I%20completed%20%22Git%20branching%20guidance%20-%20Azure%20Repos%20%7C%20Microsoft%20Learn%22!%20I%27m%20so%20proud%20to%20be%20celebrating%20this%20achievement%20and%20hope%20this%20inspires%20you%20to%20start%20your%20own%20%40MicrosoftLearn%20journey!%0A%0D%0Ahttps%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fdevops%2Frepos%2Fgit%2Fgit-branching-guidance%3Fview%3Dazure-devops%26WT.mc_id%3Dlinkedin">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-linked-in-logo font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">LinkedIn</span>
+														</a>
+														<a class="button button-clear button-sm button-block has-inner-focus text-decoration-none justify-content-flex-start margin-bottom-xxs share-email" data-bi-name="email" data-page-action-item="overflow-all" href="mailto:?subject=%5BShared%20Article%5D%20Git%20branching%20guidance%20-%20Azure%20Repos%20%7C%20Microsoft%20Learn&amp;body=Today%20I%20completed%20%22Git%20branching%20guidance%20-%20Azure%20Repos%20%7C%20Microsoft%20Learn%22!%20I'm%20so%20proud%20to%20be%20celebrating%20this%20achievement%20and%20hope%20this%20inspires%20you%20to%20start%20your%20own%20%40MicrosoftLearn%20journey!%0A%0D%0Ahttps%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fdevops%2Frepos%2Fgit%2Fgit-branching-guidance%3Fview%3Dazure-devops%26WT.mc_id%3Demail">
+															<span class="icon" aria-hidden="true">
+																<span class="docon docon-mail-message font-size-sm color-primary"></span>
+															</span>
+															<span class="margin-left-xxs">Email</span>
+														</a><hr>
+													<button class="button button-block button-clear button-sm justify-content-flex-start has-inner-focus margin-top-xxs" title="Print" type="button" aria-label="Print" data-bi-name="print" data-page-action-item="overflow-all" data-popover-close="" data-print-page="" data-check-hidden="true">
+														<span class="icon" aria-hidden="true">
+															<span class="docon docon-print font-size-sm color-primary"></span>
+														</span>
+														<span class="margin-left-xxs">Print</span>
+													</button>
+											</div>
+										</details>
+										
+									</div></div>
+							</div>
+							<!-- end article-header --><div>
+								<button type="button" class="border contents-button button button-clear button-sm is-hidden-tablet has-inner-focus" data-bi-name="contents-expand" data-contents-button="" hidden="">
+									<span class="icon">
+										<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+									</span><span class="contents-expand-title">Table of contents</span></button>
+							</div><!-- end mobile-contents button  -->
+
+							<div class="content "><h1 id="adopt-a-git-branching-strategy">Adopt a Git branching strategy</h1><div class="display-flex justify-content-space-between align-items-center flex-wrap-wrap page-metadata-container">
+										<div class="margin-right-xxs">
+											<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr"><li>Article</li><li class="visibility-hidden-visual-diff"><time class="" data-article-date="" aria-label="Article review date" datetime="2024-03-25T16:57:00.000Z" data-article-date-source="calculated">03/25/2024</time>
+															</li><li class="contributors-holder display-none-print">
+															<button aria-label="View all contributors" class="contributors-button link-button" data-bi-name="contributors" title="View all contributors">12 contributors</button>
+														</li></ul>
+										</div>
+<div id="user-feedback" class="margin-block-xxs display-none-print" data-hide-on-archived="">
+	<button id="user-feedback-button" data-test-id="conceptual-feedback-button" class="button button-sm button-clear button-primary" type="button" data-bi-name="user-feedback-button" data-user-feedback-button="">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-like"></span>
+		</span>
+		<span>Feedback</span>
+	</button>
+</div></div><nav id="center-doc-outline" class="doc-outline display-none-print margin-bottom-sm" data-bi-name="intopic toc" aria-label="In this article"><!---->
+		<h2 id="ms--in-this-article" class="title is-6 margin-block-xs"><!---->In this article<!----></h2>
+		<ol id="content-well-in-this-article-list" class="border-left padding-left-xxs">
+			<!---->
+					<li class="">
+						<a href="#keep-your-branch-strategy-simple"><!---->Keep your branch strategy simple<!----></a>
+					</li>
+				<!---->
+					<li class="">
+						<a href="#manage-releases"><!---->Manage releases<!----></a>
+					</li>
+				<!---->
+					<li class="">
+						<a href="#manage-deployments"><!---->Manage deployments<!----></a>
+					</li>
+				<!---->
+		</ol>
+	<!----></nav><!-- <content> --><p><strong>Azure DevOps Services | Azure DevOps Server 2022 - Azure DevOps Server 2019</strong></p>
+<p>Distributed version control systems like Git give you flexibility in how you use version control to share and manage code.
+Your team should find a balance between this flexibility and the need to collaborate and share code in a consistent manner.</p>
+<p>Team members publish, share, review, and iterate on code changes 
+through Git branches shared with others.
+Adopt a branching strategy for your team. You can collaborate better and
+ spend less time managing version control and more time developing code.</p>
+<p>The following branching strategies are based on the way we use Git here at Microsoft. For more information, see <a href="https://learn.microsoft.com/en-us/devops/develop/how-microsoft-develops-devops" data-linktype="absolute-path">How we use Git at Microsoft</a>.</p>
+<div class="heading-wrapper" data-heading-level="h2"><a class="anchor-link docon docon-link" href="#keep-your-branch-strategy-simple" aria-label="Section titled: Keep your branch strategy simple"></a><h2 id="keep-your-branch-strategy-simple" class="heading-anchor">Keep your branch strategy simple</h2></div>
+<p>Keep your branch strategy simple. Build your strategy from these three concepts:</p>
+<ul>
+<li>Use feature branches for all new features and bug fixes.</li>
+<li>Merge feature branches into the main branch using pull requests.</li>
+<li>Keep a high quality, up-to-date main branch.</li>
+</ul>
+<p>A strategy that extends these concepts and avoids contradictions will
+ result in a version control workflow for your team that is consistent 
+and easy to follow.</p>
+<div class="heading-wrapper" data-heading-level="h3"><a class="anchor-link docon docon-link" href="#use-feature-branches-for-your-work" aria-label="Section titled: Use feature branches for your work"></a><h3 id="use-feature-branches-for-your-work" class="heading-anchor">Use feature branches for your work</h3></div>
+<p>Develop your features and fix bugs in feature branches based off your main branch. These branches are also known as <em>topic branches</em>.
+Feature branches isolate work in progress from the completed work in the main branch.
+Git branches are inexpensive to create and maintain. Even small fixes and changes should have their own feature branch.</p>
+<p><img src="microsoft-azure-branching-guidance_files/featurebranching.png" alt="image of basic branching workflow" data-linktype="relative-path"></p>
+<p>Creating feature branches for all your changes makes reviewing 
+history simple. Look at the commits made in the branch and look at the 
+pull request that merged the branch.</p>
+<div class="heading-wrapper" data-heading-level="h4"><a class="anchor-link docon docon-link" href="#name-your-feature-branches-by-convention" aria-label="Section titled: Name your feature branches by convention"></a><h4 id="name-your-feature-branches-by-convention" class="heading-anchor">Name your feature branches by convention</h4></div>
+<p>Use a consistent naming convention for your feature branches to identify the work done in the branch.
+You can also include other information in the branch name, such as who created the branch.</p>
+<p>Some suggestions for naming your feature branches:</p>
+<ul>
+<li>users/username/description</li>
+<li>users/username/workitem</li>
+<li>bugfix/description</li>
+<li>feature/feature-name</li>
+<li>feature/feature-area/feature-name</li>
+<li>hotfix/description</li>
+</ul>
+<div data-moniker="azure-devops azure-devops-2019 azure-devops-2020 azure-devops-2022">
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>For information on setting policies to enforce a branch naming strategy, see <a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/require-branch-folders?view=azure-devops" data-linktype="relative-path">Require branch folders</a>.</p>
+</div>
+</div>
+<div class="heading-wrapper" data-heading-level="h4"><a class="anchor-link docon docon-link" href="#use-feature-flags-to-manage-long-running-branches" aria-label="Section titled: Use feature flags to manage long-running branches"></a><h4 id="use-feature-flags-to-manage-long-running-branches" class="heading-anchor">Use feature flags to manage long-running branches</h4></div>
+<p>Learn more about <a href="http://martinfowler.com/articles/feature-toggles.html" data-linktype="external">using feature flags</a> in your code.</p>
+<div class="heading-wrapper" data-heading-level="h3"><a class="anchor-link docon docon-link" href="#review-and-merge-code-with-pull-requests" aria-label="Section titled: Review and merge code with pull requests"></a><h3 id="review-and-merge-code-with-pull-requests" class="heading-anchor">Review and merge code with pull requests</h3></div>
+<p>The review that takes place in a pull request is critical for improving code quality.
+Only merge branches through pull requests that pass your review process.
+Avoid merging branches to the main branch without a pull request.</p>
+<p>Reviews in pull requests take time to complete. Your team should 
+agree on what's expected from pull request creators and reviewers.
+Distribute reviewer responsibilities to share ideas across your team and
+ spread out knowledge of your codebase.</p>
+<p>Some suggestions for successful pull requests:</p>
+<ul>
+<li>Two reviewers is an optimal number <a href="https://www.microsoft.com/research/publication/convergent-software-peer-review-practices/" data-linktype="external">based on research</a>.</li>
+<li>If your team already has a code review process, bring pull requests into what you're already doing.</li>
+<li>Take care assigning the same reviewers to a large number of pull 
+requests. Pull requests work better when reviewer responsibilities are 
+shared across the team.</li>
+<li>Provide enough detail in the description to quickly bring reviewers up to speed with your changes.</li>
+<li>Include a build or linked version of your changes running in a 
+staged environment with your pull request. Others can easily test the 
+changes.</li>
+</ul>
+<div class="heading-wrapper" data-heading-level="h3"><a class="anchor-link docon docon-link" href="#keep-a-high-quality-up-to-date-main-branch" aria-label="Section titled: Keep a high quality, up-to-date main branch"></a><h3 id="keep-a-high-quality-up-to-date-main-branch" class="heading-anchor">Keep a high quality, up-to-date main branch</h3></div>
+<p>The code in your main branch should pass tests, build cleanly, and always be current.
+Your main branch needs these qualities so that feature branches created by your team start from a known good version of code.</p>
+<p>Set up a <a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops" data-linktype="relative-path">branch policy</a> for your main branch that:</p>
+<ul>
+<li>Requires a pull request to merge code. This approach prevents direct
+ pushes to the main branch and ensures discussion of proposed changes.</li>
+<li>Automatically adds reviewers when a pull request is created. The 
+added team members review the code and comment on the changes in the 
+pull request.</li>
+<li>Requires a successful build to complete a pull request. Code merged into the main branch should build cleanly.</li>
+</ul>
+<div class="alert is-success">
+<p class="alert-title"><span class="docon docon-lightbulb" aria-hidden="true"></span> Tip</p>
+<p>The build pipeline for your pull requests should be quick to complete, so it doesn't interfere with the review process.</p>
+</div>
+<div class="heading-wrapper" data-heading-level="h2"><a class="anchor-link docon docon-link" href="#manage-releases" aria-label="Section titled: Manage releases"></a><h2 id="manage-releases" class="heading-anchor">Manage releases</h2></div>
+<p>Use release branches to coordinate and stabilize changes in a release
+ of your code.
+This branch is long-lived and isn't merged back into the main branch in a
+ pull request, unlike the feature branches.
+Create as many release branches as you need. Keep in mind that each 
+active release branch represents another version of the code you need to
+ support.
+Lock release branches when you're ready to stop supporting a particular 
+release.</p>
+<div class="heading-wrapper" data-heading-level="h3"><a class="anchor-link docon docon-link" href="#use-release-branches" aria-label="Section titled: Use release branches"></a><h3 id="use-release-branches" class="heading-anchor">Use release branches</h3></div>
+<p>Create a release branch from the main branch when you get close to your release or other milestone, such as the end of a sprint.
+Give this branch a clear name associating it with the release, for example <em>release/20</em>.</p>
+<p>Create branches to fix bugs from the release branch and merge them back into the release branch in a pull request.</p>
+<p><img src="microsoft-azure-branching-guidance_files/releasebranching_release.png" alt="image of release branch workflows" data-linktype="relative-path"></p>
+<div class="heading-wrapper" data-heading-level="h3"><a class="anchor-link docon docon-link" href="#port-changes-back-to-the-main-branch" aria-label="Section titled: Port changes back to the main branch"></a><h3 id="port-changes-back-to-the-main-branch" class="heading-anchor">Port changes back to the main branch</h3></div>
+<p>Make sure that fixes land in both your release branch and your main 
+branch.
+One approach is to make fixes in the release branch, then bring changes 
+into your main branch to prevent regression in your code.
+Another approach (and the one employed by the Azure DevOps team) is to 
+always make changes in the mainline, then port those to the release 
+branch.
+You can read more about our <a href="https://learn.microsoft.com/en-us/devops/deliver/what-is-continuous-delivery" data-linktype="absolute-path">Release Flow</a> strategy.</p>
+<p>In this topic, we'll cover making changes in the release branch and porting them into mainline.
+Use cherry-picking instead of merging so that you have exact control over which commits are ported back to the main branch.
+Merging the release branch into the main branch can bring over release-specific changes you don't want in the main branch.</p>
+<p>Update the main branch with a change made in the release branch with these steps:</p>
+<ol>
+<li>Create a new feature branch off the main branch to port the changes.</li>
+<li>Cherry-pick the changes from the release branch to your new feature branch.</li>
+<li>Merge the feature branch back into the main branch in a second pull request.</li>
+</ol>
+<p><img src="microsoft-azure-branching-guidance_files/releasebranching_main.png" alt="Updated release branch workflows." data-linktype="relative-path"></p>
+<p>This release branch workflow keeps the pillars of the basic workflow 
+intact: feature branches, pull requests, and a strong main branch that 
+always has the latest version of the code.</p>
+<div class="heading-wrapper" data-heading-level="h3"><a class="anchor-link docon docon-link" href="#why-not-use-tags-for-releases" aria-label="Section titled: Why not use tags for releases?"></a><h3 id="why-not-use-tags-for-releases" class="heading-anchor">Why not use tags for releases?</h3></div>
+<p>Other branching workflows use Git <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging" data-linktype="external">tags</a>
+ to mark a specific commit as a release.
+Tags are useful for marking points in your history as important. Tags 
+introduce extra steps in your workflow that aren't necessary if you're 
+using branches for your releases.</p>
+<p>Tags are maintained and pushed separately from your commits.
+Team members can easily miss tagging a commit and then have to go back 
+through the history afterwards to fix the tag.
+You can also forget the extra step to push the tag, leaving the next 
+developer working from an older version of the code when supporting the 
+release.</p>
+<p>The release branch strategy extends the basic feature branch workflow to handle releases.
+Your team doesn't have to adopt any new version control process other than the cherry-pick to port changes.</p>
+<div class="heading-wrapper" data-heading-level="h2"><a class="anchor-link docon docon-link" href="#manage-deployments" aria-label="Section titled: Manage deployments"></a><h2 id="manage-deployments" class="heading-anchor">Manage deployments</h2></div>
+<p>You can handle multiple deployments of your code in the same way you handle multiple releases.
+Create a clear naming convention, such as <em>deploy/performance-test</em>,
+ and treat the environment branches like release branches.
+Your team should agree on a process to update deployment branches with 
+the code from your main branch.
+Cherry-pick bug fixes in the deployment branch back to the main branch. 
+Use the same steps as porting changes from a release branch.</p>
+<p>An exception to this recommendation is if you're using a form of continuous deployment.
+Use <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops" data-linktype="relative-path">Azure Pipelines</a> when working with continuous deployment to promote builds from your main branch to your deployment targets.</p>
+</div><div id="ms--inline-notifications" class="margin-block-xs" data-bi-name="inline-notification"></div><div id="assertive-live-region" role="alert" aria-live="assertive" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<div id="polite-live-region" role="status" aria-live="polite" class="visually-hidden" aria-relevant="additions" aria-atomic="true"></div>
+							<!-- </content> -->
+
+						</main><!-- recommendations section --><!-- end recommendations section -->
+
+						<!-- feedback section --><section id="site-user-feedback-footer" class="font-size-sm margin-top-md" data-test-id="site-user-feedback-footer" data-bi-name="site-feedback-section">
+	<hr class="hr">
+	<h2 id="feedback" class="title is-3">Feedback</h2>
+	<div class="display-flex flex-wrap-wrap align-items-center">
+		<p class="font-weight-semibold margin-xxs margin-left-none">Was this page helpful?</p>
+		<div class="buttons">
+			<button class="thumb-rating-button like button button-primary button-sm" data-test-id="footer-rating-yes" data-binary-rating-response="rating-yes" type="button" title="This article is helpful" data-bi-name="button-rating-yes" aria-pressed="false">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-like"></span>
+				</span>
+				<span>Yes</span>
+			</button>
+			<button class="thumb-rating-button dislike button button-primary button-sm" data-test-id="footer-rating-no" data-binary-rating-response="rating-no" type="button" title="This article is not helpful" data-bi-name="button-rating-no" aria-pressed="false">
+				<span class="icon" aria-hidden="true">
+					<span class="docon docon-dislike"></span>
+				</span>
+				<span>No</span>
+			</button>
+		</div>
+	</div><div class="display-flex flex-wrap-wrap margin-top-xxs"><div>
+			<a data-bi-name="provide-feedback-cta" class="has-external-link-indicator" href="https://developercommunity.visualstudio.com/AzureDevOps">
+				<span>Provide product feedback</span>
+			</a></div></div>
+
+</section><!-- end feedback section -->
+
+						<!-- feedback report section --><!-- end feedback report section --><aside id="ms--additional-resources-mobile" aria-label="Additional resources" class="display-none-desktop display-none-print">
+								<hr class="hr">
+								<h2 id="ms--additional-resources-mobile-heading" class="title is-3">Additional resources</h2>
+								<section id="right-rail-recommendations-mobile" data-bi-name="recommendations"><!---->
+		<hr class="hr display-none display-block-desktop">
+		<article class="margin-top-md margin-top-sm-desktop">
+			
+		<p class="font-weight-semibold font-size-md display-flex align-items-center">
+			<span class="icon margin-right-xxs" aria-hidden="true">
+				<span class="docon docon-book-art64"></span>
+			</span>
+			Documentation
+		</p>
+	
+			<div class="margin-top-xs ">
+				
+		<ul aria-live="polite" aria-relevant="additions" id="right-rail-recommendations-list-0">
+			<!---->
+					<li class="padding-none margin-top-xs margin-bottom-none position-relative ">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies-overview?source=recommendations" data-bi-name="right-rail-recommendation-item-0">
+						Branch policies - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn about branch policies in Azure DevOps Services &amp; TFS
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative ">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/forks?source=recommendations" data-bi-name="right-rail-recommendation-item-1">
+						Fork your repository - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn how to isolate experimental or risky code using a forking workflow with Azure Repos Git repos.
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative ">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/create-branch?source=recommendations" data-bi-name="right-rail-recommendation-item-2">
+						Create a new Git branch from the web - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn about Git branches and how to create a new branch in your local Git repo, Azure Repos Git repo, and GitHub.
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/manage-your-branches?source=recommendations" data-bi-name="right-rail-recommendation-item-3">
+						Manage branches in your Git repo - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Find your work and search for branches using the branches page in Azure DevOps Services/TFS
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/lock-branches?source=recommendations" data-bi-name="right-rail-recommendation-item-4">
+						Lock a branch in your Git repo - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Use the branches page to lock a branch in Azure DevOps Services or TFS, preventing pushes to the branch.
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?source=recommendations" data-bi-name="right-rail-recommendation-item-5">
+						Change the default branch - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn how to change your default branch name
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?source=recommendations" data-bi-name="right-rail-recommendation-item-6">
+						Set Git repository settings - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn how to configure a Git repository and its branches.
+		</p>
+	
+					</li>
+				<!---->
+		</ul>
+	
+			</div>
+			<!---->
+				
+		<button type="button" aria-expanded="false" data-show-more="" class="link-button font-weight-semibold font-size-sm margin-top-sm" aria-controls="right-rail-recommendations-list-0" data-title="Show 4 more" data-bi-name="show-more-btn" data-test-id="undefined">
+			<span class="show-more-text "><!---->Show 4 more<!----></span>
+			
+		</button>
+	
+		  <!---->
+		</article>
+	<!----></section>
+								<section id="right-rail-training-mobile" data-bi-name="learning-resources-card"><!---->
+		<hr class="hr display-none display-block-desktop">
+		<article class="margin-top-md margin-top-sm-desktop">
+			
+		<p class="font-weight-semibold font-size-md display-flex align-items-center">
+			<span class="icon margin-right-xxs" aria-hidden="true">
+				<span class="docon docon-cube-cone-ball-shapes"></span>
+			</span>
+			Training
+		</p>
+	
+			<div class="margin-top-xs position-relative">
+				<!---->
+		<div class="position-relative margin-top-xs">
+			 
+				<p class="has-line-height-reset color-text-subtle font-size-xs font-weight-semibold">
+					Module
+				</p>
+		   
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/training/modules/manage-git-branches-workflows/?source=recommendations">
+						Design and implement branch strategies and workflows - Training
+					</a>
+				</p>
+		   
+			
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Design and implement branch strategies and workflows
+		</p>
+	
+		</div>
+	<!---->
+		<div class="position-relative margin-top-sm">
+			 
+				<p class="has-line-height-reset color-text-subtle font-size-xs font-weight-semibold">
+					Certification
+				</p>
+		   
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/?source=recommendations">
+						Microsoft Certified: DevOps Engineer Expert - Certifications
+					</a>
+				</p>
+		   
+			
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			This certification measures your ability to accomplish the following 
+technical tasks: Design and implement processes and communications, 
+design and implement a source control strategy, design and implement 
+build and release pipelines, develop a security and compliance plan, and
+ implement an instrumentation strategy.
+		</p>
+	
+		</div>
+	<!---->
+			</div>
+			
+		</article>
+	<!----></section>
+								<section id="right-rail-events-mobile" data-bi-name="events-card" hidden=""></section>
+								<section id="right-rail-qna-mobile" data-bi-name="qna-link-card" hidden=""></section>
+							</aside><div class="border-top is-visible-interactive has-default-focus margin-top-sm "><footer id="footer-interactive" data-bi-name="footer" class="footer-layout"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a data-mscc-ic="false" class="locale-selector-link button button-sm button-clear flex-shrink-0" href="https://learn.microsoft.com/en-us/locale?target=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fdevops%2Frepos%2Fgit%2Fgit-branching-guidance%3Fview%3Dazure-devops" data-bi-name="select-locale" aria-label="Content language selector. Currently set to English (United States).">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text">English (United States)</span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link="">
+<a href="https://aka.ms/yourcaliforniaprivacychoices" class="button button-sm button-clear flex-shrink-0" data-mscc-ic="false" data-bi-name="your-privacy-choices">
+	<svg role="img" aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14" xml:space="preserve" height="16" width="43" focusable="false">
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="light" aria-pressed="false">
+					<span class="theme-light margin-right-xxs">
+						<span class="theme-selector-icon border display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start is-selected" data-theme-to="dark" aria-pressed="true">
+					<span class="theme-dark margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder"><button data-bi-name="manageCookies">Manage cookies</button></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>© Microsoft 2024</li>
+	</ul>
+</footer></div></div><div id="ms--additional-resources" class="right-container column is-4-desktop display-none display-block-desktop" data-bi-name="pageactions" role="complementary" aria-label="Additional resources">
+							<div id="affixed-right-container" class="margin-top-sm-tablet position-sticky" data-bi-name="right-column" style="top: -178px; bottom: 36px;">
+								<h2 id="ms--additional-resources-heading" class="title is-6 margin-top-md">Additional resources</h2>
+								<section id="right-rail-events" data-bi-name="events-card" hidden=""></section>
+								<section id="right-rail-training" data-bi-name="learning-resources-card"><!---->
+		<hr class="hr display-none display-block-desktop">
+		<article class="margin-top-md margin-top-sm-desktop">
+			
+		<p class="font-weight-semibold font-size-md display-flex align-items-center">
+			<span class="icon margin-right-xxs" aria-hidden="true">
+				<span class="docon docon-cube-cone-ball-shapes"></span>
+			</span>
+			Training
+		</p>
+	
+			<div class="margin-top-xs position-relative">
+				<!---->
+		<div class="position-relative margin-top-xs">
+			 
+				<p class="has-line-height-reset color-text-subtle font-size-xs font-weight-semibold">
+					Module
+				</p>
+		   
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/training/modules/manage-git-branches-workflows/?source=recommendations">
+						Design and implement branch strategies and workflows - Training
+					</a>
+				</p>
+		   
+			
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Design and implement branch strategies and workflows
+		</p>
+	
+		</div>
+	<!---->
+		<div class="position-relative margin-top-sm">
+			 
+				<p class="has-line-height-reset color-text-subtle font-size-xs font-weight-semibold">
+					Certification
+				</p>
+		   
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/?source=recommendations">
+						Microsoft Certified: DevOps Engineer Expert - Certifications
+					</a>
+				</p>
+		   
+			
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			This certification measures your ability to accomplish the following 
+technical tasks: Design and implement processes and communications, 
+design and implement a source control strategy, design and implement 
+build and release pipelines, develop a security and compliance plan, and
+ implement an instrumentation strategy.
+		</p>
+	
+		</div>
+	<!---->
+			</div>
+			
+		</article>
+	<!----></section>
+								<section id="right-rail-recommendations" data-bi-name="recommendations"><!---->
+		<hr class="hr display-none display-block-desktop">
+		<article class="margin-top-md margin-top-sm-desktop">
+			
+		<p class="font-weight-semibold font-size-md display-flex align-items-center">
+			<span class="icon margin-right-xxs" aria-hidden="true">
+				<span class="docon docon-book-art64"></span>
+			</span>
+			Documentation
+		</p>
+	
+			<div class="margin-top-xs ">
+				
+		<ul aria-live="polite" aria-relevant="additions" id="right-rail-recommendations-list-1">
+			<!---->
+					<li class="padding-none margin-top-xs margin-bottom-none position-relative ">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies-overview?source=recommendations" data-bi-name="right-rail-recommendation-item-0">
+						Branch policies - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn about branch policies in Azure DevOps Services &amp; TFS
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative ">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/forks?source=recommendations" data-bi-name="right-rail-recommendation-item-1">
+						Fork your repository - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn how to isolate experimental or risky code using a forking workflow with Azure Repos Git repos.
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative ">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/create-branch?source=recommendations" data-bi-name="right-rail-recommendation-item-2">
+						Create a new Git branch from the web - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn about Git branches and how to create a new branch in your local Git repo, Azure Repos Git repo, and GitHub.
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/manage-your-branches?source=recommendations" data-bi-name="right-rail-recommendation-item-3">
+						Manage branches in your Git repo - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Find your work and search for branches using the branches page in Azure DevOps Services/TFS
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/lock-branches?source=recommendations" data-bi-name="right-rail-recommendation-item-4">
+						Lock a branch in your Git repo - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Use the branches page to lock a branch in Azure DevOps Services or TFS, preventing pushes to the branch.
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/change-default-branch?source=recommendations" data-bi-name="right-rail-recommendation-item-5">
+						Change the default branch - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn how to change your default branch name
+		</p>
+	
+					</li>
+				<!---->
+					<li class="padding-none margin-top-sm margin-bottom-none position-relative expandable">
+						  
+				<p class="line-clamp-3">
+					<a class="display-block inner-focus font-weight-semibold font-size-sm has-line-height-reset stretched-link" href="https://learn.microsoft.com/en-us/azure/devops/repos/git/repository-settings?source=recommendations" data-bi-name="right-rail-recommendation-item-6">
+						Set Git repository settings - Azure Repos
+					</a>
+				</p>
+		   
+						
+		<p class="font-size-sm has-line-height-reset color-text-subtle margin-top-xxs line-clamp-3">
+			Learn how to configure a Git repository and its branches.
+		</p>
+	
+					</li>
+				<!---->
+		</ul>
+	
+			</div>
+			<!---->
+				
+		<button type="button" aria-expanded="false" data-show-more="" class="link-button font-weight-semibold font-size-sm margin-top-sm" aria-controls="right-rail-recommendations-list-1" data-title="Show 4 more" data-bi-name="show-more-btn" data-test-id="undefined">
+			<span class="show-more-text "><!---->Show 4 more<!----></span>
+			
+		</button>
+	
+		  <!---->
+		</article>
+	<!----></section>
+								<nav id="side-doc-outline" class="doc-outline" data-bi-name="intopic toc" aria-label="In this article">
+									<h3>In this article</h3>
+								</nav>
+								<section id="right-rail-qna" class="margin-top-xxs" data-bi-name="qna-link-card" hidden=""></section>
+							</div>
+						</div></div>
+				<!--end of div.columns -->
+
+			</section>
+			<!--end of .primary-holder -->
+
+			<!-- interactive container -->
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+			<!-- end of interactive container -->
+		</div>
+
+	</div>
+	<!--end of .mainContainer -->
+
+	<section class="border-top has-default-focus is-hidden-interactive margin-top-sm "><footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo"><div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop"><a data-mscc-ic="false" class="locale-selector-link button button-sm button-clear flex-shrink-0" href="https://learn.microsoft.com/en-us/locale?target=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fazure%2Fdevops%2Frepos%2Fgit%2Fgit-branching-guidance%3Fview%3Dazure-devops" data-bi-name="select-locale" aria-label="Content language selector. Currently set to English (United States).">
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-world"></span>
+					</span>
+					<span class="local-selector-link-text">English (United States)</span></a><div class="ccpa-privacy-link" data-ccpa-privacy-link="">
+<a href="https://aka.ms/yourcaliforniaprivacychoices" class="button button-sm button-clear flex-shrink-0" data-mscc-ic="false" data-bi-name="your-privacy-choices">
+	<svg role="img" aria-label="California Consumer Privacy Act (CCPA) Opt-Out Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14" xml:space="preserve" height="16" width="43" focusable="false">
+		<title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+		<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+		<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+		<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
+		<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
+	</svg>
+	<span>Your Privacy Choices</span>
+</a>
+
+		</div>
+		<div class="flex-shrink-0">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button button-clear button-sm has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+		<span class="icon expanded-indicator" aria-hidden="true">
+			<span class="docon docon-chevron-down-light"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector padding-xxs" role="none">
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="light" aria-pressed="false">
+					<span class="theme-light margin-right-xxs">
+						<span class="theme-selector-icon border display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>Light</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start is-selected" data-theme-to="dark" aria-pressed="true">
+					<span class="theme-dark margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>Dark</span>
+				</button>
+			</li>
+			<li class="theme display-block" role="menuitem">
+				<button class="button button-clear button-sm theme-control button-block justify-content-flex-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast margin-right-xxs">
+						<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span>High contrast</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<ul class="links" data-bi-name="footerlinks">
+		<li class="manage-cookies-holder"><button data-bi-name="manageCookies">Manage cookies</button></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Versions</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink">Blog</a></li>
+				<li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/contribute/" data-bi-name="contributorGuide">Contribute</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://learn.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li><li><a class="external-link-indicator" data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks">Trademarks</a></li><li>© Microsoft 2024</li>
+	</ul>
+</footer>
+
+	</section>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+
+</body></html>

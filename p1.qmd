@@ -1,7 +1,7 @@
 ---
-title: "The workflow for </br> git-based z/OS DevOps"
+title: "The git-native branching model you need for mainframe development"
 subtitle: "Recommended by the DAT Team"
-author: ["Ian J Mitchell", "Dennis Behm", "Mathieu Dalbin"]
+author: ["Ian J Mitchell", "(Dennis Behm", "Mathieu Dalbin)"]
 format:
   revealjs: 
     theme: [default, custom.scss]
@@ -19,10 +19,37 @@ format:
 
 ## Agenda
 
+- Setting the context
 - Aims and Assumptions
 - Fundamentals of the branching strategy
 - Supported workflows
 - Implementing pipelines 
+
+## Setting the context
+
+- Devops is foundational to modernization.
+
+- Modernization of Devops is no longer a voyage of exploration.
+
+  - (But plenty people will still try to convince you otherwise!)
+
+- No single tool or approach covers the entire journey to the destination.
+
+We have a [Guide](https://ibm.github.io/z-devops-acceleration-program/docs/ibm-z-devops-solution)... yes, it would be better if it were a map!
+
+## The Guide
+
+![](static/img/guide-home-page.png)
+
+## Today's topic - Branching Strategy for Mainframe teams
+
+![](static/img/guide-branching-page.png)
+
+## ... don't just take my word for it
+
+![](static/img/microsoft-azure-branching-guidance.png)
+
+[Microsoft Azure Devops Services](https://learn.microsoft.com/en-us/azure/devops/repos/git/git-branching-guidance?view=azure-devops)
 
 # Aims and Assumptions
 
@@ -30,7 +57,7 @@ Some aims and assumptions that guide our recommendations...
 
 ## No baggage
 
-Well... *"travel light"* perhaps!
+Well... *[travel light](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/mathieu-dalbin/2023/11/22/a-no-baggage-approach-to-new-mainframe-development?communityKey=b68f8006-7e86-4043-843f-df16dc7065f9)* perhaps!
 
 - Are we *prescriptive* or just *opinionated*?
   - Aim to be *git-native*!
@@ -40,7 +67,7 @@ Well... *"travel light"* perhaps!
   - **YAGNI** - "you aren't gonna need it"
 - We strive for simplicity
   - For each user's experience
-  
+
 ## Scaling
 
 - The workflow and branching scheme should both scale up and scale down.
@@ -97,7 +124,6 @@ These changes on these branches are
 - approved before merging to `main`.
 
 ## Overview
-
 
 ```{mermaid}
 ---
