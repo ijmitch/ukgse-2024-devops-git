@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.518">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>IBM Z DevOps Acceleration Program - Supporting pipeline design and implementation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./branching-appendix.html" rel="next">
+<link href="./git-branching-model-for-mainframe-dev.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    null
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">IBM Z DevOps Acceleration Program</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./ibm-z-devops-solution.html" aria-current="page"> 
+<span class="menu-text">Docs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./p1.html"> 
+<span class="menu-text">Pres</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./repository-layouts.html">Designing the CI/CD pipeline</a></li><li class="breadcrumb-item"><a href="./branching-models.html">Git branching for mainframe development</a></li><li class="breadcrumb-item"><a href="./branching-model-supporting-pipeline.html">Supporting pipeline design and implementation</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Overview</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ibm-z-devops-solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IBM Z DevOps solution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">CI/CD for z/OS applications</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-cicd-zos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to CI/CD for z/OS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated development environment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Source code management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./build.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Build</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./artifact-repository.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Artifact repository</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deployment-manager.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deployment manager</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline-orchestrator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline orchestrator</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./journey-to-cicd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding the journey to a CI/CD pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install-configure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing and configuring your tools</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Designing the CI/CD pipeline</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./repository-layouts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planning repository layouts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dependency-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Defining dependency management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Git branching for mainframe development</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./branching-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to branching models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./git-branching-model-for-mainframe-dev.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git branching model for mainframe development</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./branching-model-supporting-pipeline.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Supporting pipeline design and implementation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./branching-appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./build-strategy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designing the build strategy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline-strategy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Architecting the pipeline strategy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deployment-strategy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Outlining the deployment strategy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Migrating data from z/OS to Git</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-migrating-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to migrating data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./managing-code-page-conversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Managing code page conversion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Methods for migrating data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dbb-migration-tool.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DBB Migration Tool</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">sclm-migration-tool.md</span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manual-migration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manual migration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Implementing CI/CD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./implementing-pipeline-actions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing pipeline actions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Resources</span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pipeline-design-and-implementation-supporting-the-branching-model" id="toc-pipeline-design-and-implementation-supporting-the-branching-model" class="nav-link active" data-scroll-target="#pipeline-design-and-implementation-supporting-the-branching-model">Pipeline design and implementation supporting the branching model</a>
+  <ul class="collapse">
+  <li><a href="#configurations-to-support-working-with-feature-branches" id="toc-configurations-to-support-working-with-feature-branches" class="nav-link" data-scroll-target="#configurations-to-support-working-with-feature-branches">Configurations to support working with feature branches</a>
+  <ul class="collapse">
+  <li><a href="#user-build-setup" id="toc-user-build-setup" class="nav-link" data-scroll-target="#user-build-setup">User Build setup</a></li>
+  <li><a href="#pipeline-build-of-feature-branches" id="toc-pipeline-build-of-feature-branches" class="nav-link" data-scroll-target="#pipeline-build-of-feature-branches">Pipeline build of feature branches</a></li>
+  <li><a href="#package-and-deploy-a-feature-for-testing-in-controlled-test-environments" id="toc-package-and-deploy-a-feature-for-testing-in-controlled-test-environments" class="nav-link" data-scroll-target="#package-and-deploy-a-feature-for-testing-in-controlled-test-environments">Package and Deploy a feature for testing in controlled test environments</a></li>
+  <li><a href="#housekeeping-recommendations" id="toc-housekeeping-recommendations" class="nav-link" data-scroll-target="#housekeeping-recommendations">Housekeeping recommendations</a></li>
+  </ul></li>
+  <li><a href="#the-basic-build-pipeline-for-main-epic-and-release-branches" id="toc-the-basic-build-pipeline-for-main-epic-and-release-branches" class="nav-link" data-scroll-target="#the-basic-build-pipeline-for-main-epic-and-release-branches">The Basic Build Pipeline for main, epic, and release branches</a>
+  <ul class="collapse">
+  <li><a href="#basic-build-pipeline-build-and-test-stage" id="toc-basic-build-pipeline-build-and-test-stage" class="nav-link" data-scroll-target="#basic-build-pipeline-build-and-test-stage">Basic Build Pipeline: Build and Test stage</a></li>
+  <li><a href="#basic-build-pipeline-install-outputs-to-a-development-and-test-environment" id="toc-basic-build-pipeline-install-outputs-to-a-development-and-test-environment" class="nav-link" data-scroll-target="#basic-build-pipeline-install-outputs-to-a-development-and-test-environment">Basic Build Pipeline: Install outputs to a development and test environment</a></li>
+  <li><a href="#basic-build-pipeline-analyze-stage" id="toc-basic-build-pipeline-analyze-stage" class="nav-link" data-scroll-target="#basic-build-pipeline-analyze-stage">Basic Build Pipeline: Analyze stage</a></li>
+  </ul></li>
+  <li><a href="#the-release-pipeline-with-build-packaging-and-deploy-stages" id="toc-the-release-pipeline-with-build-packaging-and-deploy-stages" class="nav-link" data-scroll-target="#the-release-pipeline-with-build-packaging-and-deploy-stages">The Release Pipeline with Build, Packaging, and Deploy stages</a>
+  <ul class="collapse">
+  <li><a href="#release-pipeline-build-stage" id="toc-release-pipeline-build-stage" class="nav-link" data-scroll-target="#release-pipeline-build-stage">Release Pipeline: Build stage</a></li>
+  <li><a href="#release-pipeline-packaging-stage" id="toc-release-pipeline-packaging-stage" class="nav-link" data-scroll-target="#release-pipeline-packaging-stage">Release Pipeline: Packaging stage</a></li>
+  <li><a href="#release-pipeline-deploy-stage" id="toc-release-pipeline-deploy-stage" class="nav-link" data-scroll-target="#release-pipeline-deploy-stage">Release Pipeline: Deploy stage</a></li>
+  </ul></li>
+  <li><a href="#deployment-to-production" id="toc-deployment-to-production" class="nav-link" data-scroll-target="#deployment-to-production">Deployment to production</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/branching-model-supporting-pipeline.md" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="branching-model-supporting-pipeline.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    <div class="quarto-margin-footer"><div class="margin-footer-item">
+<p><img src="IBM_logo®_pos_blue60_RGB.png" class="img-fluid"></p>
+</div></div></div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./repository-layouts.html">Designing the CI/CD pipeline</a></li><li class="breadcrumb-item"><a href="./branching-models.html">Git branching for mainframe development</a></li><li class="breadcrumb-item"><a href="./branching-model-supporting-pipeline.html">Supporting pipeline design and implementation</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Supporting pipeline design and implementation</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="pipeline-design-and-implementation-supporting-the-branching-model" class="level1">
+<h1>Pipeline design and implementation supporting the branching model</h1>
+<p>This page details the technical implementation of the different continuous integration/continuous delivery (CI/CD) pipeline types used in the <a href="./git-branching-model-for-mainframe-dev.html">Git branching model for mainframe development</a>. If a branching model workflow demands a specific configuration, it will be covered within the same section.</p>
+<section id="configurations-to-support-working-with-feature-branches" class="level2">
+<h2 class="anchored" data-anchor-id="configurations-to-support-working-with-feature-branches">Configurations to support working with feature branches</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/image16.png" class="img-fluid figure-img"></p>
+<figcaption>Branching diagram of a feature branch</figcaption>
+</figure>
+</div>
+<p>When developers start working on a new task, they will first create a feature branch. Feature branches are created off the latest code state of the source configuration, whether that is the <code>main</code> branch or an epic or release maintenance branch.</p>
+<p>If the feature branch was created on the central Git repository, the developers can use the integrated development environment (IDE), a terminal, or another Git interface on their local workstation to clone or pull the new feature branch from the central Git repository. They then switch to the feature branch to implement their changes.</p>
+<p>IDEs supported by IBM allow developers to perform a Dependency Based Build (DBB) User Build to quickly gather feedback on the implemented changes. This feature is expected to be used before the changes are committed and pushed to the central Git server, where a pipeline can process changes automatically. Developers regularly commit and push their changes to their feature branch on the central Git provider.</p>
+<section id="user-build-setup" class="level3">
+<h3 class="anchored" data-anchor-id="user-build-setup">User Build setup</h3>
+<p>User Build is a capability provided by IBM-supported IDEs that uploads the modified source code and its dependencies from the local, checked-out Git working tree on the developer’s workstation to a personal directory on z/OS UNIX System Services, and then invokes the build framework to execute the compile and link-edit steps. This capability is available in the following IDEs:</p>
+<ul>
+<li><p><a href="https://www.ibm.com/docs/en/developer-for-zos">IBM Developer for z/OS</a></p></li>
+<li><p><a href="https://www.ibm.com/docs/en/cloud-paks/z-modernization-stack/2022.2?topic=ide-option-2-developing-vs-code">Microsoft Visual Studio Code (VS Code) with the IBM Z Open Editor extension</a></p></li>
+<li><p><a href="https://www.ibm.com/docs/en/cloud-paks/z-modernization-stack/2022.2?topic=ide-option-1-developing-codeready-workspaces">IBM Wazi for Dev Spaces</a></p></li>
+</ul>
+<p>The developer configures the User Build process to point to the central build framework implementation, such as <a href="https://github.com/IBM/dbb-zappbuild">zAppBuild</a>, provided by the Mainframe DevOps Team. The build option <a href="https://github.com/IBM/dbb-zappbuild/blob/3.2.0/docs/BUILD.md#build-a-single-program"><code>--userBuild</code></a> is passed to the build framework along with the reference to the file the developer would like to build.</p>
+<p>Because the operation is performed with the credentials of the currently logged-in user, it is recommended for each developer to reuse the high-level qualifier (<code>--hlq</code>) of their personal datasets. It is the developer’s responsibility to regularly clean up the mainframe datasets and sandbox directories on z/OS UNIX System Services that are used for User Build. Automated cleanup of the files can be established based on a defined naming convention for datasets or with a specific storage management policy.</p>
+<p>User Build is a convenient way to compile and link-edit source code without committing the changes into the Git version control system. Therefore, build outputs of user builds are not assumed to be installed into a runtime environment. To be able to perform simple and rudimentary tests on User Build-generated outputs, the developer should modify the test JCLs to point to the personal libraries used in user builds.</p>
+<p>Alternatively, the setup of a pre-concatenated runtime library can be implemented to perform more tests in the context of a (shared) test runtime environment. A dedicated pre-concatenated library in the runtime system (for example, batch, IMS and CICS) into which the developers can write allows a separation of the modules produced by user builds, and enables regular cleanup of these intermediate versions that are not yet registered in the central Git provider or as a build output in the artifact repository.</p>
+<p>External dependencies to other components, such as include files (for example, copybooks or object decks) that are not managed within the application repository but are required for building the application, can either be pulled in via a <a href="https://github.com/IBM/dbb-zappbuild/blob/3.2.0/samples/application-conf/Cobol.properties#L83-L89">dataset concatenation</a> or by the usage of Git submodules, depending on the repository organization.</p>
+</section>
+<section id="pipeline-build-of-feature-branches" class="level3">
+<h3 class="anchored" data-anchor-id="pipeline-build-of-feature-branches">Pipeline build of feature branches</h3>
+<p>It is a common practice to use a feature branch pipeline that builds the codebase of a feature branch and runs automated code inspections using the <a href="https://github.com/IBM/dbb/tree/v2.0.0/Pipeline/RunIDZCodeReview">IDz Code Review feature</a> and/or updates the static code analysis repository such as in <a href="https://www.ibm.com/docs/en/addi/6.1.2?topic=wazi-analyze-user-guide">IBM Wazi Analyze</a>.</p>
+<p>This pipeline expands the scope of the build past that of the user build and makes sure all changed and impacted programs are included in the list of artifacts to be produced by leveraging the <code>--impactBuild</code> option of zAppBuild. The developer must make sure to have pushed the feature branch with all their committed changes from their local clone of the repository to the central Git provider so that those changes are available to the feature branch pipeline process.</p>
+<p>The pipeline configuration requires processing logic to compute a dedicated high-level qualifier to guarantee that build datasets are exclusively used for the provided branch. The computed value is passed into the build command via the <code>--hlq</code> parameter. zAppBuild allocates the datasets automatically.</p>
+<p>The following screen capture shows the stages included a sample pipeline build for a feature branch.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/image17.png" class="img-fluid figure-img"></p>
+<figcaption>Screen capture of pipeline steps for the feature branch</figcaption>
+</figure>
+</div>
+<p>The build leverages the dependency metadata managed by IBM Dependency Based Build via DBB collections, which are consumed by the build framework, zAppBuild. At the first execution of the build process for feature branches, zAppBuild will duplicate this metadata by cloning the related collections for efficiency purposes<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This cloning phase ensures the accuracy of the dependency information for this pipeline build. To be able to clone the collection, zAppBuild needs to understand which collection contains the most accurate information and should be duplicated. As collection names are derived from the name of the branch, it is easy to identify which collection should be cloned. In the zAppBuild configuration, the originating collection reference is defined via the <code>mainBuildBranch</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> property.</p>
+<p>Depending on the <a href="./git-branching-model-for-mainframe-dev.html#workflows-in-this-branching-model">branching model workflow</a> being used, the <code>mainBuildBranch</code> property might need to be overridden for the feature branch pipeline:</p>
+<ul>
+<li><p>In the <a href="./git-branching-model-for-mainframe-dev.html#deliver-changes-with-the-next-planned-release">default development process</a> working towards the next planned release based on the head of the <code>main</code> branch, the default configuration for the <code>mainBuildBranch</code> is accurate and does not need to be overridden.</p></li>
+<li><p>When <a href="./git-branching-model-for-mainframe-dev.html#implement-a-fix-for-the-current-production-state">implementing a fix in context of a release maintenance branch</a>, the <code>mainBuildBranch</code> must be set to the name of the release maintenance branch to correctly clone the dependency information.</p></li>
+<li><p>When <a href="./git-branching-model-for-mainframe-dev.html#use-an-epic-branch-for-a-significant-development-initiative">implementing changes on a feature branch in an epic branch context</a>, the <code>mainBuildBranch</code> property must be set to the name of the epic branch.</p></li>
+</ul>
+<p>Instead of manipulating the property file that defines the <code>mainBuildBranch</code> setting and is part of the repository, the pipeline automation can compute the correct setting and pass the overriding property via the <a href="https://github.com/IBM/dbb-zappbuild/blob/3.3.0/docs/BUILD.md#dynamically-overwrite-build-properties">override command-line option</a> of zAppBuild.</p>
+</section>
+<section id="package-and-deploy-a-feature-for-testing-in-controlled-test-environments" class="level3">
+<h3 class="anchored" data-anchor-id="package-and-deploy-a-feature-for-testing-in-controlled-test-environments">Package and Deploy a feature for testing in controlled test environments</h3>
+<p>Today’s mainframe development workflows can allow developers to install their changes into controlled test environments before these changes get assigned into a release, for instance when the developer would like to prototype/pilot a new feature. On lower environments, there might be multiple CICS regions that developers can use, which provide a level of isolation from other ongoing development work. The pipeline process can be extended to provide a similar functionality as an optional step for the developer.</p>
+<p>This strategy is supported by feature branch packaging and deployment of a preliminary package. It is implemented as a dedicated pipeline that developers request on demand for their feature branch. The pipeline performs the following actions:</p>
+<ol type="1">
+<li>Build all the changes of the feature branch that were implemented, including their impacts as outlined in <a href="#basic-build-pipeline-build-and-test-stage">Basic Build Pipeline: Build and Test stage</a>, using the commit point at which the feature branch was branched off as the baseline reference for calculating the changes.</li>
+<li>Package the generated build outputs as outlined in <a href="#release-pipeline-packaging-stage">Release Pipeline: Packaging stage</a>.</li>
+</ol>
+<p>The deployment process must ensure that these preliminary packages cannot be deployed into any production environment.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/image18.png" class="img-fluid figure-img"></p>
+<figcaption>Diagram showing optional feature branch packaging and deployment of a preliminary package</figcaption>
+</figure>
+</div>
+<p>Often, these controlled development test environments are used as shared test environments for multiple application teams. To use the same runtime environment, such as a CICS region, for both prototyping and for testing integrated changes, we recommend separating the preliminary (feature) packages from the planned release packages by separating these types into different libraries. The package for the prototyping workflow is deployed via its dedicated deployment environment model, illustrated in the above diagram as DEV-1-FEATURE-TEST.</p>
+<p>Because preliminary packages are intended to be short-lived and temporary, they can be deployed to a library via the deployment automation process to a pre-concatenated library. Housekeeping strategies must be established to ensure that either automation routines or developers are cleaning up the preliminary packages when the testing is done.</p>
+<p>This strategy should be designed with the infrastructure engineering team to prepare the test environments to support this workflow.</p>
+</section>
+<section id="housekeeping-recommendations" class="level3">
+<h3 class="anchored" data-anchor-id="housekeeping-recommendations">Housekeeping recommendations</h3>
+<p>A housekeeping strategy should be implemented when the feature branch is no longer needed and therefore removed from the central Git provider. Successful merging adds commits from one branch to the head of another. Once complete, the branch the commits were merged from can be safely deleted. (Keeping old branches can cause confusion and does not contribute to the traceability of the history.) This housekeeping strategy should include the cleanup of the DBB collections, the build workspace on z/OS UNIX System Services, and the build datasets.</p>
+<p>Specific scripts can be integrated into the pipeline to delete <a href="https://www.ibm.com/docs/en/dbb/2.0?topic=interface-collection-commands#collection-delete">collections</a> and <a href="https://www.ibm.com/docs/en/dbb/2.0?topic=interface-build-group-commands#build-group-delete">build groups</a>, or <a href="https://github.com/IBM/dbb/tree/main/Utilities/DeletePDS">remove unnecessary build datasets</a>. When leveraging GitLab CI/CD as the pipeline orchestrator, the use of GitLab environments helps to automate these steps when a branch is deleted. An implementation sample is provided via the published technical document <a href="https://www.ibm.com/support/pages/integrating-ibm-zos-platform-cicd-pipelines-gitlab">Integrating IBM z/OS Platform in CI/CD Pipelines with Gitlab</a>. Generally, webhooks and other extensions of the pipeline orchestrator can be leveraged to perform these cleanup activities when a branch is deleted.</p>
+</section>
+</section>
+<section id="the-basic-build-pipeline-for-main-epic-and-release-branches" class="level2">
+<h2 class="anchored" data-anchor-id="the-basic-build-pipeline-for-main-epic-and-release-branches">The Basic Build Pipeline for main, epic, and release branches</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/image6.png" class="img-fluid figure-img"></p>
+<figcaption>Branching diagram with build pipeline on the main branch</figcaption>
+</figure>
+</div>
+<p>It is common practice to build every time the head of the <code>main</code>, epic, or release branch is modified.</p>
+<p>When a feature branch is merged into a shared integration branch, a new pipeline is kicked off to build the merged changes in the context of the configuration of the integration branch.</p>
+<p>Additional steps such as automated code reviews or updates of application discovery repositories can be included in the pipeline process, as shown in the sample pipeline setup in the following screen capture.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/image17.png" class="img-fluid figure-img"></p>
+<figcaption>Screen capture of a build pipeline for the main branch</figcaption>
+</figure>
+</div>
+<section id="basic-build-pipeline-build-and-test-stage" class="level3">
+<h3 class="anchored" data-anchor-id="basic-build-pipeline-build-and-test-stage">Basic Build Pipeline: Build and Test stage</h3>
+<p>The purpose of the Build and Test stage of the pipeline for an integration branch is to ensure that the branch can be built and then tested together. It might happen that some features have indirect dependencies on other features planned for the same deliverable. This early point of integration along with the <a href="https://github.com/IBM/dbb-zappbuild/blob/3.2.0/docs/BUILD.md#perform-impact-build">impact build capability</a> of the zAppBuild build framework ensures consistency and transparency for the upcoming deliverable.</p>
+<p>Conceptually speaking, the build step of a CI/CD pipeline decouples building from deploying. This is important to ensure that only outputs from successful builds are installed into the test environment, rather than directing the build framework to update the libraries of the test environment directly.</p>
+<p>The Build and Test stage of the pipeline for the integration branch builds all the incorporated changes that have so far been merged for the deliverable. To identify the list of changes contributing to the next planned release, the release maintenance, or the epic, the build step of the pipeline leverages the <code>--baselineRef</code> option of zAppBuild for incremental builds, which is used to specify a baseline hash or point in the commit history for calculating the list of changes. Using this approach of incremental builds avoids unnecessarily building parts of the application that are unaffected by any of the changes in the commits to the base branch since the last release.</p>
+<p>Additionally, the pipeline configuration requires a dedicated high-level qualifier to guarantee that build data sets are exclusively used for the provided branch. The value is passed to the zAppBuild command via the <code>--hlq</code> parameter.</p>
+<p>The option <code>--baselineRef</code> is a sub-parameter of the <code>--impactBuild</code> option in zAppBuild, and sets the base Git hash upon which the <code>git diff</code> command calculates changes for the repository<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>In the <a href="./git-branching-model-for-mainframe-dev.html#deliver-changes-with-the-next-planned-release">default workflow</a> with <code>main</code> as the base branch, the baseline reference is defined by the commit hash (or the Git tag) of the previous release (that is, the release currently in production). In the following diagram, the blue dotted line shows the changes calculated from the baseline to the point at which the <code>feature_2</code> branch is merged in.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/basicBuildPipeline-computeChanges-default-workflow.png" class="img-fluid figure-img"></p>
+<figcaption>Diagram showing the calculation of changes for the next planned release</figcaption>
+</figure>
+</div>
+<p>For the <a href="./git-branching-model-for-mainframe-dev.html#implement-a-fix-for-the-current-production-state">hotfix workflow</a>, the hotfixes are planned to be implemented from a release maintenance branch whose baseline reference is the commit (or Git tag) that represents the state of the repository for the release. This is also the commit from which the respective release maintenance branch was created, as depicted in the below diagram.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/basicBuildPipeline-computeChanges-fix-workflow.png" class="img-fluid figure-img"></p>
+<figcaption>Diagram showing the calculation of changes in a release fix workflow</figcaption>
+</figure>
+</div>
+<p>For the <a href="./git-branching-model-for-mainframe-dev.html#characteristics-of-mainline-based-development-with-feature-branches">epic branch workflow</a>, the baseline reference for the build pipeline is the commit (or Release tag) from which the epic branch was created, also referred to as the fork point.</p>
+</section>
+<section id="basic-build-pipeline-install-outputs-to-a-development-and-test-environment" class="level3">
+<h3 class="anchored" data-anchor-id="basic-build-pipeline-install-outputs-to-a-development-and-test-environment">Basic Build Pipeline: Install outputs to a development and test environment</h3>
+<p>In this phase of the development lifecycle for the <a href="./git-branching-model-for-mainframe-dev.html#deliver-changes-with-the-next-planned-release">default workflow</a> implementing and delivering changes for the next planned release, the build typically operates with the compile options to enable <a href="https://github.com/IBM/dbb-zappbuild/blob/3.3.0/docs/BUILD.md#common-pipeline-invocation-examples">testing and debugging</a> of programs. As most organizations restrict the deployment to the production environments with optimized code only, these build artifacts can be seen as temporary and only for initial testing and debugging purposes.</p>
+<p><img src="static/img/branching-model/defaultWorkflow_buildPipelineAfterMerge.png" class="img-fluid" alt="Branching diagram with build pipeline on the main branch producing a preliminary package for the development and test environment"><br>
+There are two options to deploy the generated artifacts to the shared development test system - represented by the blue DEV-TEST shape in the above figure.</p>
+<p>(Recommended) Option A: Extend the pipeline with a packaging stage and a deployment stage to create a preliminary package similar to <a href="#release-pipeline-packaging-stage">Release Pipeline: Packaging stage</a>. It is traditionally the responsibility of the deployment solution to install the preliminary package into different environments. Doing so in this phase of the workflow will give the necessary traceability to understand which versions are installed in the development and test environment.</p>
+<p>Option B: Use a post-build script to copy the output artifacts from the build libraries to the associated target runtime libraries and manually run the necessary activation steps such as a Db2 bind process or an online refresh. However, even given the temporary nature of the outputs created by this build, this circumvents the formal packaging and deployment process. The major drawback of this approach is a lack of traceability and understanding of what runs on the development and test environment.</p>
+<p>This step of the build pipeline is also applicable for pipelines for the epic or the release maintenance branches.</p>
+</section>
+<section id="basic-build-pipeline-analyze-stage" class="level3">
+<h3 class="anchored" data-anchor-id="basic-build-pipeline-analyze-stage">Basic Build Pipeline: Analyze stage</h3>
+<p>An optional Analyze stage after building the most current state of the <code>main</code> branch can include steps to perform automated code inspections using the <a href="https://github.com/IBM/dbb/tree/v2.0.0/Pipeline/RunIDZCodeReview">IDz Code Review feature</a> and/or to update the static code analysis repository such as in <a href="https://www.ibm.com/docs/en/addi/6.1.2?topic=wazi-analyze-user-guide">IBM Wazi Analyze</a>.</p>
+<p>Submitting a Sonarqube scan at this point of the workflow can also help the development team to keep an eye on the maintainability and serviceability of the application.</p>
+</section>
+</section>
+<section id="the-release-pipeline-with-build-packaging-and-deploy-stages" class="level2">
+<h2 class="anchored" data-anchor-id="the-release-pipeline-with-build-packaging-and-deploy-stages">The Release Pipeline with Build, Packaging, and Deploy stages</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/defaultWorkflow_releasePipeline_RC1_cropped.png" class="img-fluid figure-img"></p>
+<figcaption>Diagram showing the Release Pipeline building a release candidate package for deployment in test environments</figcaption>
+</figure>
+</div>
+<p>The Release Pipeline is leveraged by the development team when they want to create a release candidate package that can be deployed to controlled test environments. The development team manually requests the pipeline to run. The pipeline is not expected to be used for every merge into the <code>main</code> branch.</p>
+<p>The Release Pipeline differs from the previously-discussed pipelines and includes additional steps: after the stages of building and code scans have successfully completed, the pipeline packages all the incorporated changes of all merged features for this deliverable to create a package.</p>
+<p>The package can be an intermediate release candidate version that can already be tested in the managed test environments, as outlined in the <a href="./git-branching-model-for-mainframe-dev.html#workflows-in-this-branching-model">high-level workflows</a>. When the development team has implemented all the tasks planned for the iteration, this same pipeline is used to produce the package that will be deployed to production.</p>
+<p>The following diagram outlines the steps of a GitLab pipeline for the Build, Packaging, and Deploy stages.</p>
+<p>The Deploy stage can only be present in the pipeline for the default workflow (with <code>main</code>) when delivering changes with the next planned release, because the pipeline is unaware of the assigned environments for the epic and release maintenance workflows.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/image22.png" class="img-fluid figure-img"></p>
+<figcaption>Build, package and deploy pipeline</figcaption>
+</figure>
+</div>
+<section id="release-pipeline-build-stage" class="level3">
+<h3 class="anchored" data-anchor-id="release-pipeline-build-stage">Release Pipeline: Build stage</h3>
+<p>Similar to the build pipeline outlined in <a href="#basic-build-pipeline-build-and-test-stage">Basic Build Pipeline: Build and Test stage</a>, the Build stage of the Release Pipeline builds all the incorporated changes of all merged features. To identify the list of changes contributing to the deliverable, the Build stage of the pipeline leverages the <code>--baselineRef</code> option of zAppBuild to detect all contributed changes based on rules outlined in <a href="#basic-build-pipeline-build-and-test-stage">Basic Build Pipeline: Build and Test stage</a>.</p>
+<p>For the <code>main</code> and the release maintenance workflows, this build performs the compilation with the compiler options to produce executables optimized for performance. The pipeline must leverage its dedicated set of PDS libraries to not interfere with the <a href="#the-basic-build-pipeline-for-main-epic-and-release-branches">Basic Build Pipeline</a>.</p>
+<p>For the epic branch workflow, the build can occur with test options, as the package is only deployed into the initiative’s test environment and will be rebuilt when the epic branch is integrated into the <code>main</code> branch.</p>
+</section>
+<section id="release-pipeline-packaging-stage" class="level3">
+<h3 class="anchored" data-anchor-id="release-pipeline-packaging-stage">Release Pipeline: Packaging stage</h3>
+<p>The Packaging stage runs after the Build and Test stage, and creates a package of the generated build outputs (for example, load modules, DBRMs, and JCLs). This package includes the build outputs of all the contributed changes (including the files impacted by the changes) for the deliverable. It represents a release candidate that can be deployed into the various test environments along the existing staging hierarchy. As outlined in the high-level workflows, this can even happen when only a subset of the features for the deliverable is implemented.</p>
+<p>The name or associated metadata of the package allows the development team to relate the package to the development workflow. Based on naming conventions of the package, different rules need to apply to its lifecycle. Some examples of this are shown below:</p>
+<ul>
+<li><p>Use <code>rel-2.1.0_RC01</code> for a release candidate package for the next planned release.</p>
+<p>The package name represents the name of the next planned release. This package can make it to production, as it contains build outputs produced with options for optimization.</p></li>
+<li><p>Use <code>rel-2.0.1-patch_RC01</code> for an urgent fix package of the current production version.</p>
+<p>This package is allowed to bypass any concurrent development activities and can take shortcuts in the route to production. For example, if it can only be tested on the QA-TEST environment, the developers can bypass lower test environments based on an “emergency” flag of the deployment package.</p></li>
+<li><p>Use <code>epic1-prelim_pkg01</code> for a preliminary package of a long-running epic branch workflow.</p>
+<p>This package can only be deployed to the assigned test environments available to the initiative, and cannot be deployed to production.</p></li>
+</ul>
+<p>The Packaging stage not only creates the binaries package, but it also carries information about the source code, such as the Git commit and additional links (including references to the pipeline job), which are helpful for understanding the context of the creation of the package.</p>
+<p>The <a href="https://github.com/IBM/dbb">DBB community repository</a> contains two sample scripts that implement the Packaging stage. If IBM UrbanCode Deploy (UCD) is used as the deployment solution, the <a href="https://github.com/IBM/dbb/tree/main/Pipeline/CreateUCDComponentVersion"><code>CreateUCDComponentVersion</code></a> script can be leveraged to create an IBM UrbanCode Deploy component version. Alternatively, if a scripted deployment is being set up, the <a href="https://github.com/IBM/dbb/tree/main/Pipeline/PackageBuildOutputs"><code>PackageBuildOutputs</code></a> script can be used instead to store artifacts in an enterprise binary artifact repository leveraged by <a href="https://www.ibm.com/docs/en/developer-for-zos/16.0?topic=deploy-wazi-workflow">IBM Wazi Deploy</a>.</p>
+<p>Both sample scripts leverage data from the DBB build report to extract and retain the metadata, allowing traceability between the build and deployment activities as outlined above.</p>
+</section>
+<section id="release-pipeline-deploy-stage" class="level3">
+<h3 class="anchored" data-anchor-id="release-pipeline-deploy-stage">Release Pipeline: Deploy stage</h3>
+<p>The deployment process of a release package for the <a href="./git-branching-model-for-mainframe-dev.html#deliver-changes-with-the-next-planned-release">default workflow with <code>main</code></a> can either be triggered from the CI/CD pipeline or driven through the user interface of the deployment manager. The implementation can vary based on the capabilities offered by the CI/CD orchestrator and the deployment solution. Deployment manager options for z/OS include IBM UrbanCode Deploy (UCD) and IBM Wazi Deploy.</p>
+<p>IBM UrbanCode Deploy provides a rich web-based interface, powerful REST APIs, and a command-line interface. Typically, the pipeline execution requests the deployment of the application package into the defined test environments automatically, after successful completion of the preceding Build and Packaging stages. These requests are performed through the REST APIs provided by UCD. However, if the application team prefers to set up manual triggers for the deployments to the specific environments, this can be performed through UCD’s web interface. In that scenario, the pipeline is primarily used for continuous integration and packaging.</p>
+<p>The <a href="https://github.com/IBM/dbb">DBB community repository</a> provides a sample <a href="https://github.com/IBM/dbb/tree/main/Pipeline/DeployUCDComponentVersion"><code>DeployUCDComponentVersion</code></a> script that can be included in a pipeline process to request a UCD application deployment leveraging UCD’s REST APIs.</p>
+<p>IBM Wazi Deploy is a deployment manager for z/OS artifacts and comes with a command-line interface that can be easily invoked from a pipeline orchestrator and does not require a wrapper script. After retrieving the package to deploy from the artifact repository, the <code>wazideploy-generate</code> step generates the deployment instructions (also known as the deployment plan) for the artifacts of the package. This plan is then passed to the <code>wazideploy-deploy</code> step, which installs the contents of the package into the specified runtime environment<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<p>The following screen capture shows the Deploy stage of a sample Release Pipeline.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/branching-model/image23.png" class="img-fluid figure-img"></p>
+<figcaption>Screen capture of the Deploy stage of the Release Pipeline</figcaption>
+</figure>
+</div>
+<p>Implementation details of the Deploy stage can vary based on the pipeline orchestrator being used. In a GitLab CI/CD implementation, a pipeline can stay on hold and wait for user input. This allows the pipeline to automatically trigger the deployment of the application package into the first configured environment, and lets the application team decide when to deploy to the next environment through a manual step (for instance, deployment to the Acceptance environment).</p>
+<p>With Jenkins as the CI/CD orchestrator, it is not common to keep a pipeline in progress over a long time. In this case, the pipeline engineering team might consider the approach of requesting the deployments through the user interface of the deployment manager, or alternatively, they can design and set up a deployment pipeline in Jenkins that can combine the deployment with any automated tests or other automation tasks.</p>
+</section>
+</section>
+<section id="deployment-to-production" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-to-production">Deployment to production</h2>
+<p>When the release candidate package has passed all quality gates and received all the necessary approvals, it is ready to be deployed to the production environment.</p>
+<p>The release manager takes care of this step of the lifecycle and will leverage the user interface of the deployment manager, such as UCD’s browser-based interface. In the case of a deployment manager solution with a command-line interface such as Wazi Deploy, the user interface of the pipeline orchestrator is used by the release manager to drive the deployment to production. A deployment pipeline definition needs to be configured to roll out the package.</p>
+<p>Deploying to production consists of two tasks:</p>
+<ol type="1">
+<li><p>Invoke the deployment to the production runtime environment through either the deployment manager interface or a deployment pipeline definition.</p></li>
+<li><p>Tag the commit in the Git server by assigning a Git tag to the commit that was used to build the release package.</p></li>
+</ol>
+<p>Most Git providers allow for the creation of a release to provide a summary of the changes, as well as additional documentation. <a href="https://docs.gitlab.com/ee/api/releases/">GitLab</a> and <a href="https://docs.github.com/en/rest/releases/releases">GitHub</a> offer REST APIs to create a new tag/release. This action should be automated as part of the deployment to production.</p>
+<p>As an example of using Git tags, <a href="https://github.com/IBM/dbb-zappbuild/releases/tag/3.2.0">zAppBuild</a> also declares releases to identify stable versions.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This page provides guidance for implementing a <a href="./git-branching-model-for-mainframe-dev.html">Git branching model for mainframe development</a> with IBM Dependency Based Build and zAppBuild.</p>
+<p>The CI/CD pipeline configurations that were outlined at various stages can be adjusted depending on the application team’s existing and desired development processes and philosophy. Factors that might impact the design of the pipelines and workflow include test strategies, the number of test environments, and potential testing limitations.</p>
+<p>When designing a CI/CD pipeline, assessment of current and future requirements in the software delivery lifecycle is key. As CI/CD technologies continue to evolve and automated testing using provisioned test environments becomes more common in mainframe application development teams, the outlined branching strategy can also evolve to maximize the benefits from these advances.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>zAppBuild documentation: https://github.com/IBM/dbb-zappbuild/blob/3.2.0/docs/BUILD.md#perform-impact-build-for-topic-branches<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>zAppBuild documentation: https://github.com/IBM/dbb-zappbuild/blob/3.2.0/docs/BUILD.md#perform-impact-build-for-topic-branches<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>zAppBuild implementation to set <code>baselineRef</code>: https://github.com/IBM/dbb-zappbuild/blob/3.2.0/docs/BUILD.md#perform-impact-build-by-providing-baseline-reference-for-the-analysis-of-changed-files<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>IBM Wazi Deploy static deployment workflow: https://www.ibm.com/docs/en/developer-for-zos/16.0?topic=deploy-getting-started-static-deployment<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./git-branching-model-for-mainframe-dev.html" class="pagination-link  aria-label=" git="" branching="" model="" for="" mainframe="" development"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Git branching model for mainframe development</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./branching-appendix.html" class="pagination-link" aria-label="Appendix">
+        <span class="nav-page-text">Appendix</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Authored in Markdown <br>Built with <a href="https://quarto.org">Quarto</a> and <a href="https://revealjs.com/">RevealJS</a> <br>Served from Github Enterprise Pages</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Copyright © 2024 IBM Corporation</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

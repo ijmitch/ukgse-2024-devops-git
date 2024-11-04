@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.518">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>IBM Z DevOps Acceleration Program</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./manual-migration.html" rel="next">
+<link href="./managing-code-page-conversion.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    null
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">IBM Z DevOps Acceleration Program</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./ibm-z-devops-solution.html" aria-current="page"> 
+<span class="menu-text">Docs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./p1.html"> 
+<span class="menu-text">Pres</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro-migrating-data.html">Migrating data from z/OS to Git</a></li><li class="breadcrumb-item"><a href="./dbb-migration-tool.html">Methods for migrating data</a></li><li class="breadcrumb-item"><a href="./dbb-migration-tool.html">DBB Migration Tool</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Overview</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ibm-z-devops-solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">IBM Z DevOps solution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">CI/CD for z/OS applications</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-cicd-zos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to CI/CD for z/OS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrated development environment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Source code management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./build.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Build</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./artifact-repository.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Artifact repository</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deployment-manager.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deployment manager</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline-orchestrator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pipeline orchestrator</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./journey-to-cicd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding the journey to a CI/CD pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install-configure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installing and configuring your tools</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Tutorials</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Designing the CI/CD pipeline</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./repository-layouts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Planning repository layouts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dependency-management.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Defining dependency management</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Git branching for mainframe development</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./branching-models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to branching models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./git-branching-model-for-mainframe-dev.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git branching model for mainframe development</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./branching-model-supporting-pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Supporting pipeline design and implementation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./branching-appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./build-strategy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Designing the build strategy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline-strategy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Architecting the pipeline strategy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./deployment-strategy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Outlining the deployment strategy</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Migrating data from z/OS to Git</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-migrating-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to migrating data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./managing-code-page-conversion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Managing code page conversion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
+ <span class="menu-text">Methods for migrating data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dbb-migration-tool.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">DBB Migration Tool</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+ <span class="menu-text">sclm-migration-tool.md</span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manual-migration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Manual migration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Implementing CI/CD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./implementing-pipeline-actions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing pipeline actions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Resources</span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dbb-migration-tool" id="toc-dbb-migration-tool" class="nav-link active" data-scroll-target="#dbb-migration-tool">DBB Migration Tool</a>
+  <ul class="collapse">
+  <li><a href="#dbb-migration-tool-overview" id="toc-dbb-migration-tool-overview" class="nav-link" data-scroll-target="#dbb-migration-tool-overview">DBB Migration Tool overview</a></li>
+  <li><a href="#example-setup" id="toc-example-setup" class="nav-link" data-scroll-target="#example-setup">Example setup</a>
+  <ul class="collapse">
+  <li><a href="#migrate.techdoc.source" id="toc-migrate.techdoc.source" class="nav-link" data-scroll-target="#migrate.techdoc.source">MIGRATE.TECHDOC.SOURCE</a></li>
+  <li><a href="#migrate.techdoc.copybook" id="toc-migrate.techdoc.copybook" class="nav-link" data-scroll-target="#migrate.techdoc.copybook">MIGRATE.TECHDOC.COPYBOOK</a></li>
+  </ul></li>
+  <li><a href="#migration-scenarios" id="toc-migration-scenarios" class="nav-link" data-scroll-target="#migration-scenarios">Migration scenarios</a>
+  <ul class="collapse">
+  <li><a href="#migration-using-the-default-settings" id="toc-migration-using-the-default-settings" class="nav-link" data-scroll-target="#migration-using-the-default-settings">1. Migration using the default settings</a></li>
+  <li><a href="#migration-using-the-pdsencoding-mapping-rule" id="toc-migration-using-the-pdsencoding-mapping-rule" class="nav-link" data-scroll-target="#migration-using-the-pdsencoding-mapping-rule">2. Migration using the pdsEncoding Mapping Rule</a></li>
+  <li><a href="#detection-of-non-roundtripable-characters" id="toc-detection-of-non-roundtripable-characters" class="nav-link" data-scroll-target="#detection-of-non-roundtripable-characters">3. Detection of non-roundtripable characters</a></li>
+  <li><a href="#detection-of-non-printable-characters" id="toc-detection-of-non-printable-characters" class="nav-link" data-scroll-target="#detection-of-non-printable-characters">4. Detection of non-printable characters</a></li>
+  </ul></li>
+  <li><a href="#recommendations-for-using-the-migration-utility" id="toc-recommendations-for-using-the-migration-utility" class="nav-link" data-scroll-target="#recommendations-for-using-the-migration-utility">Recommendations for using the migration utility</a></li>
+  <li><a href="#migrating-from-ibm-engineering-workflow-management-to-git" id="toc-migrating-from-ibm-engineering-workflow-management-to-git" class="nav-link" data-scroll-target="#migrating-from-ibm-engineering-workflow-management-to-git">Migrating from IBM Engineering Workflow Management to GIT</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.ibm.com/ianj-mitchell/quartotest/edit/main/dbb-migration-tool.md" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://github.ibm.com/ianj-mitchell/quartotest/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="dbb-migration-tool.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    <div class="quarto-margin-footer"><div class="margin-footer-item">
+<p><img src="IBM_logo®_pos_blue60_RGB.png" class="img-fluid"></p>
+</div></div></div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="dbb-migration-tool" class="level1">
+<h1>DBB Migration Tool</h1>
+<section id="dbb-migration-tool-overview" class="level2">
+<h2 class="anchored" data-anchor-id="dbb-migration-tool-overview">DBB Migration Tool overview</h2>
+<p>IBM® Dependency Based Build (DBB) provides a migration tool that facilitates the copying of source code PDS members into a pre-existing local Git repository in z/OS UNIX System Services (z/OS UNIX), stored on the z/OS File System (zFS). The populated local Git repository can then be committed and pushed to a distributed Git server. During the copy process, the DBB Migration Tool will perform the necessary code page conversion from the z/OS code page to the traditional code page used in Git when applicable, create (or update) the <code>.gitattributes</code> file with the correct encoding mappings, tag the z/OS UNIX files with the appropriate code page values, and (potentially) report on any issues encountered during the migration.</p>
+<p>The migration tool is bundled as part of the SMP/e installation of the Dependency Based Build toolkit (FMID HBGZ110) and is typically found under the <a href="https://www.ibm.com/docs/en/dbb/2.0?topic=SS6T76_2.0.0/setup_dbb_toolkit.htm"><code>migration/bin</code> sub-directory</a> of the DBB installation folder (which by default is <code>/usr/lpp/IBM/dbb</code>, unless customized during installation). The setup, general usage, and various options provided by this tool to assist in the migration can be found on the <a href="https://www.ibm.com/docs/en/dbb/2.0?topic=migrating-source-files-from-zos-git">IBM Documentation website</a>.</p>
+<p>The following sections of this page will showcase various migration scenarios using the context that has been described in <a href="./managing-code-page-conversion.html">Managing code page conversion</a>. The intent is not to provide an exhaustive set of scenarios supported by the migration tool, but rather to focus on common use cases. The scenarios are:</p>
+<ol type="1">
+<li><a href="#1-migration-using-the-default-settings">Migration using the default settings</a></li>
+<li><a href="#2-migration-using-the-pdsencoding-mapping-rule">Migration using the <code>pdsEncoding</code> Mapping Rule</a></li>
+<li><a href="#3-detection-of-non-roundtripable-characters">Detection of non-roundtripable characters</a></li>
+<li><a href="#4-detection-of-non-printable-characters">Detection of non-printable characters</a></li>
+</ol>
+</section>
+<section id="example-setup" class="level2">
+<h2 class="anchored" data-anchor-id="example-setup">Example setup</h2>
+<p>To illustrate the scenarios, the following sample PDSs were constructed to highlight some specific migration situations that may be encountered and how to mitigate potential issues:</p>
+<ul>
+<li><a href="#migratetechdocsource"><code>MIGRATE.TECHDOC.SOURCE</code></a></li>
+<li><a href="#migratetechdoccopybook"><code>MIGRATE.TECHDOC.COPYBOOK</code></a></li>
+</ul>
+<section id="migrate.techdoc.source" class="level3">
+<h3 class="anchored" data-anchor-id="migrate.techdoc.source">MIGRATE.TECHDOC.SOURCE</h3>
+<p>Content of the <code>MIGRATE.TECHDOC.SOURCE</code> dataset:</p>
+<table>
+<thead>
+<tr>
+<th>
+Member
+</th>
+<th>
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+IBM037
+</td>
+<td>
+Member that has been created using the code page of IBM-037.<br>Example: IBM-037 Code Page
+<pre lang="c">          void main(int argc, char *argv[])
+        </pre>
+<strong>Note:</strong> Under the IBM-037 code page, the hexadecimal codes for the <code>[</code> and the <code>]</code> characters are x’BA’ and x’BB’, respectively.
+</td>
+</tr>
+<tr>
+<td>
+IBM1047
+</td>
+<td>
+Member that has been created using the code page of IBM-1047.<br>Example: IBM-1047 Code Page
+<pre lang="c">            void main(int argc, char *argv[])
+          </pre>
+<strong>Note:</strong> Under the IBM-1047 code page, the hexadecimal codes for the <code>[</code> and the <code>]</code> characters are x’AD’ and x’BD’, respectively.
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="migrate.techdoc.copybook" class="level3">
+<h3 class="anchored" data-anchor-id="migrate.techdoc.copybook">MIGRATE.TECHDOC.COPYBOOK</h3>
+Content of the <code>MIGRATE.TECHDOC.COPYBOOK</code> dataset:
+<table>
+<thead>
+<tr>
+<th>
+Member
+</th>
+<th>
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+NROUND
+</td>
+<td>
+Member that contains non-roundtripable characters.<br>Example: Non-roundtripable characters
+<pre lang="cobol">          Line with CHAR_NL (0x15)  ␤<br>
+          Line with CHAR_CR (0x0D)  ␍<br>
+          Line with CHAR_LF (0x25)  ␊<br>
+          Line with CHAR_SHIFT_IN (0x0F)  _<br>
+          Line with CHAR_SHIFT_OUT(0x0E)  _<br>
+          Line with empty CHAR_SHIFT_OUT(0x0E) and CHAR_SHIFT_IN (0x0F)  __
+        </pre>
+</td>
+</tr>
+<tr>
+<td>
+NPRINT
+</td>
+<td>
+Member that contains non-printable characters.<br>Example: Non-Printable Characters
+<pre lang="cobol">          Line with (0x06)  ?<br>
+          Line with (0x07)  <br>
+          Line with (0x1B)  
+        </pre>
+</td>
+</tr>
+<tr>
+<td>
+HEXCODED
+</td>
+<td>
+Member that contains non-printable and non-roundtripable characters.<br>Example: Hexadecimal Coded Characters
+<pre lang="cobol">          01   DFHBMSCA.<br>
+          &nbsp;&nbsp;02 DFHBMPEM  PICTURE X VALUE IS '_'.<br>
+          &nbsp;&nbsp;02 DFHBMPNL  PICTURE X VALUE IS '␤'.<br>
+          &nbsp;&nbsp;02 DFHBMPFF  PICTURE X VALUE IS '_'.<br>
+          &nbsp;&nbsp;02 DFHBMPCR  PICTURE X VALUE IS '␍'.<br>
+          &nbsp;&nbsp;02 DFHBMASK  PICTURE X VALUE IS '0'.<br>
+          &nbsp;&nbsp;02 DFHBMUNP  PICTURE X VALUE IS ' '.
+        </pre>
+</td>
+</tr>
+<tr>
+<td>
+HEXVALUE
+</td>
+<td>
+Member that contains the suggested transformation of the non-printable or non-roundtripable characters contained in the “HEXCODED” member in a more suitable format.<br>Example: Hexadecimal Values
+<pre lang="cobol">          01   DFHBMSCA.<br>
+          &nbsp;&nbsp;02 DFHBMPEM  PICTURE X VALUE IS X'19'.<br>
+          &nbsp;&nbsp;02 DFHBMPNL  PICTURE X VALUE IS X'15'.<br>
+          &nbsp;&nbsp;02 DFHBMPFF  PICTURE X VALUE IS X'0C'.<br>
+          &nbsp;&nbsp;02 DFHBMPCR  PICTURE X VALUE IS X'0D'.<br>
+          &nbsp;&nbsp;02 DFHBMASK  PICTURE X VALUE IS '0'.<br>
+          &nbsp;&nbsp;02 DFHBMUNP  PICTURE X VALUE IS ' '.
+       </pre>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="migration-scenarios" class="level2">
+<h2 class="anchored" data-anchor-id="migration-scenarios">Migration scenarios</h2>
+<section id="migration-using-the-default-settings" class="level3">
+<h3 class="anchored" data-anchor-id="migration-using-the-default-settings">1. Migration using the default settings</h3>
+<p>In this scenario, we will be migrating all the source members in the <code>MIGRATE.TECHDOC.SOURCE</code> PDS using the default settings into a local z/OS UNIX Git Repository under <code>/u/user1/Migration</code>. This is the most simplistic form of invoking the migration tool and, in most cases, satisfies most needs.</p>
+<pre class="shell"><code>$DBB_HOME/migration/bin/migrate.sh -r /u/user1/Migration -m Mapping Rule[hlq:MIGRATE.TECHDOC,extension:SRC,toLower:true] SOURCE
+
+Setting dbb.file.tagging = true
+Local GIT repository: /u/user1/Migration
+Mapping: MappingRule[hlq:MIGRATE.TECHDOC,extension:SRC,toLower:true]
+MappingRuleId: com.ibm.dbb.migration.MappingRule
+MappingRuleAttrs: [hlq:MIGRATE.TECHDOC, extension:SRC, toLower:true]
+Using mapping rule com.ibm.dbb.migration.MappingRule to migrate the data sets
+Migrating data set SOURCE
+Copying MIGRATE.TECHDOC.SOURCE(IBM037) to /u/user1/Migration/source/ibm037.src using default encoding
+Copying MIGRATE.TECHDOC.SOURCE(IBM1047) to /u/user1/Migration/source/ibm1047.src using default encoding
+** Build finished</code></pre>
+<p>Note that the migration tool is using a default encoding, which is IBM-1047.</p>
+<p>An examination of the files on the local z/OS UNIX Git repository will reveal that the files were copied and were tagged with the default code page of IBM-1047.</p>
+<pre class="shell"><code>ls -alT /u/user1/Migration/source
+total 64
+                    drwxr-xr-x   2 USER1    OMVS        8192 May  4 12:33 .
+                    drwxr-xr-x   4 USER1    OMVS        8192 May  4 12:33 ..
+t IBM-1047    T=on  -rw-r--r--   1 USER1    OMVS          61 May  4 12:33 ibm037.src
+t IBM-1047    T=on  -rw-r--r--   1 USER1    OMVS          61 May  4 12:33 ibm1047.src</code></pre>
+<p>Additionally, the <code>.gitattributes</code> file was created (or updated) with the correct encoding mappings. All source artifacts, except those tagged as binary (to be discussed later), will be stowed in the distributed Git server using the UTF-8 code page (as defined by the <code>git-encoding=utf-8</code> parameter), whereas any artifacts that are copied from the distributed Git server to z/OS will be translated to the IBM-1047 code page (as defined by the <code>zos-working-tree-encoding=ibm-1047</code> parameter). The documentation on <a href="./managing-code-page-conversion.html#defining-the-code-page-of-files-in-git">Defining the code page of files in Git</a> provides more information.</p>
+<pre class="shell"><code>cat /u/user1/Migration/.gitattributes
+source/*.src zos-working-tree-encoding=ibm-1047 git-encoding=utf-8</code></pre>
+<p>At this point, Git actions such as add/commit/push can be performed on the migrated source artifacts to the distributed Git server.</p>
+<pre class="shell"><code>git add .
+git commit -m "Simple Migration Example"
+[main 6436b92] Simple Migration Example
+ 3 files changed, 5 insertions(+)
+ create mode 100644 .gitattributes
+ create mode 100644 source/ibm037.src
+ create mode 100644 source/ibm1047.src
+git push
+Counting objects: 6, done.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 634 bytes | 211.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To github.ibm.com:user1/Migration.git
+   3d2962a..6436b92  main -&gt; main</code></pre>
+<p>Once the Git push command has completed to the distributed Git server, the resulting files should be translated into the correct UTF-8 code page.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/migration-git-scen1-gitattributes.png" class="img-fluid figure-img"></p>
+<figcaption>DBB Migration Tool scenario 1, .gitattributes file</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/migration-git-scen1-ibm1047.png" class="img-fluid figure-img"></p>
+<figcaption>DBB Migration Tool scenario 1, ibm1047.src file</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/migration-git-scen1-ibm037.png" class="img-fluid figure-img"></p>
+<figcaption>DBB Migration Tool scenario 1, ibm037.src file</figcaption>
+</figure>
+</div>
+<p>However, as indicated in the last picture above, the <code>ibm037.src</code> file reveals an encoding issue. This will be discussed in the next scenario.</p>
+</section>
+<section id="migration-using-the-pdsencoding-mapping-rule" class="level3">
+<h3 class="anchored" data-anchor-id="migration-using-the-pdsencoding-mapping-rule">2. Migration using the pdsEncoding Mapping Rule</h3>
+<p>In this scenario, we will be migrating a single source member from the <code>MIGRATE.TECHDOC.SOURCE PDS</code> using the <code>pdsEncoding</code> keyword in the mapping rule to override the default encoding. Recall that from the previous migration scenario, there was an encoding issue with the final copy of the <code>ibm037.src</code> file in the distributed Git server. This occurred because the z/OS file was written using the IBM-037 code page instead of the default IBM-1047 code page. The problem is not in how the file was encoded, but rather how the Rocket Git client converted the file when sending it to Git.</p>
+<p>This can be a common occurrence for source files that pre-date the introduction of z/OS Unix System Services (z/OS UNIX), and where high-level languages, such as C/370, were utilized. As stated previously, determining the original encoding can be a challenge since the code page used to create the file is generally specified in the 3270 Emulator (TN3270) client session set-up. Therefore, an analysis of the z/OS source should be performed to determine the original code page used to create the source. To determine the code page used to create files through ISPF, an alternate option is to ask the developers which code page they are using to edit the files through their 3270 connections.</p>
+<p>To correct the encoding issue identified in the previous scenario, we will use the <code>pdsEncoding</code> keyword of the mapping rule to override the default IBM-1047 code page with IBM-037 for the offending member.</p>
+<pre class="shell"><code>$DBB_HOME/migration/bin/migrate.sh -r /u/user1/Migration -m MappingRule[hlq:MIGRATE.TECHDOC,extension:SRC,toLower:true,pdsEncoding:IBM-037] "SOURCE(IBM037)"
+
+Setting dbb.file.tagging = true
+Local GIT repository: /u/user1/Migration
+Mapping: MappingRule[hlq:MIGRATE.TECHDOC,extension:SRC,toLower:true,pdsEncoding:IBM-037]
+MappingRuleId: com.ibm.dbb.migration.MappingRule
+MappingRuleAttrs: [hlq:MIGRATE.TECHDOC, extension:SRC, toLower:true, pdsEncoding:IBM-037]
+Using mapping rule com.ibm.dbb.migration.MappingRule to migrate the data sets
+Migrating data set SOURCE(IBM037)
+Copying MIGRATE.TECHDOC.SOURCE(IBM037) to /u/user1/Migration/source/ibm037.src using IBM-037
+** Build finished</code></pre>
+<p>Note that the migration tool is using the override encoding of IBM-037 for a named member. This override does not necessarily have to be performed on a member-by-member basis, as the migration tool supports the ability to override the encoding for an entire PDS being migrated.</p>
+<p>An examination of the files on the local z/OS UNIX Git repository will reveal that the file was copied and tagged with the override code page of IBM-037.</p>
+<pre class="shell"><code>ls -alT /u/user1/Migration/source
+total 64
+                    drwxr-xr-x   2 USER1    OMVS        8192 May  4 13:10 .
+                    drwxr-xr-x   4 USER1    OMVS        8192 May  4 13:10 ..
+t IBM-037     T=on  -rw-r--r--   1 USER1    OMVS          61 May  4 14:54 ibm037.src
+t IBM-1047    T=on  -rw-r--r--   1 USER1    OMVS          61 May  4 13:10 ibm1047.src</code></pre>
+<p>Additionally, the <code>.gitattributes</code> file was updated with the correct encoding mappings:</p>
+<pre class="shell"><code>cat /u/user1/Migration/.gitattributes
+source/*.src zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
+source/*.src zos-working-tree-encoding=IBM-037 git-encoding=utf-8</code></pre>
+<p>However, in this example you will notice a slight anomaly in that there are two (2) entries for the same sub-folder source/*.src. This will cause an encoding conflict during the Git add action. To correct this situation, the <code>.gitattributes</code> file must be manually updated to add the file name. Wild cards can be used in the file name should there be more than one member that matches this situation. The order of these entries is important, with the last entry taking precedence. In some cases, additional wild carding may be required to prevent further conflicts.</p>
+<pre class="shell"><code>cat /u/user1/Migration/.gitattributes
+source/*.src zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
+source/ibm037.src zos-working-tree-encoding=IBM-037 git-encoding=utf-8</code></pre>
+<p>Once the correction has been made to the <code>.gitattributes</code> file, the Git commit and push actions can be performed on the updated files to the distributed Git server:</p>
+<pre class="shell"><code>git add .
+git commit -m "IBM037 Code Page Fix"
+[main 107c86c] IBM037 Code Page Fix
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+git push
+Counting objects: 5, done.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 485 bytes | 485.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0)
+To github.ibm.com:user1/Migration.git
+   6436b92..107c86c  main -&gt; main   3d2962a..6436b92  main -&gt; main</code></pre>
+<p>Now when examining the offending file on the distributed Git server, the contents of the file should be translated correctly:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/migration-git-scen2-ibm037.png" class="img-fluid figure-img"></p>
+<figcaption>DBB Migration Tool scenario 2, ibm037.src file</figcaption>
+</figure>
+</div>
+<p>The probability that members of a single PDS were written using a different code page, though possible, is extremely low. However, it is worth pointing out that it could expose an issue in how the migration tool generates the <code>.gitattributes</code> file.</p>
+</section>
+<section id="detection-of-non-roundtripable-characters" class="level3">
+<h3 class="anchored" data-anchor-id="detection-of-non-roundtripable-characters">3. Detection of non-roundtripable characters</h3>
+<p>In this scenario, we will examine how the migration tool can assist in the detection of what is known as non-roundtripable characters. The documentation on <a href="./managing-code-page-conversion.html#managing-non-printable-and-non-roundtripable-characters">Managing non-printable and non-roundtripable characters</a> provides more conceptual background information. To illustrate this, we will be migrating the single source member <code>MIGRATE.TECHDOC.COPYBOOK(NROUND)</code>, which contains both types of characters.</p>
+<p>During the migration of a PDS member to a z/OS UNIX file, the migration tool will scan the content of the file to see if it detects any non-roundtripable characters. These characters are defined in the <code>migrate.groovy</code> script and are:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode groovy code-with-copy"><code class="sourceCode groovy"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>@Field <span class="dt">def</span> CHAR_NL <span class="op">=</span> <span class="bn">0x15</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>@Field <span class="dt">def</span> CHAR_CR <span class="op">=</span> <span class="bn">0x0D</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>@Field <span class="dt">def</span> CHAR_LF <span class="op">=</span> <span class="bn">0x25</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>@Field <span class="dt">def</span> CHAR_SHIFT_IN <span class="op">=</span> <span class="bn">0x0F</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>@Field <span class="dt">def</span> CHAR_SHIFT_OUT <span class="op">=</span> <span class="bn">0x0E</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If detected, the migration tool will emit a diagnostic message in the console log and will copy the member to z/OS UNIX as binary and therefore no code page conversion will be performed:</p>
+<pre class="shell"><code>$DBB_HOME/migration/bin/migrate.sh -r /u/user1/Migration -m MappingRule[hlq:MIGRATE.TECHDOC,extension:CPY,toLower:true,pdsEncoding:IBM-037] "COPYBOOK(NROUND)"
+
+Local GIT repository: /u/user1/Migration
+Using mapping rule com.ibm.dbb.migration.MappingRule to migrate the data sets
+Migrating data set COPYBOOK(NROUND)
+[WARNING] Copying MIGRATE.TECHDOC.COPYBOOK(NROUND) to /u/user1/Migration/copybook/nround.cpy
+ ! Possible migration issue:
+      Line 2 contains non-roundtripable characters:
+        Char 0x15 at column 27
+      Line 3 contains non-roundtripable characters:
+        Char 0x0D at column 27
+      Line 4 contains non-roundtripable characters:
+        Char 0x25 at column 27
+      Line 7 contains non-roundtripable characters:
+        Empty Shift Out and Shift In at column 74
+
+ ! Copying using BINARY mode
+** Build finished</code></pre>
+<p>Note that the migration tool has detected numerous non-roundtripable characters on various lines and has performed the copy as binary.</p>
+<p>An examination of the files on the local z/OS UNIX Git Repository will reveal that the file was copied but left untagged (this is a current known limitation for the DBB Toolkit in its 1.1.3 version, and a workaround is available upon request).</p>
+<pre class="shell"><code>ls -alT /u/user1/Migration/copybook
+total 48
+                    drwxr-xr-x   2 USER1    OMVS        8192 May  6 13:42 .
+                    drwxr-xr-x   4 USER1    OMVS        8192 May  6 13:42 ..
+- untagged    T=off -rw-r--r--   1 USER1    OMVS         560 May  6 13:42 nround.cpy</code></pre>
+<p>To be processed by the Rocket Git client when performing the Git add command, the file should be manually tagged as binary first. To correctly tag the file as binary, use the <code>chtag -b</code> command prior to performing the Git add command:</p>
+<pre class="shell"><code>ls -alT /u/user1/Migration/copybook
+total 48
+                    drwxr-xr-x   2 USER1    OMVS        8192 May  8 13:10 .
+                    drwxr-xr-x   5 USER1    OMVS        8192 May  8 13:12 ..
+b binary      T=off -rw-r--r--   1 USER1    OMVS         560 May  8 13:10 nround.cpy</code></pre>
+<p>Additionally, the <code>.gitattributes</code> file was automatically updated by the migration script to indicate that the file is mapped as binary:</p>
+<pre class="shell"><code>cat /u/user1/Migration/.gitattributes
+copybook/nround.cpy binary</code></pre>
+<p>During the Git push to the distributed Git server, Git will treat this as a binary file and no conversion to UTF-8 will take place. In essence, the resulting file on the distributed Git server will be the original contents of the PDS member, in EBCDIC.</p>
+<pre class="shell"><code>git add .
+warning: copybook/nround.cpy added file have been automatically tagged BINARY because they were untagged yet the .gitattributes file specifies they should be tagged
+git commit -m "Binary File"
+[main 0213795] Binary File
+ 2 files changed, 1 insertion(+)
+ create mode 100644 .gitattributes
+ create mode 100644 copybook/nround.cpy
+git push
+Counting objects: 5, done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 598 bytes | 598.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+To github.ibm.com:user1/Migration.git
+   e901992..0213795  main -&gt; main</code></pre>
+<p>Once the Git push action has completed to the distributed Git server, the resulting file will be treated as binary:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="static/img/migration-git-scen3-bin.png" class="img-fluid figure-img"></p>
+<figcaption>DBB Migration Tool scenario 3, binary nround.cpy file in Git</figcaption>
+</figure>
+</div>
+<p>This may not be an ideal situation as described in the documentation on <a href="./managing-code-page-conversion.html#managing-non-printable-and-non-roundtripable-characters">Managing non-printable and non-roundtripable characters</a>, and should be corrected/reconciled before continuing with the migration.</p>
+</section>
+<section id="detection-of-non-printable-characters" class="level3">
+<h3 class="anchored" data-anchor-id="detection-of-non-printable-characters">4. Detection of non-printable characters</h3>
+<p>In this final scenario, we will examine how the migration tool can assist in the detection of what is known as non-printable characters. The documentation on <a href="./managing-code-page-conversion.html#managing-non-printable-and-non-roundtripable-characters">Managing non-printable and non-roundtripable characters</a> provides more conceptual background information. To illustrate this, we will again migrate the single source member <code>MIGRATE.TECHDOC.COPYBOOK(NPRINT)</code>, which only contains non-printable characters.</p>
+<p>During the migration of a PDS member to a z/OS UNIX file, the migration tool will scan the content of the file to see if it detects any non-printable characters. These characters are defined as any hexadecimal values that are an EBCDIC x’40’ or less, and not one of the five (5) non-roundtripable characters.</p>
+<p>The migration tool provides three (3) options on how to handle and report on these characters:</p>
+<ol type="1">
+<li>Do Not Check: The non-printable characters are not researched; the member is simply copied as text. Code page conversion will occur.</li>
+<li>Info: The script will emit an Informational diagnostic message in the console log if a non-printable character is detected and the file is copied as text. Code page conversion will occur.</li>
+<li>Warning: The script will emit a Warning diagnostic message in the console log if a non-printable character is detected and the file is copied as binary. No code page conversion will occur, and the offending characters will be treated like non-roundtripable characters.</li>
+</ol>
+<p>It should be noted that for the “Do Not Check” and “Info” options, although code page conversion is taking place, this could cause an issue later. The file may not be easily maintained with a distributed editor, and you run the risk of having corrupted files.</p>
+<p>Controlling what level of checking should be performed during the migration is done via the optional scan level <code>-np</code>, <code>--non-printable &lt;level&gt;</code> parameter switch passed to the migration script. If the scan level parameter is not specified, the non-printable characters are not checked (equates to the “Do Not Check” option).</p>
+<section id="scan-level-set-to-info" class="level4">
+<h4 class="anchored" data-anchor-id="scan-level-set-to-info">Scan level set to <code>info</code></h4>
+<p>Example output for migration performed with scan level set to <code>info</code>:</p>
+<pre class="shell"><code>$DBB_HOME/migration/bin/migrate.sh -r /u/user1/Migration -np info -m MappingRule[hlq:MIGRATE.TECHDOC,extension:CPY,toLower:true,pdsEncoding:IBM-037] "COPYBOOK(NPRINT)"
+
+Non-printable scan level is info
+Local GIT repository: /u/user1/Migration
+Using mapping rule com.ibm.dbb.migration.MappingRule to migrate the data sets
+Migrating data set COPYBOOK(NPRINT)
+[INFO] Copying MIGRATE.TECHDOC.COPYBOOK(NPRINT) to /u/user1/Migration/copybook/nprint.cpy using IBM-037
+ ! Possible migration issue:
+      Line 2 contains non-printable characters:
+        Char 0x00 at column 19
+      Line 3 contains non-printable characters:
+        Char 0x06 at column 19
+      Line 4 contains non-printable characters:
+        Char 0x07 at column 19
+      Line 5 contains non-printable characters:
+        Char 0x1B at column 19
+
+** Build finished</code></pre>
+<p>Note that the migration tool has detected numerous non-printable characters on various lines and has performed the copy as text and will be tagged on z/OS UNIX using the supplied encoding of IBM-037:</p>
+<pre class="shell"><code>ls -alT /u/user1/Migration/copybook
+total 64
+                    drwxr-xr-x   2 USER1    OMVS        8192 May  6 15:39 .
+                    drwxr-xr-x   4 USER1    OMVS        8192 May  6 14:55 ..
+t IBM-037     T=on  -rw-r--r--   1 USER1    OMVS         114 May  6 15:39 nprint.cpy</code></pre>
+</section>
+<section id="scan-level-set-to-warning" class="level4">
+<h4 class="anchored" data-anchor-id="scan-level-set-to-warning">Scan level set to warning</h4>
+<p>Example output for migration performed with scan level set to <code>warning</code>:</p>
+<pre class="shell"><code>$DBB_HOME/migration/bin/migrate.sh -r /u/user1/Migration -np warning -m MappingRule[hlq:MIGRATE.TECHDOC,extension:CPY,toLower:true,pdsEncoding:IBM-037] "COPYBOOK(NPRINT)"
+
+Non-printable scan level is warning
+Local GIT repository: /u/user1/Migration
+Using mapping rule com.ibm.dbb.migration.MappingRule to migrate the data sets
+Migrating data set COPYBOOK(NPRINT)
+[WARNING] Copying MIGRATE.TECHDOC.COPYBOOK(NPRINT) to /u/user1/Migration/copybook/nprint.cpy
+ ! Possible migration issue:
+      Line 2 contains non-printable characters:
+        Char 0x06 at column 19
+      Line 3 contains non-printable characters:
+        Char 0x07 at column 19
+      Line 4 contains non-printable characters:
+        Char 0x1B at column 19
+
+ ! Copying using BINARY mode
+** Build finished</code></pre>
+<p>Note that the migration tool has detected numerous non-printable characters on various lines and has performed the copy as binary. The file remains untagged on z/OS UNIX (the manual tagging of the file is still required):</p>
+<pre class="shell"><code>ls -alT /u/user1/Migration/copybook
+total 48
+                    drwxr-xr-x   2 USER1    OMVS        8192 May  6 17:17 .
+                    drwxr-xr-x   4 USER1    OMVS        8192 May  6 17:17 ..
+- untagged    T=off -rw-r--r--   1 USER1    OMVS         320 May  6 17:17 nprint.cpy</code></pre>
+</section>
+</section>
+</section>
+<section id="recommendations-for-using-the-migration-utility" class="level2">
+<h2 class="anchored" data-anchor-id="recommendations-for-using-the-migration-utility">Recommendations for using the migration utility</h2>
+<p>A strategy must be decided on how to handle both non-printable and non-roundtripable characters found in source members that are to be migrated from z/OS PDSs to Git. The <code>HEXCODED</code> member, though not demonstrated in the above scenarios, is a common occurrence in many older legacy applications. Source code members such as this need to be identified and transformed to that shown in the <code>HEXVALUE</code> member if the goal is to manage the source seamlessly using the modernized tooling provided through Git. For more conceptual background information, please refer to <a href="./managing-code-page-conversion.html#managing-non-printable-and-non-roundtripable-characters">Managing non-printable and non-roundtripable characters</a>.</p>
+<p>The DBB Migration Tool provides an option to perform a scan of the z/OS PDSs to assist in the analysis and correction/reconciliation of these situations prior to performing the copy to the local Git repository. Invoking this scan is done via the optional preview <code>-p</code>, <code>--preview</code> parameter switch and will bypass the copy. The default is “No Preview”. An example of the preview follows:</p>
+<pre class="shell"><code>$DBB_HOME/migration/bin/migrate.sh -r /u/user1/Migration -np warning -p -m MappingRule[hlq:MIGRATE.TECHDOC,extension:CPY,toLower:true,pdsEncoding:IBM-037] COPYBOOK
+
+Non-printable scan level is warning
+Preview flag is specified, no members will be copied to HFS
+Local GIT repository: /u/user1/Migration
+Using mapping rule com.ibm.dbb.migration.MappingRule to migrate the data sets
+Migrating data set COPYBOOK
+[WARNING] Previewing MIGRATE.TECHDOC.COPYBOOK(HEXCODED)
+ ! Possible migration issue:
+      Line 3 contains non-printable characters:
+        Char 0x19 at column 37
+      Line 4 contains non-roundtripable characters:
+        Char 0x15 at column 37
+      Line 5 contains non-printable characters:
+        Char 0x0C at column 37
+      Line 6 contains non-roundtripable characters:
+        Char 0x0D at column 37
+
+ ! Will copy using BINARY mode
+Previewing MIGRATE.TECHDOC.COPYBOOK(HEXVALUE). Using IBM-037.
+[WARNING] Previewing MIGRATE.TECHDOC.COPYBOOK(NPRINT)
+ ! Possible migration issue:
+      Line 2 contains non-printable characters:
+        Char 0x06 at column 19
+      Line 3 contains non-printable characters:
+        Char 0x07 at column 19
+      Line 4 contains non-printable characters:
+        Char 0x1B at column 19
+
+ ! Will copy using BINARY mode
+[WARNING] Previewing MIGRATE.TECHDOC.COPYBOOK(NROUND)
+ ! Possible migration issue:
+      Line 2 contains non-roundtripable characters:
+        Char 0x15 at column 27
+      Line 3 contains non-roundtripable characters:
+        Char 0x0D at column 27
+      Line 4 contains non-roundtripable characters:
+        Char 0x25 at column 27
+      Line 5 contains non-printable characters:
+        Char 0x0F at column 33
+      Line 7 contains non-roundtripable characters:
+        Empty Shift Out and Shift In at column 74
+
+ ! Will copy using BINARY mode</code></pre>
+<p>With the <code>-l</code>, <code>--log</code> option, a log file can be created to contain all the messages about the migration process, including the non-printable and non-roundtripable characters encountered during the scan. This log file can be used by the developers to perform the necessary changes in their original source code members prior to the real migration process.</p>
+<p>Many other options of the Mapping Rule parameter can be leveraged to control the behavior of the DBB Migration Tool. These options are described on the <a href="https://www.ibm.com/docs/en/dbb/2.0?topic=migrating-source-files-from-zos-git">IBM Documentation website</a>.</p>
+</section>
+<section id="migrating-from-ibm-engineering-workflow-management-to-git" class="level2">
+<h2 class="anchored" data-anchor-id="migrating-from-ibm-engineering-workflow-management-to-git">Migrating from IBM Engineering Workflow Management to GIT</h2>
+<p>For specific information on using the DBB Migration Tool to migrate from IBM Engineering Workflow Management (EWM) to Git, please reference <a href="https://www.ibm.com/support/pages/node/6538618">Migrating from IBM Engineering Workflow Management (EWM) to GIT</a>.</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li>This page contains reformatted excerpts from <a href="https://www.ibm.com/support/pages/node/6591177">Managing the code page conversion when migrating z/OS source files to Git</a>.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./managing-code-page-conversion.html" class="pagination-link  aria-label=" managing="" code="" page="" conversion"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Managing code page conversion</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./manual-migration.html" class="pagination-link" aria-label="Manual migration">
+        <span class="nav-page-text">Manual migration</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Authored in Markdown <br>Built with <a href="https://quarto.org">Quarto</a> and <a href="https://revealjs.com/">RevealJS</a> <br>Served from Github Enterprise Pages</p>
+</div>   
+    <div class="nav-footer-center">
+<p>Copyright © 2024 IBM Corporation</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
