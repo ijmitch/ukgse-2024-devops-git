@@ -35,7 +35,7 @@ format:
       margin-width: 300px
       gutter-width: 1.5rem
     mermaid:
-      theme: forest
+      theme: dark
   pdf:
     toc: true
     mainfont: "IBM Plex Sans"
