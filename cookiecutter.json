@@ -1,0 +1,7 @@
+{
+    "project_name": "Quarto Site with RevealJS presentation",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "author": "Anonymous",
+    "subtitle": "",
+    "year": "{% now 'utc', '%Y' %}"
+  }

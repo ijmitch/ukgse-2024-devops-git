@@ -1,0 +1,12 @@
+---
+title: {{ cookiecutter.project_name }}
+subtitle: {{cookiecutter.subtitle}}
+author: {{ cookiecutter.author}}
+format: revealjs
+---
+
+## Agenda
+
+...
+
+# THANK YOU!
